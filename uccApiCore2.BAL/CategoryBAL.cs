@@ -14,7 +14,7 @@ namespace uccApiCore2.BAL
 
         public CategoryBAL(ICategoryRepository CategoryRepository)
         {
-            _CategoryRepository = CategoryRepository;
+            _CategoryRepository = CategoryRepository; 
         }
       
         public Task<List<Category>> GetCategory(Category obj)
