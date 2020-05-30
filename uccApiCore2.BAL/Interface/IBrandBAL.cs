@@ -10,6 +10,7 @@ namespace uccApiCore2.BAL.Interface
     {
        
         Task<List<Brand>> GetBrand(Brand obj);
-       
+        Task<List<Brand>> GetAllBrand(Brand obj);
+        Task<int> SaveBrand(Brand obj);
     }
 }

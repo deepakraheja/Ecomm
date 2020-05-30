@@ -38,6 +38,21 @@ namespace uccApiCore2.Controllers
         }
 
         [HttpPost]
+        [Route("GetAllProductBySupplierId")]
+        public async Task<List<Product>> GetAllProductBySupplierId([FromBody] Product obj)
+        {
+            try
+            {
+                return await this._IProductBAL.GetAllProductBySupplierId(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController GetAllProductBySupplierId action: {ex.Message}");
+                return null;
+            }
+        }
+
+        [HttpPost]
         [Route("GetProductById")]
         public async Task<List<Product>> GetProductById([FromBody]Product obj)
         {
@@ -51,5 +66,21 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
+
+        [HttpPost]
+        [Route("SaveProduct")]
+        public async Task<int> SaveProduct([FromBody] Product obj)
+        {
+            try
+            {
+                return await this._IProductBAL.SaveProduct(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController SaveProduct action: {ex.Message}");
+                return -1;
+            }
+        }
+
     }
 }

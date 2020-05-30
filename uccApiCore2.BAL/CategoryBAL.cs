@@ -8,15 +8,15 @@ using uccApiCore2.Repository.Interface;
 
 namespace uccApiCore2.BAL
 {
-    public class CategoryBAL: ICategoryBAL
+    public class CategoryBAL : ICategoryBAL
     {
         ICategoryRepository _CategoryRepository;
 
         public CategoryBAL(ICategoryRepository CategoryRepository)
         {
-            _CategoryRepository = CategoryRepository; 
+            _CategoryRepository = CategoryRepository;
         }
-      
+
         public Task<List<Category>> GetCategory(Category obj)
         {
             return _CategoryRepository.GetCategory(obj);

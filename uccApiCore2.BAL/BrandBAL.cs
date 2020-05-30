@@ -22,5 +22,15 @@ namespace uccApiCore2.BAL
             return _BrandRepository.GetBrand(obj);
         }
 
+        public Task<List<Brand>> GetAllBrand(Brand obj)
+        {
+            return _BrandRepository.GetAllBrand(obj);
+        }
+
+        public Task<int> SaveBrand(Brand obj)
+        {
+            return _BrandRepository.SaveBrand(obj);
+        }
+
     }
 }

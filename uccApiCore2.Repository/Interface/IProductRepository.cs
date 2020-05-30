@@ -8,11 +8,9 @@ namespace uccApiCore2.Repository.Interface
 {
     public interface IProductRepository
     {
-        
-        
         Task<List<Product>> GetProductBySubcatecode(Product obj);
-
+        Task<List<Product>> GetAllProductBySupplierId(Product obj);
         Task<List<Product>> GetProductById(Product obj);
-
+        Task<int> SaveProduct(Product obj);
     }
 }

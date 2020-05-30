@@ -22,10 +22,17 @@ namespace uccApiCore2.BAL
             return _IProductRepository.GetProductBySubcatecode(obj);
         }
 
+        public Task<List<Product>> GetAllProductBySupplierId(Product obj)
+        {
+            return _IProductRepository.GetAllProductBySupplierId(obj);
+        }
         public Task<List<Product>> GetProductById(Product obj)
         {
             return _IProductRepository.GetProductById(obj);
         }
-
+        public Task<int> SaveProduct(Product obj)
+        {
+            return _IProductRepository.SaveProduct(obj);
+        }
     }
 }

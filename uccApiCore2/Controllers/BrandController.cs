@@ -37,5 +37,34 @@ namespace uccApiCore2.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("GetAllBrand")]
+        public async Task<List<Brand>> GetAllBrand([FromBody] Brand obj)
+        {
+            try
+            {
+                return await this._Brand.GetAllBrand(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside BrandController GetAllBrand action: {ex.Message}");
+                return null;
+            }
+        }
+
+        [HttpPost]
+        [Route("SaveBrand")]
+        public async Task<int> SaveBrand([FromBody] Brand obj)
+        {
+            try
+            {
+                return await this._Brand.SaveBrand(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside BrandController SaveBrand action: {ex.Message}");
+                return -1;
+            }
+        }
     }
 }

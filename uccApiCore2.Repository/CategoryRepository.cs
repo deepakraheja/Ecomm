@@ -11,7 +11,7 @@ namespace uccApiCore2.Repository
 {
     public class CategoryRepository : BaseRepository, ICategoryRepository
     {
-        
+
 
         public async Task<List<Category>> GetCategory(Category obj)
         {
