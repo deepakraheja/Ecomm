@@ -1,0 +1,7 @@
+2020-05-29 21:18:45.6588||DEBUG|uccApiCore2.Program|init main |url: |action: 
+2020-05-29 22:04:59.1082||DEBUG|uccApiCore2.Program|init main |url: |action: 
+2020-05-29 22:06:26.8728||ERROR|uccApiCore2.Controllers.ProductController|Something went wrong inside ProductController GetProductById action: @Subcatecode is not a parameter for procedure p_product_selbyId. |url: http://localhost/api/Product/GetProductById|action: GetProductById
+2020-05-29 22:07:25.1815||ERROR|uccApiCore2.Controllers.ProductController|Something went wrong inside ProductController GetProductById action: @Subcatecode is not a parameter for procedure p_product_selbyId. |url: http://localhost/api/Product/GetProductById|action: GetProductById
+2020-05-29 22:08:51.4104||DEBUG|uccApiCore2.Program|init main |url: |action: 
+2020-05-29 22:11:55.9805||DEBUG|uccApiCore2.Program|init main |url: |action: 
+2020-05-29 22:13:39.4474||DEBUG|uccApiCore2.Program|init main |url: |action: 

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "uccApiCore2.Entities/1.0.0": {
+        "runtime": {
+          "uccApiCore2.Entities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "uccApiCore2.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

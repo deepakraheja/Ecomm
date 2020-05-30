@@ -1,0 +1,60 @@
+2020-05-24 18:52:40.0936 Info Message Template Auto Format enabled
+2020-05-24 18:52:40.1343 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-24 18:52:40.5410 Info Adding target FileTarget(Name=allfile)
+2020-05-24 18:52:40.5508 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-24 18:52:40.6229 Info Found 45 configuration items
+2020-05-24 18:54:44.6958 Info Message Template Auto Format enabled
+2020-05-24 18:54:44.8791 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-24 18:54:45.3366 Info Adding target FileTarget(Name=allfile)
+2020-05-24 18:54:45.3532 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-24 18:54:45.4276 Info Found 45 configuration items
+2020-05-24 18:57:11.1745 Info Message Template Auto Format enabled
+2020-05-24 18:57:11.3845 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-24 18:57:12.2115 Info Adding target FileTarget(Name=allfile)
+2020-05-24 18:57:12.2745 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-24 18:57:12.4209 Info Found 45 configuration items
+2020-05-24 22:38:41.0536 Info Message Template Auto Format enabled
+2020-05-24 22:38:41.0903 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-24 22:38:41.3182 Info Adding target FileTarget(Name=allfile)
+2020-05-24 22:38:41.3702 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-24 22:38:41.4411 Info Found 45 configuration items
+2020-05-28 19:54:58.5446 Info Message Template Auto Format enabled
+2020-05-28 19:54:58.6360 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-28 19:54:59.7095 Info Adding target FileTarget(Name=allfile)
+2020-05-28 19:54:59.7692 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-28 19:54:59.9385 Info Found 45 configuration items
+2020-05-28 22:58:30.4244 Info Message Template Auto Format enabled
+2020-05-28 22:58:30.5665 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-28 22:58:31.2499 Info Adding target FileTarget(Name=allfile)
+2020-05-28 22:58:31.3051 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-28 22:58:31.4726 Info Found 45 configuration items
+2020-05-29 21:18:44.8540 Info Message Template Auto Format enabled
+2020-05-29 21:18:44.8987 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-29 21:18:45.2622 Info Adding target FileTarget(Name=allfile)
+2020-05-29 21:18:45.3237 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-29 21:18:45.4391 Info Found 45 configuration items
+2020-05-29 22:04:58.1493 Info Message Template Auto Format enabled
+2020-05-29 22:04:58.2573 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-29 22:04:58.6660 Info Adding target FileTarget(Name=allfile)
+2020-05-29 22:04:58.7139 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-29 22:04:58.7936 Info Found 45 configuration items
+2020-05-29 22:08:50.4599 Info Message Template Auto Format enabled
+2020-05-29 22:08:50.5554 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-29 22:08:51.0130 Info Adding target FileTarget(Name=allfile)
+2020-05-29 22:08:51.0537 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-29 22:08:51.2610 Info Found 45 configuration items
+2020-05-29 22:11:54.9419 Info Message Template Auto Format enabled
+2020-05-29 22:11:55.0683 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-29 22:11:55.5375 Info Adding target FileTarget(Name=allfile)
+2020-05-29 22:11:55.5634 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-29 22:11:55.7666 Info Found 45 configuration items
+2020-05-29 22:13:38.4311 Info Message Template Auto Format enabled
+2020-05-29 22:13:38.4694 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-29 22:13:38.9088 Info Adding target FileTarget(Name=allfile)
+2020-05-29 22:13:39.0018 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-29 22:13:39.1695 Info Found 45 configuration items
+2020-05-30 18:35:22.8275 Info Message Template Auto Format enabled
+2020-05-30 18:35:22.8460 Info Loading assembly: NLog.Web.AspNetCore
+2020-05-30 18:35:22.9439 Info Adding target FileTarget(Name=allfile)
+2020-05-30 18:35:22.9439 Info Adding target FileTarget(Name=ownFile-web)
+2020-05-30 18:35:22.9899 Info Found 45 configuration items

@@ -1,0 +1,48 @@
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.deps.json
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.dll
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.pdb
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csprojAssemblyReference.cache
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CoreCompileInputs.cache
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfoInputs.cache
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfo.cs
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CopyComplete
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+E:\Project\Testing\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.deps.json
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.dll
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.pdb
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csprojAssemblyReference.cache
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CoreCompileInputs.cache
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfoInputs.cache
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfo.cs
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CopyComplete
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+C:\Users\deepak raheja\Desktop\svn\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.deps.json
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.dll
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.pdb
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csprojAssemblyReference.cache
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfoInputs.cache
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfo.cs
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CopyComplete
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+C:\Project\uccApiCore\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CoreCompileInputs.cache
+C:\Project\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.deps.json
+C:\Project\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+C:\Project\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+C:\Project\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.dll
+C:\Project\uccApiCore\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.pdb
+C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csprojAssemblyReference.cache
+C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CoreCompileInputs.cache
+C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfoInputs.cache
+C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfo.cs
+C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CopyComplete
+C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb

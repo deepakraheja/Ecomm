@@ -1,0 +1,209 @@
+2020-05-25 00:31:28.7215|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Product/GetProductBySubcatecode   
+2020-05-25 00:31:28.7779|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/SubCategory/GetSideSubcategory   
+2020-05-25 00:31:28.7779|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Brand/GetBrand   
+2020-05-25 00:31:28.8265|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:28.8487|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:28.8487|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:28.8673|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 89.3377ms 204  
+2020-05-25 00:31:28.8673|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 89.525ms 204  
+2020-05-25 00:31:28.8673|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 152.5463ms 204  
+2020-05-25 00:31:28.9096|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSideSubcategory application/json 24 
+2020-05-25 00:31:28.9096|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:28.9276|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Product/GetProductBySubcatecode application/json 12 
+2020-05-25 00:31:28.9276|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Brand/GetBrand application/json 12 
+2020-05-25 00:31:28.9571|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:28.9862|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Category/GetCategory   
+2020-05-25 00:31:28.9940|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:29.0278|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSideSubcategory (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 00:31:29.0278|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:29.0278|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.ProductController.GetProductBySubcatecode (uccApiCore2) with arguments (uccApiCore2.Entities.Product) - ModelState is Valid 
+2020-05-25 00:31:29.0476|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.BrandController.GetBrand (uccApiCore2) with arguments (uccApiCore2.Entities.Brand) - ModelState is Valid 
+2020-05-25 00:31:29.1108|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 124.6949ms 204  
+2020-05-25 00:31:29.1740|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Category/GetCategory application/json 12 
+2020-05-25 00:31:29.1786|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:29.1786|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.CategoryController.GetCategory (uccApiCore2) with arguments (uccApiCore2.Entities.Category) - ModelState is Valid 
+2020-05-25 00:31:29.6399|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 00:31:29.6700|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSideSubcategory (uccApiCore2) in 682.9188ms 
+2020-05-25 00:31:29.6774|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 772.1853ms 200 application/json; charset=utf-8 
+2020-05-25 00:31:30.0085|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 00:31:30.0395|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.BrandController.GetBrand (uccApiCore2) in 1003.8022ms 
+2020-05-25 00:31:30.0395|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 00:31:30.0395|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1115.8923ms 200 application/json; charset=utf-8 
+2020-05-25 00:31:30.0547|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.ProductController.GetProductBySubcatecode (uccApiCore2) in 1057.5538ms 
+2020-05-25 00:31:30.0704|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1142.8283ms 200 application/json; charset=utf-8 
+2020-05-25 00:31:30.4426|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 00:31:30.4426|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.CategoryController.GetCategory (uccApiCore2) in 1267.129ms 
+2020-05-25 00:31:30.4426|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1281.1306ms 200 application/json; charset=utf-8 
+2020-05-25 00:31:30.8947|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/SubCategory/GetSubcategoryByCatId   
+2020-05-25 00:31:30.8947|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:30.8947|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 9.8646ms 204  
+2020-05-25 00:31:30.9123|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSubcategoryByCatId application/json 27 
+2020-05-25 00:31:30.9450|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSubcategoryByCatId application/json 27 
+2020-05-25 00:31:30.9450|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSubcategoryByCatId application/json 27 
+2020-05-25 00:31:30.9450|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSubcategoryByCatId application/json 27 
+2020-05-25 00:31:30.9450|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:30.9450|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:30.9450|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:30.9651|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 00:31:30.9929|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 00:31:30.9929|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 00:31:30.9929|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 00:31:31.0055|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 00:31:31.1117|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 00:31:31.1123|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 00:31:31.1123|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 00:31:31.1123|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) in 143.7043ms 
+2020-05-25 00:31:31.1123|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) in 153.7146ms 
+2020-05-25 00:31:31.1123|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) in 130.8433ms 
+2020-05-25 00:31:31.1310|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 186.0658ms 200 application/json; charset=utf-8 
+2020-05-25 00:31:31.1310|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 185.7095ms 200 application/json; charset=utf-8 
+2020-05-25 00:31:31.1310|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 194.3952ms 200 application/json; charset=utf-8 
+2020-05-25 00:31:31.5240|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 00:31:31.5452|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) in 542.7421ms 
+2020-05-25 00:31:31.5978|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 685.4699ms 200 application/json; charset=utf-8 
+2020-05-25 01:09:47.7550|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Product/GetProductBySubcatecode   
+2020-05-25 01:09:47.8076|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:09:47.8076|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 60.2754ms 204  
+2020-05-25 01:09:47.8215|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Product/GetProductBySubcatecode application/json 12 
+2020-05-25 01:09:47.8215|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:09:47.8482|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/SubCategory/GetSideSubcategory   
+2020-05-25 01:09:47.8482|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.ProductController.GetProductBySubcatecode (uccApiCore2) with arguments (uccApiCore2.Entities.Product) - ModelState is Valid 
+2020-05-25 01:09:47.8826|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:09:47.9087|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 60.4816ms 204  
+2020-05-25 01:09:47.9113|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Brand/GetBrand   
+2020-05-25 01:09:48.1926|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:09:48.1926|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSideSubcategory application/json 24 
+2020-05-25 01:09:48.1926|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 288.7688ms 204  
+2020-05-25 01:09:48.2284|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:09:48.2456|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSideSubcategory (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 01:09:48.2456|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Brand/GetBrand application/json 12 
+2020-05-25 01:09:48.2558|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:09:48.2558|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Category/GetCategory   
+2020-05-25 01:09:48.2558|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.BrandController.GetBrand (uccApiCore2) with arguments (uccApiCore2.Entities.Brand) - ModelState is Valid 
+2020-05-25 01:09:48.2558|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:09:48.2758|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 14.9324ms 204  
+2020-05-25 01:09:48.2758|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Category/GetCategory application/json 12 
+2020-05-25 01:09:48.2883|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:09:48.2883|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.CategoryController.GetCategory (uccApiCore2) with arguments (uccApiCore2.Entities.Category) - ModelState is Valid 
+2020-05-25 01:10:03.4689||ERROR|uccApiCore2.Controllers.BrandController|Something went wrong inside BrandController GetBrand action: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) 
+2020-05-25 01:10:03.4689||ERROR|uccApiCore2.Controllers.ProductController|Something went wrong inside ProductController GetProductBySubcatecode action: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) 
+2020-05-25 01:10:03.4689||ERROR|uccApiCore2.Controllers.CategoryController|Something went wrong inside CategoryController GetCategory action: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) 
+2020-05-25 01:10:03.4689||ERROR|uccApiCore2.Controllers.SubCategoryController|Something went wrong inside SubCategoryController GetSideSubcategory action: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) 
+2020-05-25 01:10:03.5211|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 01:10:03.5211|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 01:10:03.5211|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 01:10:03.5211|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 01:10:03.5653|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.ProductController.GetProductBySubcatecode (uccApiCore2) in 15727.3453ms 
+2020-05-25 01:10:03.5653|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSideSubcategory (uccApiCore2) in 15325.6122ms 
+2020-05-25 01:10:03.5653|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.CategoryController.GetCategory (uccApiCore2) in 15272.3513ms 
+2020-05-25 01:10:03.5653|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.BrandController.GetBrand (uccApiCore2) in 15305.2755ms 
+2020-05-25 01:10:03.5754|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 15755.3705ms 204  
+2020-05-25 01:10:03.5754|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 15294.4182ms 204  
+2020-05-25 01:10:03.5754|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 15334.7763ms 204  
+2020-05-25 01:10:03.5858|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 15391.9112ms 204  
+2020-05-25 01:34:38.7948|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Product/GetProductBySubcatecode   
+2020-05-25 01:34:38.7948|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:34:38.8123|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 8.5241ms 204  
+2020-05-25 01:34:38.8190|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Product/GetProductBySubcatecode application/json 12 
+2020-05-25 01:34:38.8190|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:34:38.8369|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.ProductController.GetProductBySubcatecode (uccApiCore2) with arguments (uccApiCore2.Entities.Product) - ModelState is Valid 
+2020-05-25 01:34:39.0448|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/SubCategory/GetSideSubcategory   
+2020-05-25 01:34:39.0448|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:34:39.0514|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 6.5761ms 204  
+2020-05-25 01:34:39.0514|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSideSubcategory application/json 24 
+2020-05-25 01:34:39.0665|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:34:39.0665|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSideSubcategory (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 01:34:39.0665|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Brand/GetBrand   
+2020-05-25 01:34:39.0831|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:34:39.0831|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 7.9243ms 204  
+2020-05-25 01:34:39.0984|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Brand/GetBrand application/json 12 
+2020-05-25 01:34:39.0984|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:34:39.1151|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.BrandController.GetBrand (uccApiCore2) with arguments (uccApiCore2.Entities.Brand) - ModelState is Valid 
+2020-05-25 01:34:39.2802|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Category/GetCategory   
+2020-05-25 01:34:39.2802|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:34:39.2856|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 5.4004ms 204  
+2020-05-25 01:34:39.2856|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Category/GetCategory application/json 12 
+2020-05-25 01:34:39.3035|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 01:34:39.4097|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.CategoryController.GetCategory (uccApiCore2) with arguments (uccApiCore2.Entities.Category) - ModelState is Valid 
+2020-05-25 01:34:53.9665||ERROR|uccApiCore2.Controllers.ProductController|Something went wrong inside ProductController GetProductBySubcatecode action: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) 
+2020-05-25 01:34:53.9802||ERROR|uccApiCore2.Controllers.SubCategoryController|Something went wrong inside SubCategoryController GetSideSubcategory action: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) 
+2020-05-25 01:34:53.9665||ERROR|uccApiCore2.Controllers.BrandController|Something went wrong inside BrandController GetBrand action: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) 
+2020-05-25 01:34:54.0079||ERROR|uccApiCore2.Controllers.CategoryController|Something went wrong inside CategoryController GetCategory action: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) 
+2020-05-25 01:34:54.0079|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 01:34:54.0236|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 01:34:54.0236|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 01:34:54.0236|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSideSubcategory (uccApiCore2) in 14952.604ms 
+2020-05-25 01:34:54.0236|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.BrandController.GetBrand (uccApiCore2) in 14915.3144ms 
+2020-05-25 01:34:54.0542|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 01:34:54.0542|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.ProductController.GetProductBySubcatecode (uccApiCore2) in 15226.6789ms 
+2020-05-25 01:34:54.0706|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 15007.9118ms 204  
+2020-05-25 01:34:54.0706|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 14976.5435ms 204  
+2020-05-25 01:34:54.0706|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 15259.2686ms 204  
+2020-05-25 01:34:54.0988|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.CategoryController.GetCategory (uccApiCore2) in 14696.5486ms 
+2020-05-25 01:34:54.0988|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 14809.4411ms 204  
+2020-05-25 10:32:20.5561|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Product/GetProductBySubcatecode   
+2020-05-25 10:32:20.6303|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:20.7211|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 169.4925ms 204  
+2020-05-25 10:32:20.7395|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Product/GetProductBySubcatecode application/json 12 
+2020-05-25 10:32:20.7395|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:20.7660|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.ProductController.GetProductBySubcatecode (uccApiCore2) with arguments (uccApiCore2.Entities.Product) - ModelState is Valid 
+2020-05-25 10:32:21.0411|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/SubCategory/GetSideSubcategory   
+2020-05-25 10:32:21.0411|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:21.0539|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 12.8823ms 204  
+2020-05-25 10:32:21.0539|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Brand/GetBrand   
+2020-05-25 10:32:21.0722|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:21.0722|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSideSubcategory application/json 24 
+2020-05-25 10:32:21.0849|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:21.0849|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 31.9703ms 204  
+2020-05-25 10:32:21.1008|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Brand/GetBrand application/json 12 
+2020-05-25 10:32:21.1008|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSideSubcategory (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 10:32:21.1008|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:21.1341|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.BrandController.GetBrand (uccApiCore2) with arguments (uccApiCore2.Entities.Brand) - ModelState is Valid 
+2020-05-25 10:32:21.3443|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/Category/GetCategory   
+2020-05-25 10:32:21.3499|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:21.3499|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 11.6542ms 204  
+2020-05-25 10:32:21.3679|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/Category/GetCategory application/json 12 
+2020-05-25 10:32:21.3679|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:21.3816|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.CategoryController.GetCategory (uccApiCore2) with arguments (uccApiCore2.Entities.Category) - ModelState is Valid 
+2020-05-25 10:32:21.7460|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 10:32:21.7588|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.ProductController.GetProductBySubcatecode (uccApiCore2) in 1002.473ms 
+2020-05-25 10:32:21.7588|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1028.2351ms 200 application/json; charset=utf-8 
+2020-05-25 10:32:22.2487|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 10:32:22.2554|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 10:32:22.2886|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSideSubcategory (uccApiCore2) in 1188.6816ms 
+2020-05-25 10:32:22.2886|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.BrandController.GetBrand (uccApiCore2) in 1170.2585ms 
+2020-05-25 10:32:22.3257|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1252.3643ms 200 application/json; charset=utf-8 
+2020-05-25 10:32:22.3327|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1231.8709ms 200 application/json; charset=utf-8 
+2020-05-25 10:32:22.7175|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 10:32:22.7232|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.CategoryController.GetCategory (uccApiCore2) in 1343.2728ms 
+2020-05-25 10:32:22.7232|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1361.1444ms 200 application/json; charset=utf-8 
+2020-05-25 10:32:22.7466|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/SubCategory/GetSubcategoryByCatId   
+2020-05-25 10:32:22.7466|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5205/api/SubCategory/GetSubcategoryByCatId   
+2020-05-25 10:32:22.7466|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:22.7577|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 11.8114ms 204  
+2020-05-25 10:32:22.7577|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:22.7577|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSubcategoryByCatId application/json 27 
+2020-05-25 10:32:22.7724|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:22.7724|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSubcategoryByCatId application/json 27 
+2020-05-25 10:32:22.7724|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 24.2998ms 204  
+2020-05-25 10:32:22.7853|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSubcategoryByCatId application/json 27 
+2020-05-25 10:32:22.7853|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:22.8030|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 10:32:22.8030|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:22.8030|1|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5205/api/SubCategory/GetSubcategoryByCatId application/json 27 
+2020-05-25 10:32:22.8513|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 10:32:22.8513|4|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful. 
+2020-05-25 10:32:22.8513|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 10:32:22.8762|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) with arguments (uccApiCore2.Entities.SubCategory) - ModelState is Valid 
+2020-05-25 10:32:22.9413|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 10:32:22.9413|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) in 160.6724ms 
+2020-05-25 10:32:22.9413|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 190.8311ms 200 application/json; charset=utf-8 
+2020-05-25 10:32:22.9878|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 10:32:22.9911|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 10:32:22.9911|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) in 145.7134ms 
+2020-05-25 10:32:23.0067|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) in 155.4106ms 
+2020-05-25 10:32:23.0067|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 225.3178ms 200 application/json; charset=utf-8 
+2020-05-25 10:32:23.0214|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 246.4736ms 200 application/json; charset=utf-8 
+2020-05-25 10:32:23.4216|1|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext. 
+2020-05-25 10:32:23.4260|2|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action uccApiCore2.Controllers.SubCategoryController.GetSubcategoryByCatId (uccApiCore2) in 550.8199ms 
+2020-05-25 10:32:23.4260|2|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 632.8469ms 200 application/json; charset=utf-8 
