@@ -9,17 +9,17 @@ namespace uccApiCore2.Controllers.Common
 {
     public class Utilities
     {
-        public void SaveImage(int UserId, string[] FileSource, bool IsUser, string WebRootPath)
+        public void SaveImage(int ProductId, string[] FileSource, string Type, string WebRootPath)
         {
-            if (UserId > 0)
+            if (ProductId > 0)
             {
                 if (FileSource.Length > 0)
                 {
                     string FolderPath;
-                    if (IsUser)
-                        FolderPath = WebRootPath + "\\uccImages\\User\\" + UserId + "\\";
-                    else
-                        FolderPath = WebRootPath + "\\uccImages\\Employee\\" + UserId + "\\";
+                    //if (Type == "banner")
+                        FolderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\";
+                    //else
+                    //    FolderPath = WebRootPath + "\\uccImages\\Employee\\" + UserId + "\\";
                     bool folderExists = System.IO.Directory.Exists(FolderPath);
                     if (!folderExists)
                         Directory.CreateDirectory(FolderPath);
@@ -30,7 +30,7 @@ namespace uccApiCore2.Controllers.Common
                     }
                     for (int i = 0; i < FileSource.Length; i++)
                     {
-                        string filename = UserId.ToString() + '-' + (i + 1) + ".jpg";
+                        string filename = ProductId.ToString() + '-' + (i + 1) + ".jpg";
                         string fileNameWitPath = FolderPath + filename;
                         using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
                         {
@@ -61,14 +61,15 @@ namespace uccApiCore2.Controllers.Common
                 }
             }
         }
-        public string[] UserImagePath(int UserId, bool IsUser, string WebRootPath)
+        public string[] ProductImagePath(int ProductId, string Type, string WebRootPath)
         {
             string[] base64ImageRepresentation = new string[0];
             string folderPath;
-            if (IsUser)
-                folderPath = WebRootPath + "\\uccImages\\User\\" + UserId + "\\";
-            else
-                folderPath = WebRootPath + "\\uccImages\\Employee\\" + UserId + "\\";
+            folderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\";
+            //if (IsUser)
+            //    folderPath = WebRootPath + "\\uccImages\\User\\" + UserId + "\\";
+            //else
+            //    folderPath = WebRootPath + "\\uccImages\\Employee\\" + UserId + "\\";
             //string folderPath = _hostingEnvironment.WebRootPath + "\\uccImages\\User\\" + UserId + "\\";
             if (Directory.Exists(folderPath))
             {

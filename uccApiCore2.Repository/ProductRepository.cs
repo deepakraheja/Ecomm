@@ -94,7 +94,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@TopSelling", obj.TopSelling); //bit
                 parameters.Add("@HotOffer", obj.HotOffer); //bit
                 parameters.Add("@Active", obj.Active); //bit
-                var res = await SqlMapper.ExecuteAsync(con, "p_Product_ins", param: parameters, commandType: StoredProcedure);
+                var res = await SqlMapper.ExecuteScalarAsync(con, "p_Product_ins", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
             catch (Exception ex)

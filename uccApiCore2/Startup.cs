@@ -40,8 +40,8 @@ namespace uccApiCore2
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials()
-                .AllowAnyOrigin();
-                //.WithOrigins("http://new.uccnoida.com", "http://localhost:4200");
+                .AllowAnyOrigin()
+                .WithOrigins("http://ecom.uccnoida.com", "http://adminecom.uccnoida.com", "http://localhost:4200");
             }));
             //services.AddCors(c =>
             //{
@@ -65,7 +65,8 @@ namespace uccApiCore2
             services.AddTransient<IProductBAL, ProductBAL>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
-
+            services.AddTransient<ISupplierBAL, SupplierBAL>();
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
