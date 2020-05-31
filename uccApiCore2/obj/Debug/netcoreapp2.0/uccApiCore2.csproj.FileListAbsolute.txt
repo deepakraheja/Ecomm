@@ -90,3 +90,26 @@ C:\Project\uccApiCore\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.csproj.Cop
 C:\Project\uccApiCore\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.dll
 C:\Project\uccApiCore\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.pdb
 C:\Project\uccApiCore\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.genruntimeconfig.cache
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\appsettings.Development.json
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\appsettings.json
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\NLog.config
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.deps.json
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.runtimeconfig.json
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.runtimeconfig.dev.json
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.dll
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.pdb
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.BAL.dll
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.dll
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.BAL.pdb
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.pdb
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.csprojAssemblyReference.cache
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.AssemblyInfoInputs.cache
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.AssemblyInfo.cs
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.csproj.CoreCompileInputs.cache
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.csproj.CopyComplete
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.dll
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.pdb
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2\obj\Debug\netcoreapp2.0\uccApiCore2.genruntimeconfig.cache

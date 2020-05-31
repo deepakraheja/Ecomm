@@ -46,3 +46,15 @@ C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2
 C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CopyComplete
 C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
 C:\Project\uccApiCore\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.deps.json
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.dll
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.pdb
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csprojAssemblyReference.cache
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfoInputs.cache
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfo.cs
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CoreCompileInputs.cache
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.csproj.CopyComplete
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.dll
+E:\Project\Deepak Sir\Ecom\Ecomm\uccApiCore2.Repository\obj\Debug\netcoreapp2.0\uccApiCore2.Repository.pdb

@@ -10,7 +10,7 @@ namespace uccApiCore2.Repository
         protected IDbConnection con;
         public BaseRepository()
         {
-            string connectionString = "Data Source=148.72.232.166;Initial Catalog=Ecomm;User ID=sonu;Password=password_1234;";
+            string connectionString = "Data Source=148.72.232.166;Initial Catalog=Ecomm; User ID=sonu;Password=password_1234;";
             con = new SqlConnection(connectionString);
         }
 
