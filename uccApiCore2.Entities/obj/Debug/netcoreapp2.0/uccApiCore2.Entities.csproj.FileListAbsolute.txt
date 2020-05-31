@@ -28,7 +28,6 @@ C:\Project\uccApiCore\uccApiCore\uccApiCore2.Entities\obj\Debug\netcoreapp2.0\uc
 C:\Project\uccApiCore\uccApiCore2.Entities\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.deps.json
 C:\Project\uccApiCore\uccApiCore2.Entities\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.dll
 C:\Project\uccApiCore\uccApiCore2.Entities\bin\Debug\netcoreapp2.0\uccApiCore2.Entities.pdb
-C:\Project\uccApiCore\uccApiCore2.Entities\obj\Debug\netcoreapp2.0\uccApiCore2.Entities.csprojAssemblyReference.cache
 C:\Project\uccApiCore\uccApiCore2.Entities\obj\Debug\netcoreapp2.0\uccApiCore2.Entities.csproj.CoreCompileInputs.cache
 C:\Project\uccApiCore\uccApiCore2.Entities\obj\Debug\netcoreapp2.0\uccApiCore2.Entities.AssemblyInfoInputs.cache
 C:\Project\uccApiCore\uccApiCore2.Entities\obj\Debug\netcoreapp2.0\uccApiCore2.Entities.AssemblyInfo.cs
