@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace uccApiCore2.Entities
@@ -12,15 +13,7 @@ namespace uccApiCore2.Entities
         public string Description { get; set; } = "";
         public int SupplierID { get; set; } = 0;
         public int BrandId { get; set; } = 0;
-        public int StockQty { get; set; } = 0;
-        public decimal Price { get; set; } = 0;
-        public decimal SalePrice { get; set; } = 0;
-        public bool AvailableSize { get; set; } = false;
-        public bool AvailableColors { get; set; } = false;
-        public string Size { get; set; }
-        public string Color { get; set; }
-        public decimal Discount { get; set; } = 0;
-        public bool DiscountAvailable { get; set; } = false;
+        
         public bool ProductAvailable { get; set; } = false;
         public int CreatedBy { get; set; } = 0;
         public int Modifiedby { get; set; } = 0;
@@ -31,7 +24,7 @@ namespace uccApiCore2.Entities
         public bool HotOffer { get; set; } = false;
         public bool Active { get; set; } = false;
         public string Subcatecode { get; set; }
-        public string Large { get; set; }
+        //public string Large { get; set; }
         public string SubcategoryName { get; set; }
         public int SubCategoryID { get; set; } = 0;
         public int CategoryID { get; set; } = 0;
@@ -39,6 +32,16 @@ namespace uccApiCore2.Entities
         public string[] BannerImg { get; set; }
         public string[] SmallImg { get; set; }
         public string[] ProductImg { get; set; }
+
+        public string RowID { get; set; }
+        public string Type { get; set; }
+        public string ImagePath { get; set; }
+        public string Title { get; set; }
+        public string SubTitle { get; set; }
+        public string BannerImage { get; set; }
+        public string FrontImage { get; set; }
+        public string SupplierName { get; set; }
+        public decimal price { get; set; }
     }
 }
 
