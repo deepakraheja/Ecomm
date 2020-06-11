@@ -30,9 +30,36 @@ namespace uccApiCore2.BAL
         {
             return _IProductRepository.GetProductById(obj);
         }
+
+        public Task<List<Product>> GetProductBybyRowID(Product obj)
+        {
+            return _IProductRepository.GetProductBybyRowID(obj);
+        }
         public Task<int> SaveProduct(Product obj)
         {
             return _IProductRepository.SaveProduct(obj);
+        }
+
+        public Task<List<Product>> GetProductByPopular()
+        {
+            return _IProductRepository.GetProductByPopular();
+        }
+        public Task<int> SaveProductSizeColor(ProductSizeColor obj)
+        {
+            return _IProductRepository.SaveProductSizeColor(obj);
+        }
+        public Task<List<ProductSizeColor>> GetProductSizeColorById(ProductSizeColor obj)
+        {
+            return _IProductRepository.GetProductSizeColorById(obj);
+        }
+        public Task<int> DeleteProductSizeColor(ProductSizeColor obj)
+        {
+            return _IProductRepository.DeleteProductSizeColor(obj);
+        }
+
+        public Task<List<Product>> GetBannerProduct()
+        {
+            return _IProductRepository.GetBannerProduct();
         }
     }
 }
