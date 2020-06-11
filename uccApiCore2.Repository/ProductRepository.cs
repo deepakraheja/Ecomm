@@ -32,11 +32,26 @@ namespace uccApiCore2.Repository
             }
         }
 
+
+        public async Task<List<Product>> GetProductByPopular()
+        {
+            try
+            {
+                List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_product_selbyPopular", commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
         public async Task<List<Product>> GetAllProductBySupplierId(Product obj)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
+                if (obj.SupplierID > 0)
                 parameters.Add("@SupplierID", obj.SupplierID);
                 List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_GetAllproductBySupplierId", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
@@ -62,6 +77,21 @@ namespace uccApiCore2.Repository
             }
         }
 
+        public async Task<List<Product>> GetProductBybyRowID(Product obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@GUID", obj.RowID);
+                List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_product_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
         public async Task<int> SaveProduct(Product obj)
         {
             try
@@ -74,15 +104,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@SupplierID", obj.SupplierID); //int
                 parameters.Add("@SubCategoryID", obj.SubCategoryID); //int
                 parameters.Add("@BrandId", obj.BrandId); //int
-                parameters.Add("@StockQty", obj.StockQty); //int
-                parameters.Add("@Price", obj.Price); //decimal
-                parameters.Add("@SalePrice", obj.SalePrice); //decimal
-                parameters.Add("@AvailableSize", obj.AvailableSize); //bit
-                parameters.Add("@AvailableColors", obj.AvailableColors); //bit
-                parameters.Add("@Size", obj.Size); //nvarchar
-                parameters.Add("@Color", obj.Color); //nvarchar
-                parameters.Add("@Discount", obj.Discount); //decimal
-                parameters.Add("@DiscountAvailable", obj.DiscountAvailable); //bit
+
                 parameters.Add("@ProductAvailable", obj.ProductAvailable); //bit
                 parameters.Add("@CreatedBy", obj.CreatedBy); //int
                 //parameters.Add("@CreatedDate", obj.CreatedDate); //datetime
@@ -94,8 +116,92 @@ namespace uccApiCore2.Repository
                 parameters.Add("@TopSelling", obj.TopSelling); //bit
                 parameters.Add("@HotOffer", obj.HotOffer); //bit
                 parameters.Add("@Active", obj.Active); //bit
+                parameters.Add("@Title", obj.Title);
+                parameters.Add("@SubTitle", obj.SubTitle);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Product_ins", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<int> SaveProductSizeColor(ProductSizeColor obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ProductSizeColorId", obj.ProductSizeColorId);
+                parameters.Add("@ProductID", obj.ProductId); //int
+                parameters.Add("@Qty", obj.Qty); //int
+                parameters.Add("@Price", obj.Price); //decimal
+                parameters.Add("@SalePrice", obj.SalePrice); //decimal
+                parameters.Add("@AvailableSize", obj.AvailableSize); //bit
+                parameters.Add("@AvailableColors", obj.AvailableColors); //bit
+                parameters.Add("@Size", obj.Size); //nvarchar
+                parameters.Add("@Color", obj.Color); //nvarchar
+                parameters.Add("@Discount", obj.Discount); //decimal
+                parameters.Add("@DiscountAvailable", obj.DiscountAvailable); //bit
+                parameters.Add("@CreatedBy", obj.CreatedBy); //int
+                parameters.Add("@Modifiedby", obj.Modifiedby); //int
+                var res = await SqlMapper.ExecuteAsync(con, "p_ProductSizeColor_ins", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<List<ProductSizeColor>> GetProductSizeColorById(ProductSizeColor obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ProductID", obj.ProductId);
+                List<ProductSizeColor> lst = (await SqlMapper.QueryAsync<ProductSizeColor>(con, "p_ProductSizeColor_selByProdcutId", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<int> DeleteProductSizeColor(ProductSizeColor obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ProductSizeColorId", obj.ProductSizeColorId);
+                var res = await SqlMapper.ExecuteAsync(con, "p_ProductSizeColor_del", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+        public void SaveProductImages(Product obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ProductId", obj.ProductID);
+                parameters.Add("@ImagePath", obj.ImagePath);
+                parameters.Add("@Type", obj.Type);
+                var res = SqlMapper.ExecuteAsync(con, "p_ProductImage_upd", param: parameters, commandType: StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<List<Product>> GetBannerProduct()
+        {
+            try
+            {
+                List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_GetBannerProduct", commandType: StoredProcedure)).ToList();
+                return lst;
             }
             catch (Exception ex)
             {
