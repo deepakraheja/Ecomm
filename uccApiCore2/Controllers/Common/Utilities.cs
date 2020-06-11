@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using uccApiCore2.BAL;
+using uccApiCore2.BAL.Interface;
+using uccApiCore2.Entities;
+using uccApiCore2.Repository;
+using uccApiCore2.Repository.Interface;
 
 namespace uccApiCore2.Controllers.Common
 {
@@ -30,7 +35,7 @@ namespace uccApiCore2.Controllers.Common
                     }
                     for (int i = 0; i < FileSource.Length; i++)
                     {
-                        string filename = ProductId.ToString() + '-' + (i + 1) + ".jpg";
+                        string filename = ProductId.ToString() + '-' + DateTime.Now.ToString("MMddyyyyhhmmss") + "-" + (i + 1) + ".jpg";
                         string fileNameWitPath = FolderPath + filename;
                         using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
                         {
@@ -53,6 +58,15 @@ namespace uccApiCore2.Controllers.Common
                                     byte[] data = Convert.FromBase64String(FileSource[i].Replace("data:image/png;base64,", ""));
                                     bw.Write(data);
                                     bw.Close();
+                                }
+                                if (Type == "bannerImage" || Type == "frontImage")
+                                {
+                                    ProductRepository obj = new ProductRepository();
+                                    Product product = new Product();
+                                    product.ImagePath = filename;
+                                    product.ProductID = ProductId;
+                                    product.Type = Type;
+                                    obj.SaveProductImages(product);
                                 }
                             }
                         }

@@ -39,6 +39,39 @@ namespace uccApiCore2.Controllers
             }
         }
 
+
+
+        [HttpPost]
+        [Route("GetProductByPopular")]
+        public async Task<List<Product>> GetProductByPopular()
+        {
+            try
+            {
+                return await this._IProductBAL.GetProductByPopular();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController GetProductByPopular action: {ex.Message}");
+                return null;
+            }
+        }
+
+
+        [HttpPost]
+        [Route("GetBannerProduct")]
+        public async Task<List<Product>> GetBannerProduct()
+        {
+            try
+            {
+                return await this._IProductBAL.GetBannerProduct();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController GetBannerProduct action: {ex.Message}");
+                return null;
+            }
+        }
+
         [HttpPost]
         [Route("GetAllProductBySupplierId")]
         public async Task<List<Product>> GetAllProductBySupplierId([FromBody] Product obj)
@@ -55,6 +88,21 @@ namespace uccApiCore2.Controllers
         }
 
         [HttpPost]
+        [Route("GetProductBybyRowID")]
+        public async Task<List<Product>> GetProductBybyRowID([FromBody] Product obj)
+        {
+            try
+            {
+                return await this._IProductBAL.GetProductBybyRowID(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController GetProductBybyRowID action: {ex.Message}");
+                return null;
+            }
+        }
+
+        [HttpPost]
         [Route("GetProductById")]
         public async Task<List<Product>> GetProductById([FromBody] Product obj)
         {
@@ -62,7 +110,7 @@ namespace uccApiCore2.Controllers
             {
                 List<Product> lst = this._IProductBAL.GetProductById(obj).Result;
                 lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
-                lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "smallImage", webRootPath);
+                lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "frontImage", webRootPath);
                 lst[0].ProductImg = _utilities.ProductImagePath(obj.ProductID, "productImages", webRootPath);
                 return await Task.Run(() => new List<Product>(lst));
             }
@@ -83,14 +131,14 @@ namespace uccApiCore2.Controllers
                 if (obj.ProductID > 0)
                 {
                     _utilities.SaveImage(obj.ProductID, obj.BannerImg, "bannerImage", webRootPath);
-                    _utilities.SaveImage(obj.ProductID, obj.SmallImg, "smallImage", webRootPath);
+                    _utilities.SaveImage(obj.ProductID, obj.SmallImg, "frontImage", webRootPath);
                     _utilities.SaveImage(obj.ProductID, obj.ProductImg, "productImages", webRootPath);
                     return obj.ProductID;
                 }
                 else
                 {
                     _utilities.SaveImage(NewProductId, obj.BannerImg, "bannerImage", webRootPath);
-                    _utilities.SaveImage(NewProductId, obj.SmallImg, "smallImage", webRootPath);
+                    _utilities.SaveImage(NewProductId, obj.SmallImg, "frontImage", webRootPath);
                     _utilities.SaveImage(NewProductId, obj.ProductImg, "productImages", webRootPath);
                     return NewProductId;
                 }
@@ -104,5 +152,47 @@ namespace uccApiCore2.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("SaveProductSizeColor")]
+        public async Task<int> SaveProductSizeColor([FromBody] ProductSizeColor obj)
+        {
+            try
+            {
+                return await this._IProductBAL.SaveProductSizeColor(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController SaveProductSizeColor action: {ex.Message}");
+                return -1;
+            }
+        }
+        [HttpPost]
+        [Route("GetProductSizeColorById")]
+        public async Task<List<ProductSizeColor>> GetProductSizeColorById([FromBody] ProductSizeColor obj)
+        {
+            try
+            {
+                return await this._IProductBAL.GetProductSizeColorById(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController GetProductSizeColorById action: {ex.Message}");
+                return null;
+            }
+        }
+        [HttpPost]
+        [Route("DeleteProductSizeColor")]
+        public async Task<int> DeleteProductSizeColor([FromBody] ProductSizeColor obj)
+        {
+            try
+            {
+                return await this._IProductBAL.DeleteProductSizeColor(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController DeleteProductSizeColor action: {ex.Message}");
+                return -1;
+            }
+        }
     }
 }

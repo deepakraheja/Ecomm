@@ -41,7 +41,7 @@ namespace uccApiCore2
                 .AllowAnyHeader()
                 .AllowCredentials()
                 .AllowAnyOrigin()
-                .WithOrigins("http://ecom.uccnoida.com", "http://adminecom.uccnoida.com", "http://localhost:4200");
+                .WithOrigins("http://ecom.uccnoida.com", "http://adminecom.uccnoida.com", "http://localhost:4100", "http://localhost:4200");
             }));
             //services.AddCors(c =>
             //{
