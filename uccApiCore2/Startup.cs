@@ -67,6 +67,9 @@ namespace uccApiCore2
 
             services.AddTransient<ISupplierBAL, SupplierBAL>();
             services.AddScoped<ISupplierRepository, SupplierRepository>();
+
+            services.AddTransient<IUsersBAL, UsersBAL>();
+            services.AddScoped<IUsersRepository, UsersRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
