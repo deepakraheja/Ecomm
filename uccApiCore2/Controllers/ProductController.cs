@@ -93,7 +93,17 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                return await this._IProductBAL.GetProductBybyRowID(obj);
+                List<Product> lst = this._IProductBAL.GetProductBybyRowID(obj).Result;
+                //lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
+                //lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "frontImage", webRootPath);
+               
+                lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productImages", webRootPath);
+                return await Task.Run(() => new List<Product>(lst));
+
+
+                ///return await this._IProductBAL.GetProductBybyRowID(obj);
+
+
             }
             catch (Exception ex)
             {
