@@ -20,20 +20,6 @@ namespace uccApiCore2.Controllers
         }
 
         [HttpPost]
-        [Route("UserRegistration")]
-        public async Task<int> UserRegistration([FromBody] Users obj)
-        {
-            try
-            {
-                return await this._usersBAL.UserRegistration(obj);
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError($"Something went wrong inside UsersController UserRegistration action: {ex.Message}");
-                return -1;
-            }
-        }
-        [HttpPost]
         [Route("ValidLogin")]
         public async Task<List<Users>> ValidLogin([FromBody] Users obj)
         {
@@ -47,5 +33,22 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
+
+        [HttpPost]
+        [Route("UserRegistration")]
+        public async Task<int> UserRegistration([FromBody] Users obj)
+        {
+            try
+            {
+                return await this._usersBAL.UserRegistration(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController UserRegistration action: {ex.Message}");
+                return -1;
+            }
+        }
     }
+
+
 }
