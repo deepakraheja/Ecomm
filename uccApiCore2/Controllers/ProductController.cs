@@ -95,9 +95,9 @@ namespace uccApiCore2.Controllers
             {
                 List<Product> lst = this._IProductBAL.GetProductBybyRowID(obj).Result;
                 //lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
-                //lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "frontImage", webRootPath);
+                lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "frontImage", webRootPath);
                
-                lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productImages", webRootPath);
+                //lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productImages", webRootPath);
                 return await Task.Run(() => new List<Product>(lst));
 
 
@@ -121,7 +121,7 @@ namespace uccApiCore2.Controllers
                 List<Product> lst = this._IProductBAL.GetProductById(obj).Result;
                 lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
                 lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "frontImage", webRootPath);
-                lst[0].ProductImg = _utilities.ProductImagePath(obj.ProductID, "productImages", webRootPath);
+                //lst[0].ProductImg = _utilities.ProductImagePath(obj.ProductID, "productImages", webRootPath);
                 return await Task.Run(() => new List<Product>(lst));
             }
             catch (Exception ex)
@@ -142,14 +142,14 @@ namespace uccApiCore2.Controllers
                 {
                     _utilities.SaveImage(obj.ProductID, obj.BannerImg, "bannerImage", webRootPath);
                     _utilities.SaveImage(obj.ProductID, obj.SmallImg, "frontImage", webRootPath);
-                    _utilities.SaveImage(obj.ProductID, obj.ProductImg, "productImages", webRootPath);
+                    //_utilities.SaveImage(obj.ProductID, obj.ProductImg, "productImages", webRootPath);
                     return obj.ProductID;
                 }
                 else
                 {
                     _utilities.SaveImage(NewProductId, obj.BannerImg, "bannerImage", webRootPath);
                     _utilities.SaveImage(NewProductId, obj.SmallImg, "frontImage", webRootPath);
-                    _utilities.SaveImage(NewProductId, obj.ProductImg, "productImages", webRootPath);
+                    //_utilities.SaveImage(NewProductId, obj.ProductImg, "productImages", webRootPath);
                     return NewProductId;
                 }
 
@@ -168,7 +168,17 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                return await this._IProductBAL.SaveProductSizeColor(obj);
+                int ProductSizeColorId= await this._IProductBAL.SaveProductSizeColor(obj);
+                if (obj.ProductSizeColorId > 0)
+                {
+                    _utilities.SaveImage(obj.ProductId, obj.ProductImg, ("productColorImage/" + obj.ProductSizeColorId), webRootPath);
+                    return obj.ProductSizeColorId;
+                }
+                else
+                {
+                    _utilities.SaveImage(obj.ProductId, obj.ProductImg, ("productColorImage/" + ProductSizeColorId), webRootPath);
+                    return ProductSizeColorId;
+                }
             }
             catch (Exception ex)
             {
@@ -182,7 +192,13 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                return await this._IProductBAL.GetProductSizeColorById(obj);
+                List<ProductSizeColor> lst = this._IProductBAL.GetProductSizeColorById(obj).Result;
+                foreach (var item in lst)
+                {
+                    item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productColorImage/" + item.ProductSizeColorId), webRootPath);
+                }
+                
+                return await Task.Run(() => new List<ProductSizeColor>(lst));
             }
             catch (Exception ex)
             {

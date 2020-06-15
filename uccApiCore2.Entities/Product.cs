@@ -31,7 +31,7 @@ namespace uccApiCore2.Entities
         public string BrandName { get; set; }
         public string[] BannerImg { get; set; }
         public string[] SmallImg { get; set; }
-        public string[] ProductImg { get; set; }
+        
 
         public string RowID { get; set; }
         public string Type { get; set; }

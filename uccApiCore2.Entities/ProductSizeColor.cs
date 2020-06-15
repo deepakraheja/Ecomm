@@ -19,5 +19,6 @@ namespace uccApiCore2.Entities
         public bool DiscountAvailable { get; set; } = false;
         public int CreatedBy { get; set; } = 0;
         public int Modifiedby { get; set; } = 0;
+        public string[] ProductImg { get; set; }
     }
 }

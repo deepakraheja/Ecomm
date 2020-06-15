@@ -21,10 +21,7 @@ namespace uccApiCore2.Controllers.Common
                 if (FileSource.Length > 0)
                 {
                     string FolderPath;
-                    //if (Type == "banner")
-                        FolderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\";
-                    //else
-                    //    FolderPath = WebRootPath + "\\uccImages\\Employee\\" + UserId + "\\";
+                    FolderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\";
                     bool folderExists = System.IO.Directory.Exists(FolderPath);
                     if (!folderExists)
                         Directory.CreateDirectory(FolderPath);
@@ -80,15 +77,9 @@ namespace uccApiCore2.Controllers.Common
             string[] base64ImageRepresentation = new string[0];
             string folderPath;
             folderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\";
-            //if (IsUser)
-            //    folderPath = WebRootPath + "\\uccImages\\User\\" + UserId + "\\";
-            //else
-            //    folderPath = WebRootPath + "\\uccImages\\Employee\\" + UserId + "\\";
-            //string folderPath = _hostingEnvironment.WebRootPath + "\\uccImages\\User\\" + UserId + "\\";
             if (Directory.Exists(folderPath))
             {
                 string[] AllFiles = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
-                //int fCount = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories).Length;
                 base64ImageRepresentation = new string[AllFiles.Length];
                 for (int i = 0; i < AllFiles.Length; i++)
                 {
@@ -104,21 +95,12 @@ namespace uccApiCore2.Controllers.Common
             string[] ImageRepresentation = new string[0];
             string folderPath;
             folderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\";
-            //if (IsUser)
-            //    folderPath = WebRootPath + "\\uccImages\\User\\" + UserId + "\\";
-            //else
-            //    folderPath = WebRootPath + "\\uccImages\\Employee\\" + UserId + "\\";
-            //string folderPath = _hostingEnvironment.WebRootPath + "\\uccImages\\User\\" + UserId + "\\";
             if (Directory.Exists(folderPath))
             {
                 string[] AllFiles = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
-                //int fCount = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories).Length;
                 ImageRepresentation = new string[AllFiles.Length];
                 for (int i = 0; i < AllFiles.Length; i++)
                 {
-                    //byte[] imageArray = System.IO.File.ReadAllBytes(AllFiles[i]);
-                    //base64ImageRepresentation[i] = "data:image/jpeg;base64," + Convert.ToBase64String(imageArray);
-
                     ImageRepresentation[i] = AllFiles[i].Split('\\').LastOrDefault();
                 }
             }

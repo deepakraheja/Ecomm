@@ -1,0 +1,12 @@
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\bin\Release\netcoreapp2.0\uccApiCore2.Repository.deps.json
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\bin\Release\netcoreapp2.0\uccApiCore2.Repository.dll
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\bin\Release\netcoreapp2.0\uccApiCore2.Repository.pdb
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\bin\Release\netcoreapp2.0\uccApiCore2.Entities.dll
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\bin\Release\netcoreapp2.0\uccApiCore2.Entities.pdb
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\obj\Release\netcoreapp2.0\uccApiCore2.Repository.csprojAssemblyReference.cache
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\obj\Release\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfoInputs.cache
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\obj\Release\netcoreapp2.0\uccApiCore2.Repository.AssemblyInfo.cs
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\obj\Release\netcoreapp2.0\uccApiCore2.Repository.csproj.CoreCompileInputs.cache
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\obj\Release\netcoreapp2.0\uccApiCore2.Repository.csproj.CopyComplete
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\obj\Release\netcoreapp2.0\uccApiCore2.Repository.dll
+E:\Project\Deepak Sir\Ecom\EcomService\uccApiCore2.Repository\obj\Release\netcoreapp2.0\uccApiCore2.Repository.pdb
