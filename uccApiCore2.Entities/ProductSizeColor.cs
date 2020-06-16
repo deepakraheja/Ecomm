@@ -20,5 +20,6 @@ namespace uccApiCore2.Entities
         public int CreatedBy { get; set; } = 0;
         public int Modifiedby { get; set; } = 0;
         public string[] ProductImg { get; set; }
+        public int LookupColorId { get; set; }
     }
 }

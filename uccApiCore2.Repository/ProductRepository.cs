@@ -139,7 +139,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@AvailableSize", obj.AvailableSize); //bit
                 parameters.Add("@AvailableColors", obj.AvailableColors); //bit
                 parameters.Add("@Size", obj.Size); //nvarchar
-                parameters.Add("@Color", obj.Color); //nvarchar
+                parameters.Add("@LookupColorId", obj.LookupColorId); //nvarchar
                 parameters.Add("@Discount", obj.Discount); //decimal
                 parameters.Add("@DiscountAvailable", obj.DiscountAvailable); //bit
                 parameters.Add("@CreatedBy", obj.CreatedBy); //int
