@@ -73,6 +73,9 @@ namespace uccApiCore2
 
             services.AddTransient<ILookupBAL, LookupBAL>();
             services.AddScoped<ILookupRepository, LookupRepository>();
+
+            services.AddTransient<IFabricBAL, FabricBAL>();
+            services.AddScoped<IFabricRepository, FabricRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
