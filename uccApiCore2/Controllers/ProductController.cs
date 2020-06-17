@@ -96,7 +96,7 @@ namespace uccApiCore2.Controllers
                 List<Product> lst = this._IProductBAL.GetProductBybyRowID(obj).Result;
                 //lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
                 lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "frontImage", webRootPath);
-               
+
                 //lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productImages", webRootPath);
                 return await Task.Run(() => new List<Product>(lst));
 
@@ -168,17 +168,26 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                int ProductSizeColorId= await this._IProductBAL.SaveProductSizeColor(obj);
+                int ProductSizeColorId = await this._IProductBAL.SaveProductSizeColor(obj);
+                return ProductSizeColorId;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController SaveProductSizeColor action: {ex.Message}");
+                return -1;
+            }
+        }
+        [HttpPost]
+        [Route("SaveProductSizeColorImages")]
+        public async Task<int> SaveProductSizeColorImages([FromBody] ProductSizeColor obj)
+        {
+            try
+            {
                 if (obj.ProductSizeColorId > 0)
                 {
                     _utilities.SaveImage(obj.ProductId, obj.ProductImg, ("productColorImage/" + obj.ProductSizeColorId), webRootPath);
-                    return obj.ProductSizeColorId;
                 }
-                else
-                {
-                    _utilities.SaveImage(obj.ProductId, obj.ProductImg, ("productColorImage/" + ProductSizeColorId), webRootPath);
-                    return ProductSizeColorId;
-                }
+                return await Task.Run(() => obj.ProductSizeColorId);
             }
             catch (Exception ex)
             {
@@ -197,7 +206,7 @@ namespace uccApiCore2.Controllers
                 {
                     item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productColorImage/" + item.ProductSizeColorId), webRootPath);
                 }
-                
+
                 return await Task.Run(() => new List<ProductSizeColor>(lst));
             }
             catch (Exception ex)
