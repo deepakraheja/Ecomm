@@ -18,6 +18,7 @@ namespace uccApiCore2.Repository.Interface
         Task<int> DeleteProductSizeColor(ProductSizeColor obj);
 
         Task<List<Product>> GetBannerProduct();
-        Task<List<Product>> GetProductBybyRowID(Product obj);
+        Task<List<Product>> GetProductByRowID(Product obj);
+        Task<List<ProductSizeColor>> GetProductSizeColorByRowID(ProductSizeColor obj);
     }
 }

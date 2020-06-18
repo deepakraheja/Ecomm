@@ -77,13 +77,27 @@ namespace uccApiCore2.Repository
             }
         }
 
-        public async Task<List<Product>> GetProductBybyRowID(Product obj)
+        public async Task<List<Product>> GetProductByRowID(Product obj)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@GUID", obj.RowID);
                 List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_product_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<List<ProductSizeColor>> GetProductSizeColorByRowID(ProductSizeColor obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@GUID", obj.RowID);
+                List<ProductSizeColor> lst = (await SqlMapper.QueryAsync<ProductSizeColor>(con, "p_ProductSizeColor_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
             catch (Exception ex)
