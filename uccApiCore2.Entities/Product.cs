@@ -31,7 +31,7 @@ namespace uccApiCore2.Entities
         public string BrandName { get; set; }
         public string[] BannerImg { get; set; }
         public string[] SmallImg { get; set; }
-
+        public string[] ProductImg { get; set; }
 
         public string RowID { get; set; }
         public string Type { get; set; }
@@ -41,7 +41,7 @@ namespace uccApiCore2.Entities
         public string BannerImage { get; set; }
         public string FrontImage { get; set; }
         public string SupplierName { get; set; }
-        public decimal price { get; set; }
+        public int price { get; set; }
         public string ArticalNo { get; set; }
         public string TagDesign { get; set; }
         public int FabricId { get; set; } = 0;
