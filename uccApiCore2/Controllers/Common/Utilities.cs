@@ -94,7 +94,7 @@ namespace uccApiCore2.Controllers.Common
         {
             string[] ImageRepresentation = new string[0];
             string folderPath;
-            folderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\";
+            folderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\" + ProductId + "\\";
             if (Directory.Exists(folderPath))
             {
                 string[] AllFiles = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);

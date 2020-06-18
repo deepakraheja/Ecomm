@@ -88,22 +88,33 @@ namespace uccApiCore2.Controllers
         }
 
         [HttpPost]
-        [Route("GetProductBybyRowID")]
-        public async Task<List<Product>> GetProductBybyRowID([FromBody] Product obj)
+        [Route("GetProductByRowID")]
+        public async Task<List<Product>> GetProductByRowID([FromBody] Product obj)
         {
             try
             {
-                List<Product> lst = this._IProductBAL.GetProductBybyRowID(obj).Result;
+                List<Product> lst = this._IProductBAL.GetProductByRowID(obj).Result;
                 //lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
-                lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "frontImage", webRootPath);
+                lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productColorImage", webRootPath);
 
                 //lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productImages", webRootPath);
                 return await Task.Run(() => new List<Product>(lst));
-
-
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController GetProductBybyRowID action: {ex.Message}");
+                return null;
+            }
+        }
                 ///return await this._IProductBAL.GetProductBybyRowID(obj);
-
-
+        [HttpPost]
+        [Route("GetProductSizeColorByRowID")]
+        public async Task<List<ProductSizeColor>> GetProductSizeColorByRowID([FromBody] ProductSizeColor obj)
+        {
+            try
+            {
+                List<ProductSizeColor> lst = this._IProductBAL.GetProductSizeColorByRowID(obj).Result;
+                return await Task.Run(() => new List<ProductSizeColor>(lst));
             }
             catch (Exception ex)
             {
