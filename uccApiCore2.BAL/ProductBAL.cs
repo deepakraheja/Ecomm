@@ -31,9 +31,13 @@ namespace uccApiCore2.BAL
             return _IProductRepository.GetProductById(obj);
         }
 
-        public Task<List<Product>> GetProductBybyRowID(Product obj)
+        public Task<List<Product>> GetProductByRowID(Product obj)
         {
-            return _IProductRepository.GetProductBybyRowID(obj);
+            return _IProductRepository.GetProductByRowID(obj);
+        }
+        public Task<List<ProductSizeColor>> GetProductSizeColorByRowID(ProductSizeColor obj)
+        {
+            return _IProductRepository.GetProductSizeColorByRowID(obj);
         }
         public Task<int> SaveProduct(Product obj)
         {
