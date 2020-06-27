@@ -96,7 +96,7 @@ namespace uccApiCore2.Repository
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@GUID", obj.RowID);
+                parameters.Add("@GUID", obj.ProductSizeColorId);
                 List<ProductSizeColor> lst = (await SqlMapper.QueryAsync<ProductSizeColor>(con, "p_ProductSizeColor_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
@@ -105,6 +105,29 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public  string[] GetProductColorByRowID(string RowID)
+        {
+            try
+            {
+                string[] color = new string[0];
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@GUID", RowID);
+                List<Product> lst = ( SqlMapper.Query<Product>(con, "p_ProductColor_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                color = new string[lst.Count];
+
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    color[i] = lst[i].Color;
+                }
+                return color;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
 
         public async Task<int> SaveProduct(Product obj)
         {

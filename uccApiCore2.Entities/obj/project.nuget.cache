@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "d1uctDzxJ7OQoomKQM4Gv09cQ64Q4BnR+M8DHOIum4z6Jl4l1s/jHzy5ZfmACZ3UDYjXd18UjL2hzTnYLCV7Ww==",
+  "dgSpecHash": "4NRL0ZQAPBLgUEqLfEzy3CLrAGJdkkvMBYl+xLXUEk4LX36RVkEBs7rRgedjkNX2TEsVbkLOOUgu7W7fizi27Q==",
   "success": true,
-  "projectFilePath": "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj",
+  "projectFilePath": "C:\\Project\\uccApiCore\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Akku\\.nuget\\packages\\microsoft.netcore.app\\2.0.0\\microsoft.netcore.app.2.0.0.nupkg.sha512",
-    "C:\\Users\\Akku\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.0.0\\microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
-    "C:\\Users\\Akku\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.0.0\\microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
-    "C:\\Users\\Akku\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.0.0\\microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
-    "C:\\Users\\Akku\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
-    "C:\\Users\\Akku\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512"
+    "C:\\Users\\deepak raheja\\.nuget\\packages\\microsoft.netcore.app\\2.0.0\\microsoft.netcore.app.2.0.0.nupkg.sha512",
+    "C:\\Users\\deepak raheja\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.0.0\\microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
+    "C:\\Users\\deepak raheja\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.0.0\\microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
+    "C:\\Users\\deepak raheja\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.0.0\\microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\deepak raheja\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512"
   ],
   "logs": []
 }

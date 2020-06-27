@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Repository\\uccApiCore2.Repository.csproj": {}
+    "C:\\Project\\uccApiCore\\uccApiCore2.Repository\\uccApiCore2.Repository.csproj": {}
   },
   "projects": {
-    "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj": {
+    "C:\\Project\\uccApiCore\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj",
+        "projectUniqueName": "C:\\Project\\uccApiCore\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj",
         "projectName": "uccApiCore2.Entities",
-        "projectPath": "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj",
-        "packagesPath": "C:\\Users\\Akku\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Entities\\obj\\",
+        "projectPath": "C:\\Project\\uccApiCore\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj",
+        "packagesPath": "C:\\Users\\deepak raheja\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\uccApiCore\\uccApiCore2.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Akku\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\deepak raheja\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,24 +58,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Repository\\uccApiCore2.Repository.csproj": {
+    "C:\\Project\\uccApiCore\\uccApiCore2.Repository\\uccApiCore2.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Repository\\uccApiCore2.Repository.csproj",
+        "projectUniqueName": "C:\\Project\\uccApiCore\\uccApiCore2.Repository\\uccApiCore2.Repository.csproj",
         "projectName": "uccApiCore2.Repository",
-        "projectPath": "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Repository\\uccApiCore2.Repository.csproj",
-        "packagesPath": "C:\\Users\\Akku\\.nuget\\packages\\",
-        "outputPath": "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Repository\\obj\\",
+        "projectPath": "C:\\Project\\uccApiCore\\uccApiCore2.Repository\\uccApiCore2.Repository.csproj",
+        "packagesPath": "C:\\Users\\deepak raheja\\.nuget\\packages\\",
+        "outputPath": "C:\\Project\\uccApiCore\\uccApiCore2.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Akku\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\deepak raheja\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -88,8 +88,8 @@
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj": {
-                "projectPath": "E:\\Project\\Deepak Sir\\Ecom\\EcomService\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj"
+              "C:\\Project\\uccApiCore\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj": {
+                "projectPath": "C:\\Project\\uccApiCore\\uccApiCore2.Entities\\uccApiCore2.Entities.csproj"
               }
             }
           }
@@ -132,7 +132,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

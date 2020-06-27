@@ -65,5 +65,11 @@ namespace uccApiCore2.BAL
         {
             return _IProductRepository.GetBannerProduct();
         }
+      
+
+        public string[] GetProductColorByRowID(string RowID)
+        {
+            return _IProductRepository.GetProductColorByRowID(RowID);
+        }
     }
 }

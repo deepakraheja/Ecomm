@@ -90,11 +90,11 @@ namespace uccApiCore2.Controllers.Common
             return base64ImageRepresentation;
         }
 
-        public string[] ProductImage(int ProductId, string Type, string WebRootPath)
+        public string[] ProductImage(int ProductId, string Type, string WebRootPath, int ProductSizeColorId)
         {
             string[] ImageRepresentation = new string[0];
             string folderPath;
-            folderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\" + ProductId + "\\";
+            folderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\" + ProductSizeColorId + "\\";
             if (Directory.Exists(folderPath))
             {
                 string[] AllFiles = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
