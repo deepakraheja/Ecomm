@@ -17,6 +17,9 @@ namespace uccApiCore2.Entities
         public string Size { get; set; }
         public string Color { get; set; }
         public string[] ProdColor { get; set; }
+
+        public string[] Prodsize { get; set; }
+
         public int Discount { get; set; } = 0;
         public bool DiscountAvailable { get; set; } = false;
         public int CreatedBy { get; set; } = 0;
