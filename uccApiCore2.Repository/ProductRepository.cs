@@ -128,6 +128,29 @@ namespace uccApiCore2.Repository
             }
         }
 
+        public string[] GetProductSizeByRowID(string RowID)
+        {
+            try
+            {
+                string[] size = new string[0];
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@GUID", RowID);
+                List<Product> lst = (SqlMapper.Query<Product>(con, "p_Productsize_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                size = new string[lst.Count];
+
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    size[i] = lst[i].Size;
+                }
+                return size;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+
 
         public async Task<int> SaveProduct(Product obj)
         {
