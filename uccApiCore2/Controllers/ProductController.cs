@@ -97,6 +97,8 @@ namespace uccApiCore2.Controllers
                 //lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
                 lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productColorImage", webRootPath, lst[0].ProductSizeColorId);
                 lst[0].ProdColor = this._IProductBAL.GetProductColorByRowID(obj.RowID);
+
+                lst[0].Prodsize = this._IProductBAL.GetProductSizeByRowID(obj.RowID);
                 //lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productImages", webRootPath);
                 return await Task.Run(() => new List<Product>(lst));
             }
