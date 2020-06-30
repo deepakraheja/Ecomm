@@ -179,8 +179,9 @@ namespace uccApiCore2.Repository
                 parameters.Add("@Title", obj.Title);
                 parameters.Add("@SubTitle", obj.SubTitle);
                 parameters.Add("@ArticalNo", obj.ArticalNo);
-                parameters.Add("@TagDesign", obj.TagDesign);
+                parameters.Add("@@TagId", obj.@TagId);
                 parameters.Add("@FabricId", obj.FabricId);
+                parameters.Add("@FabricTypeId", obj.FabricTypeId);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Product_ins", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }

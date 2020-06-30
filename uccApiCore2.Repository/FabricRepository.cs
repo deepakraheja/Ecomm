@@ -57,5 +57,55 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<List<LookupFabricType>> GetFabricType(LookupFabricType obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Active", obj.Active);
+                parameters.Add("@FabricId", obj.FabricId);
+                List<LookupFabricType> lst = (await SqlMapper.QueryAsync<LookupFabricType>(con, "p_FabricType_sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<List<LookupFabricType>> GetAllFabricType(LookupFabricType obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@FabricId", obj.FabricId);
+                List<LookupFabricType> lst = (await SqlMapper.QueryAsync<LookupFabricType>(con, "p_FabricType_sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+        public async Task<int> SaveFabricType(LookupFabricType obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@FabricTypeId", obj.FabricTypeId);
+                parameters.Add("@FabricId", obj.FabricId);
+                parameters.Add("@FabricType", obj.FabricType);
+                parameters.Add("@Description", obj.Description);
+                parameters.Add("@Active", obj.Active);
+                parameters.Add("@UserId", obj.CreatedBy);
+                var res = await SqlMapper.ExecuteAsync(con, "p_FabricType_ins", param: parameters, commandType: StoredProcedure);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
