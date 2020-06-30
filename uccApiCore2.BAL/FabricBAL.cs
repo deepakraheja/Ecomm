@@ -31,6 +31,18 @@ namespace uccApiCore2.BAL
         {
             return _FabricRepository.SaveFabric(obj);
         }
+        public Task<List<LookupFabricType>> GetFabricType(LookupFabricType obj)
+        {
+            return _FabricRepository.GetFabricType(obj);
+        }
+        public Task<List<LookupFabricType>> GetAllFabricType(LookupFabricType obj)
+        {
+            return _FabricRepository.GetAllFabricType(obj);
+        }
+        public Task<int> SaveFabricType(LookupFabricType obj)
+        {
+            return _FabricRepository.SaveFabricType(obj);
+        }
 
     }
 }
