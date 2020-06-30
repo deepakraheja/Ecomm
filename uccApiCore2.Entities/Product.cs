@@ -43,18 +43,9 @@ namespace uccApiCore2.Entities
         public string SupplierName { get; set; }
         //public int price { get; set; }
         public string ArticalNo { get; set; }
-        public string TagDesign { get; set; }
+        public int TagId { get; set; } = 0;
         public int FabricId { get; set; } = 0;
-
-        //public int ProductSizeColorId { get; set; } = 0;
-        //public int Qty { get; set; } = 0;
-        //public int Price { get; set; } = 0;
-        //public int SalePrice { get; set; } = 0;
-        //public string Size { get; set; }
-        //public string Color { get; set; }
-        //public int Discount { get; set; } = 0;
-            
-
+        public int FabricTypeId { get; set; } = 0;
     }
 }
 

@@ -26,5 +26,8 @@ namespace uccApiCore2.Entities
         public int Modifiedby { get; set; } = 0;
         public string[] ProductImg { get; set; }
         public int LookupColorId { get; set; }
+        public bool IsEdit { get; set; } = false;
+        public int[] ArrayColor { get; set; }
+        public string[] ArraySize { get; set; }
     }
 }
