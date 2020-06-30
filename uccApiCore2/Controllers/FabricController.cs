@@ -66,5 +66,50 @@ namespace uccApiCore2.Controllers
                 return -1;
             }
         }
+
+        [HttpPost]
+        [Route("GetFabricType")]
+        public async Task<List<LookupFabricType>> GetFabricType([FromBody] LookupFabricType obj)
+        {
+            try
+            {
+                return await this._Fabric.GetFabricType(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside FabricController GetFabricType action: {ex.Message}");
+                return null;
+            }
+        }
+
+        [HttpPost]
+        [Route("GetAllFabricType")]
+        public async Task<List<LookupFabricType>> GetAllFabricType([FromBody] LookupFabricType obj)
+        {
+            try
+            {
+                return await this._Fabric.GetAllFabricType(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside FabricController GetAllFabricType action: {ex.Message}");
+                return null;
+            }
+        }
+
+        [HttpPost]
+        [Route("SaveFabricType")]
+        public async Task<int> SaveFabricType([FromBody] LookupFabricType obj)
+        {
+            try
+            {
+                return await this._Fabric.SaveFabricType(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside FabricController SaveFabricType action: {ex.Message}");
+                return -1;
+            }
+        }
     }
 }

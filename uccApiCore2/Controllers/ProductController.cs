@@ -108,7 +108,7 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
-                ///return await this._IProductBAL.GetProductBybyRowID(obj);
+        ///return await this._IProductBAL.GetProductBybyRowID(obj);
         [HttpPost]
         [Route("GetProductSizeColorByRowID")]
         public async Task<List<ProductSizeColor>> GetProductSizeColorByRowID([FromBody] ProductSizeColor obj)
@@ -181,7 +181,23 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                int ProductSizeColorId = await this._IProductBAL.SaveProductSizeColor(obj);
+                int ProductSizeColorId = 0;
+                if (obj.ArrayColor != null)
+                {
+                    foreach (var itemColor in obj.ArrayColor)
+                    {
+                        foreach (var itemSize in obj.ArraySize)
+                        {
+                            obj.Size = itemSize;
+                            obj.LookupColorId = itemColor;
+                            ProductSizeColorId = await this._IProductBAL.SaveProductSizeColor(obj);
+                        }
+                    }
+                }
+                else
+                {
+                    ProductSizeColorId = await this._IProductBAL.SaveProductSizeColor(obj);
+                }
                 return ProductSizeColorId;
             }
             catch (Exception ex)
