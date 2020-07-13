@@ -46,6 +46,7 @@ namespace uccApiCore2.Entities
         public int TagId { get; set; } = 0;
         public int FabricId { get; set; } = 0;
         public int FabricTypeId { get; set; } = 0;
+        public List<ProductSizeColor> ProductSizeColor;
     }
 }
 
