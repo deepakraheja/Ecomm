@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -21,13 +22,33 @@ namespace uccApiCore2.Controllers
             _Category = Category;
             
         }
-   
+
+        [HttpGet]
+        [Route("GetCategoryJson")]
+        public string GetCategoryJson()
+        {
+            try
+            {
+                var folderDetails = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\{"Json\\leftMenuItems.json"}");
+                var JSON = System.IO.File.ReadAllText(folderDetails);
+
+                return JSON;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside CategoryController GetCategory action: {ex.Message}");
+                return null;
+            }
+        }
+
         [HttpPost]
         [Route("GetCategory")]
         public async Task<List<Category>> GetCategory([FromBody]Category obj)
         {
             try
             {
+
+
                 return await this._Category.GetCategory(obj);
             }
             catch (Exception ex)

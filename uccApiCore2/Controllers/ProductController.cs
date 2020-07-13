@@ -30,7 +30,12 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                return await this._IProductBAL.GetProductBySubcatecode(obj);
+                List<Product> lst = this._IProductBAL.GetProductBySubcatecode(obj).Result;
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    lst[i].ProductSizeColor = this._IProductBAL.GetProductSizeColorByRowID(lst[i].RowID).Result;
+                }
+                return await Task.Run(() => new List<Product>(lst));
             }
             catch (Exception ex)
             {
@@ -95,10 +100,14 @@ namespace uccApiCore2.Controllers
             {
                 List<Product> lst = this._IProductBAL.GetProductByRowID(obj).Result;
                 //lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
-                lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productColorImage", webRootPath, lst[0].ProductSizeColorId);
-                lst[0].ProdColor = this._IProductBAL.GetProductColorByRowID(obj.RowID);
+                //lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productColorImage", webRootPath, lst[0].ProductSizeColorId);// commented on 12 2020 july by deepak
+                lst[0].ProductSizeColor = this._IProductBAL.GetProductSizeColorByRowID(obj.RowID).Result;
 
-                lst[0].Prodsize = this._IProductBAL.GetProductSizeByRowID(obj.RowID);
+                for (int i = 0; i < lst[0].ProductSizeColor.Count; i++) // added on 12 july 2020 by deepak
+                {
+                    lst[0].ProductSizeColor[i].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productColorImage", webRootPath, lst[0].ProductSizeColor[i].ProductSizeColorId);
+                }
+                //lst[0].Prodsize = this._IProductBAL.GetProductSizeByRowID(obj.RowID);// commented on 10 july 2020 by deepak
                 //lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productImages", webRootPath);
                 return await Task.Run(() => new List<Product>(lst));
             }
