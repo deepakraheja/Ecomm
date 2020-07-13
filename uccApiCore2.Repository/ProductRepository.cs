@@ -106,7 +106,23 @@ namespace uccApiCore2.Repository
             }
         }
 
-        public  string[] GetProductColorByRowID(string RowID)
+        public async Task<List<ProductSizeColor>> GetProductSizeColorByRowID(string RowID)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@GUID", RowID);
+                List<ProductSizeColor> lst = (await SqlMapper.QueryAsync<ProductSizeColor>(con, "p_ProductSizeColor_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+
+        public string[] GetProductColorByRowID(string RowID)
         {
             try
             {

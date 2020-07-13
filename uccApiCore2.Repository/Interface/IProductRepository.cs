@@ -21,6 +21,8 @@ namespace uccApiCore2.Repository.Interface
         Task<List<Product>> GetProductByRowID(Product obj);
         Task<List<ProductSizeColor>> GetProductSizeColorByRowID(ProductSizeColor obj);
 
+        Task<List<ProductSizeColor>> GetProductSizeColorByRowID(string RowID);
+
         string[] GetProductColorByRowID(string RowID);
 
         string[] GetProductSizeByRowID(string RowID);
