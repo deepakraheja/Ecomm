@@ -56,6 +56,12 @@ namespace uccApiCore2.BAL
         {
             return _IProductRepository.GetProductSizeColorById(obj);
         }
+
+        public Task<List<ProductSizeColor>> GetProductSizeColorByRowID(string RowID)
+        {
+            return _IProductRepository.GetProductSizeColorByRowID(RowID);
+        }
+
         public Task<int> DeleteProductSizeColor(ProductSizeColor obj)
         {
             return _IProductRepository.DeleteProductSizeColor(obj);
