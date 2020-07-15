@@ -106,5 +106,21 @@ namespace uccApiCore2.Controllers.Common
             }
             return ImageRepresentation;
         }
+
+        public void DeleteProductImagePath(int ProductId, string Type, string WebRootPath)
+        {
+            string[] base64ImageRepresentation = new string[0];
+            string folderPath;
+            folderPath = WebRootPath + "\\ProductImage\\" + ProductId + "\\" + Type + "\\";
+            if (Directory.Exists(folderPath))
+            {
+                string[] AllFiles = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
+                for (int i = 0; i < AllFiles.Length; i++)
+                {
+                    File.Delete(AllFiles[i]);
+                }
+                Directory.Delete(folderPath);
+            }
+        }
     }
 }

@@ -15,12 +15,12 @@ namespace uccApiCore2.Controllers
     public class CategoryController : BaseController<CategoryController>
     {
         ICategoryBAL _Category;
-       
-        
+
+
         public CategoryController(ICategoryBAL Category)
         {
             _Category = Category;
-            
+
         }
 
         [HttpGet]
@@ -36,19 +36,60 @@ namespace uccApiCore2.Controllers
             }
             catch (Exception ex)
             {
-                Logger.LogError($"Something went wrong inside CategoryController GetCategory action: {ex.Message}");
+                Logger.LogError($"Something went wrong inside CategoryController GetCategoryJson action: {ex.Message}");
+                return null;
+            }
+        }
+        [HttpPost]
+        [Route("GetMainCategory")]
+        public async Task<List<Category>> GetMainCategory([FromBody] Category obj)
+        {
+            try
+            {
+                return await this._Category.GetMainCategory(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside CategoryController GetMainCategory action: {ex.Message}");
                 return null;
             }
         }
 
         [HttpPost]
-        [Route("GetCategory")]
-        public async Task<List<Category>> GetCategory([FromBody]Category obj)
+        [Route("GetAllMainCategory")]
+        public async Task<List<Category>> GetAllMainCategory([FromBody] Category obj)
         {
             try
             {
+                return await this._Category.GetAllMainCategory(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside CategoryController GetAllMainCategory action: {ex.Message}");
+                return null;
+            }
+        }
 
-
+        [HttpPost]
+        [Route("SaveMainCategory")]
+        public async Task<int> SaveMainCategory([FromBody] Category obj)
+        {
+            try
+            {
+                return await this._Category.SaveMainCategory(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside CategoryController SaveMainCategory action: {ex.Message}");
+                return -1;
+            }
+        }
+        [HttpPost]
+        [Route("GetCategory")]
+        public async Task<List<Category>> GetCategory([FromBody] Category obj)
+        {
+            try
+            {
                 return await this._Category.GetCategory(obj);
             }
             catch (Exception ex)
