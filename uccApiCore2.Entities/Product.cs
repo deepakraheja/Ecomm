@@ -5,7 +5,7 @@ using System.Text;
 
 namespace uccApiCore2.Entities
 {
-    public class Product: ProductSizeColor
+    public class Product : ProductSizeColor
     {
         public int ProductID { get; set; } = 0;
         public string ProductName { get; set; }
@@ -28,6 +28,7 @@ namespace uccApiCore2.Entities
         public string SubcategoryName { get; set; }
         public int SubCategoryID { get; set; } = 0;
         public int CategoryID { get; set; } = 0;
+        public int MainCategoryID { get; set; } = 0;
         public string BrandName { get; set; }
         public string[] BannerImg { get; set; }
         public string[] SmallImg { get; set; }
@@ -47,6 +48,8 @@ namespace uccApiCore2.Entities
         public int FabricId { get; set; } = 0;
         public int FabricTypeId { get; set; } = 0;
         public List<ProductSizeColor> ProductSizeColor;
+        public int SetType { get; set; } = 0;
+        public int minimum { get; set; } = 0;
     }
 }
 

@@ -9,12 +9,14 @@ namespace uccApiCore2.Entities
         public int ProductSizeColorId { get; set; } = 0;
         public int ProductId { get; set; } = 0;
         //public string RowID { get; set; }
+        public int ProductSizeId { get; set; } = 0;
         public int Qty { get; set; } = 0;
         public int Price { get; set; } = 0;
         public int SalePrice { get; set; } = 0;
         public bool AvailableSize { get; set; } = false;
         public bool AvailableColors { get; set; } = false;
         public string Size { get; set; }
+        public int SetNo { get; set; } = 0;
         public string Color { get; set; }
         public string[] ProdColor { get; set; }
 

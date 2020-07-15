@@ -13,7 +13,8 @@ namespace uccApiCore2.Entities
         public int Modifiedby { get; set; }
 
         public string Name { get; set; } = "";
-        public int SubCategoryID { get; set; }
-
+        public int SubCategoryID { get; set; } = 0;
+        public int MainCategoryID { get; set; } = 0;
+        public string MainCategoryName { get; set; } = "";
     }
 }
