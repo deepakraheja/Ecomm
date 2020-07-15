@@ -16,7 +16,18 @@ namespace uccApiCore2.BAL
         {
             _CategoryRepository = CategoryRepository;
         }
-
+        public Task<List<Category>> GetMainCategory(Category obj)
+        {
+            return _CategoryRepository.GetMainCategory(obj);
+        }
+        public Task<List<Category>> GetAllMainCategory(Category obj)
+        {
+            return _CategoryRepository.GetAllMainCategory(obj);
+        }
+        public Task<int> SaveMainCategory(Category obj)
+        {
+            return _CategoryRepository.SaveMainCategory(obj);
+        }
         public Task<List<Category>> GetCategory(Category obj)
         {
             return _CategoryRepository.GetCategory(obj);
