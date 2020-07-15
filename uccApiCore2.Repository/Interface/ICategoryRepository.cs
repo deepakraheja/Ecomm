@@ -8,7 +8,9 @@ namespace uccApiCore2.Repository.Interface
 {
     public interface ICategoryRepository
     {
-        
+        Task<List<Category>> GetMainCategory(Category obj);
+        Task<List<Category>> GetAllMainCategory(Category obj);
+        Task<int> SaveMainCategory(Category obj);
         Task<List<Category>> GetCategory(Category obj);
         Task<List<Category>> GetAllCategory(Category obj);
         Task<int> SaveCategory(Category obj);

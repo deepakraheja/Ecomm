@@ -12,13 +12,60 @@ namespace uccApiCore2.Repository
     public class CategoryRepository : BaseRepository, ICategoryRepository
     {
 
+        public async Task<List<Category>> GetMainCategory(Category obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Active", obj.Active);
+                List<Category> lst = (await SqlMapper.QueryAsync<Category>(con, "p_MainCategory_sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
 
+        public async Task<List<Category>> GetAllMainCategory(Category obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                List<Category> lst = (await SqlMapper.QueryAsync<Category>(con, "p_MainCategory_sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+        public async Task<int> SaveMainCategory(Category obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@MainCategoryID", obj.MainCategoryID);
+                parameters.Add("@MainCategoryName", obj.MainCategoryName);
+                parameters.Add("@Description", obj.Description);
+                parameters.Add("@Active", obj.Active);
+                parameters.Add("@UserId", obj.CreatedBy);
+                var res = await SqlMapper.ExecuteAsync(con, "p_MainCategory_ins", param: parameters, commandType: StoredProcedure);
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
         public async Task<List<Category>> GetCategory(Category obj)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@Active", obj.Active);
+                parameters.Add("@MainCategoryID", obj.MainCategoryID);
                 List<Category> lst = (await SqlMapper.QueryAsync<Category>(con, "p_category_sel", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
@@ -33,6 +80,7 @@ namespace uccApiCore2.Repository
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@MainCategoryID", obj.MainCategoryID);
                 List<Category> lst = (await SqlMapper.QueryAsync<Category>(con, "p_category_sel", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
@@ -48,6 +96,7 @@ namespace uccApiCore2.Repository
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@CategoryID", obj.CategoryID);
+                parameters.Add("@MainCategoryID", obj.MainCategoryID);
                 parameters.Add("@CategoryName", obj.CategoryName);
                 parameters.Add("@Description", obj.Description);
                 parameters.Add("@Active", obj.Active);
@@ -97,6 +146,7 @@ namespace uccApiCore2.Repository
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@SubCategoryID", obj.SubCategoryID);
+                parameters.Add("@MainCategoryID", obj.MainCategoryID);
                 parameters.Add("@CategoryID", obj.CategoryID);
                 parameters.Add("@name", obj.Name);
                 parameters.Add("@Description", obj.Description);

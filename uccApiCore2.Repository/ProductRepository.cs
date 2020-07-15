@@ -52,7 +52,7 @@ namespace uccApiCore2.Repository
             {
                 DynamicParameters parameters = new DynamicParameters();
                 if (obj.SupplierID > 0)
-                parameters.Add("@SupplierID", obj.SupplierID);
+                    parameters.Add("@SupplierID", obj.SupplierID);
                 List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_GetAllproductBySupplierId", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
@@ -129,7 +129,7 @@ namespace uccApiCore2.Repository
                 string[] color = new string[0];
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@GUID", RowID);
-                List<Product> lst = ( SqlMapper.Query<Product>(con, "p_ProductColor_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                List<Product> lst = (SqlMapper.Query<Product>(con, "p_ProductColor_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
                 color = new string[lst.Count];
 
                 for (int i = 0; i < lst.Count; i++)
@@ -198,6 +198,8 @@ namespace uccApiCore2.Repository
                 parameters.Add("@@TagId", obj.@TagId);
                 parameters.Add("@FabricId", obj.FabricId);
                 parameters.Add("@FabricTypeId", obj.FabricTypeId);
+                parameters.Add("@SetType", obj.SetType);
+                parameters.Add("@minimum", obj.minimum);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Product_ins", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
@@ -211,6 +213,7 @@ namespace uccApiCore2.Repository
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ProductSizeId", obj.ProductSizeId);
                 parameters.Add("@ProductSizeColorId", obj.ProductSizeColorId);
                 parameters.Add("@ProductID", obj.ProductId); //int
                 parameters.Add("@Qty", obj.Qty); //int
@@ -219,6 +222,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@AvailableSize", obj.AvailableSize); //bit
                 parameters.Add("@AvailableColors", obj.AvailableColors); //bit
                 parameters.Add("@Size", obj.Size); //nvarchar
+                parameters.Add("@SetNo", obj.SetNo);
                 parameters.Add("@LookupColorId", obj.LookupColorId); //nvarchar
                 parameters.Add("@Discount", obj.Discount); //decimal
                 parameters.Add("@DiscountAvailable", obj.DiscountAvailable); //bit
@@ -252,6 +256,7 @@ namespace uccApiCore2.Repository
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@ProductSizeColorId", obj.ProductSizeColorId);
+                parameters.Add("@ProductSizeId", obj.ProductSizeId);
                 var res = await SqlMapper.ExecuteAsync(con, "p_ProductSizeColor_del", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
