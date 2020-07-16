@@ -195,7 +195,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@Title", obj.Title);
                 parameters.Add("@SubTitle", obj.SubTitle);
                 parameters.Add("@ArticalNo", obj.ArticalNo);
-                parameters.Add("@@TagId", obj.@TagId);
+                parameters.Add("@TagId", obj.TagId);
                 parameters.Add("@FabricId", obj.FabricId);
                 parameters.Add("@FabricTypeId", obj.FabricTypeId);
                 parameters.Add("@SetType", obj.SetType);
