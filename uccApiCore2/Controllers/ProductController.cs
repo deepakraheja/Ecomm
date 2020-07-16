@@ -162,16 +162,20 @@ namespace uccApiCore2.Controllers
                 int NewProductId = this._IProductBAL.SaveProduct(obj).Result;
                 if (obj.ProductID > 0)
                 {
-                    _utilities.SaveImage(obj.ProductID, obj.BannerImg, "bannerImage", webRootPath);
-                    _utilities.SaveImage(obj.ProductID, obj.SmallImg, "frontImage", webRootPath);
+                    if (obj.BannerImg != null)
+                        _utilities.SaveImage(obj.ProductID, obj.BannerImg, "bannerImage", webRootPath);
+                    if (obj.SmallImg != null)
+                        _utilities.SaveImage(obj.ProductID, obj.SmallImg, "frontImage", webRootPath);
                     //_utilities.SaveImage(obj.ProductID, obj.ProductImg, "productImages", webRootPath);
                     //return obj.ProductID;
                     return await Task.Run(() => obj.ProductID);
                 }
                 else
                 {
-                    _utilities.SaveImage(NewProductId, obj.BannerImg, "bannerImage", webRootPath);
-                    _utilities.SaveImage(NewProductId, obj.SmallImg, "frontImage", webRootPath);
+                    if (obj.BannerImg != null)
+                        _utilities.SaveImage(NewProductId, obj.BannerImg, "bannerImage", webRootPath);
+                    if (obj.SmallImg != null)
+                        _utilities.SaveImage(NewProductId, obj.SmallImg, "frontImage", webRootPath);
                     //_utilities.SaveImage(NewProductId, obj.ProductImg, "productImages", webRootPath);
                     //return NewProductId;
                     return await Task.Run(() => NewProductId);
@@ -261,7 +265,7 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                var res= await this._IProductBAL.DeleteProductSizeColor(obj);
+                var res = await this._IProductBAL.DeleteProductSizeColor(obj);
                 _utilities.DeleteProductImagePath(obj.ProductId, ("productColorImage/" + obj.ProductSizeId), webRootPath);
                 return res;
             }
