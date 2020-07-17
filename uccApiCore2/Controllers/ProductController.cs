@@ -266,7 +266,8 @@ namespace uccApiCore2.Controllers
             try
             {
                 var res = await this._IProductBAL.DeleteProductSizeColor(obj);
-                _utilities.DeleteProductImagePath(obj.ProductId, ("productColorImage/" + obj.ProductSizeColorId), webRootPath);
+                if (res == -2)
+                    _utilities.DeleteProductImagePath(obj.ProductId, ("productColorImage/" + obj.ProductSizeColorId), webRootPath);
                 return res;
             }
             catch (Exception ex)
