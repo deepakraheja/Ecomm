@@ -15,10 +15,12 @@ namespace uccApiCore2.Controllers
     public class CartController : BaseController<CartController>
     {
         ICartBAL _ICartBAL;
-
-        public CartController(ICartBAL CartBAL)
+        Utilities _utilities = new Utilities();
+        public static string webRootPath;
+        public CartController(IHostingEnvironment hostingEnvironment, ICartBAL CartBAL)
         {
             _ICartBAL = CartBAL;
+            webRootPath = hostingEnvironment.WebRootPath;
         }
 
         [HttpPost]
@@ -57,7 +59,14 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                return await this._ICartBAL.GetCartById(obj);
+                //return await this._ICartBAL.GetCartById(obj);
+                List<Cart> lst = this._ICartBAL.GetCartById(obj).Result;
+                foreach (var item in lst)
+                {
+                    item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productColorImage/" + item.ProductSizeColorId), webRootPath);
+                }
+
+                return await Task.Run(() => new List<Cart>(lst));
             }
             catch (Exception ex)
             {

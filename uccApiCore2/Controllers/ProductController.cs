@@ -229,7 +229,10 @@ namespace uccApiCore2.Controllers
             {
                 if (obj.ProductSizeColorId > 0)
                 {
-                    _utilities.SaveImage(obj.ProductId, obj.ProductImg, ("productColorImage/" + obj.ProductSizeColorId), webRootPath);
+                    if (obj.SetNo > 0)
+                        _utilities.SaveImage(obj.ProductId, obj.ProductImg, ("productSetImage/" + obj.SetNo), webRootPath);
+                    else
+                        _utilities.SaveImage(obj.ProductId, obj.ProductImg, ("productColorImage/" + obj.ProductSizeColorId), webRootPath);
                 }
                 return await Task.Run(() => obj.ProductSizeColorId);
             }
@@ -248,7 +251,10 @@ namespace uccApiCore2.Controllers
                 List<ProductSizeColor> lst = this._IProductBAL.GetProductSizeColorById(obj).Result;
                 foreach (var item in lst)
                 {
-                    item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productColorImage/" + item.ProductSizeColorId), webRootPath);
+                    if (item.SetNo > 0)
+                        item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productSetImage/" + item.SetNo), webRootPath);
+                    else
+                        item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productColorImage/" + item.ProductSizeColorId), webRootPath);
                 }
 
                 return await Task.Run(() => new List<ProductSizeColor>(lst));
@@ -267,7 +273,12 @@ namespace uccApiCore2.Controllers
             {
                 var res = await this._IProductBAL.DeleteProductSizeColor(obj);
                 if (res == -2)
-                    _utilities.DeleteProductImagePath(obj.ProductId, ("productColorImage/" + obj.ProductSizeColorId), webRootPath);
+                {
+                    if (obj.SetNo > 0)
+                        _utilities.DeleteProductImagePath(obj.ProductId, ("productSetImage/" + obj.SetNo), webRootPath);
+                    else
+                        _utilities.DeleteProductImagePath(obj.ProductId, ("productColorImage/" + obj.ProductSizeColorId), webRootPath);
+                }
                 return res;
             }
             catch (Exception ex)
