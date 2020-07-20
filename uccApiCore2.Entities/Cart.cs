@@ -9,6 +9,7 @@ namespace uccApiCore2.Entities
         public int CartId { get; set; } = 0;
         public int UserID { get; set; } = 0;
         public int ProductSizeColorId { get; set; } = 0;
+        public int ProductSizeId { get; set; } = 0;
         public int Quantity { get; set; } = 0;
         public string ProductName { get; set; } = "";
         public int Price { get; set; } = 0;
@@ -16,5 +17,7 @@ namespace uccApiCore2.Entities
         public int Discount { get; set; } = 0;
         public int Qty { get; set; } = 0;
         public string FrontImage { get; set; } = "";
+        public int ProductId { get; set; } = 0;
+        public string[] ProductImg { get; set; }
     }
 }
