@@ -17,7 +17,7 @@ namespace uccApiCore2.Repository
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@UserId", obj.UserID);
-                parameters.Add("@ProductSizeColorId", obj.ProductSizeColorId);
+                parameters.Add("@ProductSizeId", obj.ProductSizeId);
                 parameters.Add("@Quantity", obj.Quantity);
                 var res = await SqlMapper.ExecuteAsync(con, "p_AddToCart", param: parameters, commandType: StoredProcedure);
                 return res;
@@ -50,7 +50,7 @@ namespace uccApiCore2.Repository
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@UserId", obj.UserID);
-                List<Cart> lst = (await SqlMapper.QueryAsync<Cart>(con, "p_DelCartById", param: parameters, commandType: StoredProcedure)).ToList();
+                List<Cart> lst = (await SqlMapper.QueryAsync<Cart>(con, "p_GetCartById", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
             catch (Exception ex)

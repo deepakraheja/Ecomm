@@ -255,8 +255,10 @@ namespace uccApiCore2.Repository
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@ProductId", obj.ProductId);    
                 parameters.Add("@ProductSizeColorId", obj.ProductSizeColorId);
                 parameters.Add("@ProductSizeId", obj.ProductSizeId);
+                parameters.Add("@SetNo", obj.SetNo);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_ProductSizeColor_del", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
