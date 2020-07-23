@@ -11,8 +11,6 @@ namespace uccApiCore2.Repository
 {
     public class ProductRepository : BaseRepository, IProductRepository
     {
-
-
         public async Task<List<Product>> GetProductBySubcatecode(Product obj)
         {
             try

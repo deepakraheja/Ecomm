@@ -10,5 +10,6 @@ namespace uccApiCore2.Repository.Interface
     {
         Task<int> UserRegistration(Users obj);
         Task<List<Users>> ValidLogin(Users obj);
+        Task<List<Users>> GetAllUsers();
     }
 }

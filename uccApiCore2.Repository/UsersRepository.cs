@@ -37,7 +37,21 @@ namespace uccApiCore2.Repository
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@LoginId", obj.LoginId);
                 parameters.Add("@PASSWORD", obj.password);
+                parameters.Add("@UserType", obj.UserType);
                 List<Users> lst = (await SqlMapper.QueryAsync<Users>(con, "p_ValidLogin", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<List<Users>> GetAllUsers()
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                List<Users> lst = (await SqlMapper.QueryAsync<Users>(con, "p_Users_sel", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
             catch (Exception ex)
