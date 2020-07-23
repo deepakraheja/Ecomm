@@ -121,13 +121,13 @@ namespace uccApiCore2
                  Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Json")),
                 RequestPath = "/Json"
             });
-            app.UseFileServer(new FileServerOptions()
-            {
-                FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
-                   @"C:\\Project\\uccApiCore\\uccApiCore2\\wwwroot\\ProductImage"),
-                RequestPath = "/ProductImage",
-                EnableDirectoryBrowsing = true
-            });
+            //app.UseFileServer(new FileServerOptions()
+            //{
+            //    FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
+            //       @"C:\\Project\\uccApiCore\\uccApiCore2\\wwwroot\\ProductImage"),
+            //    RequestPath = "/ProductImage",
+            //    EnableDirectoryBrowsing = true
+            //});
 
             //app.UseCors(options => options
             //.AllowAnyOrigin()
