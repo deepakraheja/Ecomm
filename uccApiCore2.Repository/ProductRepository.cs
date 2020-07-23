@@ -75,13 +75,14 @@ namespace uccApiCore2.Repository
             }
         }
 
-        public async Task<List<Product>> GetProductByRowID(Product obj)
+        public async Task<List<Product>> GetWithoutSetProductByRowID(Product obj)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@GUID", obj.RowID);
-                List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_product_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                parameters.Add("@ProductSizeId", obj.ProductSizeId);
+                List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_WithoutSetProduct_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
             catch (Exception ex)
