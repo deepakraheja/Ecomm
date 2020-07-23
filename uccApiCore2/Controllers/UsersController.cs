@@ -47,7 +47,22 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
-        
+
+        [HttpPost]
+        [Route("GetAllUsers")]
+        public async Task<List<Users>> GetAllUsers()
+        {
+            try
+            {
+                return await this._usersBAL.GetAllUsers();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController GetAllUsers action: {ex.Message}");
+                return null;
+            }
+        }
+
     }
 
 

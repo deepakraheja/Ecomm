@@ -82,6 +82,12 @@ namespace uccApiCore2
 
             services.AddTransient<ICartBAL, CartBAL>();
             services.AddScoped<ICartRepository, CartRepository>();
+
+            services.AddTransient<IBillingAddressBAL, BillingAddressBAL>();
+            services.AddScoped<IBillingAddressRepository, BillingAddressRepository>();
+
+            services.AddTransient<IOrderBAL, OrderBAL>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
