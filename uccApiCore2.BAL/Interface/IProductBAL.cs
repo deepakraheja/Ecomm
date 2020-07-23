@@ -21,7 +21,7 @@ namespace uccApiCore2.BAL.Interface
 
         Task<List<Product>> GetBannerProduct();
 
-        Task<List<Product>> GetProductByRowID(Product obj);
+        Task<List<Product>> GetWithoutSetProductByRowID(Product obj);
         Task<List<ProductSizeColor>> GetProductSizeColorByRowID(ProductSizeColor obj);
 
         Task<List<ProductSizeColor>> GetProductSizeColorByRowID(string RowID);

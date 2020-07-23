@@ -31,9 +31,9 @@ namespace uccApiCore2.BAL
             return _IProductRepository.GetProductById(obj);
         }
 
-        public Task<List<Product>> GetProductByRowID(Product obj)
+        public Task<List<Product>> GetWithoutSetProductByRowID(Product obj)
         {
-            return _IProductRepository.GetProductByRowID(obj);
+            return _IProductRepository.GetWithoutSetProductByRowID(obj);
         }
         public Task<List<ProductSizeColor>> GetProductSizeColorByRowID(ProductSizeColor obj)
         {
