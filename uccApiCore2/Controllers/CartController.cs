@@ -25,11 +25,18 @@ namespace uccApiCore2.Controllers
 
         [HttpPost]
         [Route("AddToCart")]
-        public async Task<int> AddToCart([FromBody] Cart obj)
+        public async Task<int> AddToCart([FromBody] List<Cart> obj)
         {
             try
             {
-                return await this._ICartBAL.AddToCart(obj);
+                var res = -1;
+                foreach (var item in obj)
+                {
+
+                    res = await this._ICartBAL.AddToCart(item);
+
+                }
+                return res;
             }
             catch (Exception ex)
             {

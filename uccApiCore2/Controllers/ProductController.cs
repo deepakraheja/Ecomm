@@ -24,6 +24,11 @@ namespace uccApiCore2.Controllers
             webRootPath = hostingEnvironment.WebRootPath;
         }
 
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
         [HttpPost]
         [Route("GetProductBySubcatecode")]
         public async Task<List<Product>> GetProductBySubcatecode([FromBody] Product obj)
@@ -31,10 +36,10 @@ namespace uccApiCore2.Controllers
             try
             {
                 List<Product> lst = this._IProductBAL.GetProductBySubcatecode(obj).Result;
-                for (int i = 0; i < lst.Count; i++)
-                {
-                    lst[i].ProductSizeColor = this._IProductBAL.GetProductSizeColorByRowID(lst[i].RowID).Result;
-                }
+                //for (int i = 0; i < lst.Count; i++)
+                //{
+                //    lst[i].ProductSizeColor = this._IProductBAL.GetProductSizeColorByRowID(lst[i].RowID).Result;
+                //}
                 return await Task.Run(() => new List<Product>(lst));
             }
             catch (Exception ex)
@@ -93,12 +98,12 @@ namespace uccApiCore2.Controllers
         }
 
         [HttpPost]
-        [Route("GetProductByRowID")]
-        public async Task<List<Product>> GetProductByRowID([FromBody] Product obj)
+        [Route("GetWithoutSetProductByRowID")]
+        public async Task<List<Product>> GetWithoutSetProductByRowID([FromBody] Product obj)
         {
             try
             {
-                List<Product> lst = this._IProductBAL.GetProductByRowID(obj).Result;
+                List<Product> lst = this._IProductBAL.GetWithoutSetProductByRowID(obj).Result;
                 //lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
                 //lst[0].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productColorImage", webRootPath, lst[0].ProductSizeColorId);// commented on 12 2020 july by deepak
                 lst[0].ProductSizeColor = this._IProductBAL.GetProductSizeColorByRowID(obj.RowID).Result;

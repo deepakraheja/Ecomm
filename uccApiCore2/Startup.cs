@@ -112,7 +112,7 @@ namespace uccApiCore2
             {
                 FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
                     Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "ProductImage")),
-                RequestPath = "/ProductImage"
+                RequestPath = "/ProductImage",
             });
 
             app.UseDirectoryBrowser(new DirectoryBrowserOptions
@@ -120,6 +120,13 @@ namespace uccApiCore2
                 FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
                  Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Json")),
                 RequestPath = "/Json"
+            });
+            app.UseFileServer(new FileServerOptions()
+            {
+                FileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(
+                   @"C:\\Project\\uccApiCore\\uccApiCore2\\wwwroot\\ProductImage"),
+                RequestPath = "/ProductImage",
+                EnableDirectoryBrowsing = true
             });
 
             //app.UseCors(options => options
