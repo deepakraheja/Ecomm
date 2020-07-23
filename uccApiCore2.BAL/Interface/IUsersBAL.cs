@@ -10,5 +10,6 @@ namespace uccApiCore2.BAL.Interface
     {
         Task<int> UserRegistration(Users obj);
         Task<List<Users>> ValidLogin(Users obj);
+        Task<List<Users>> GetAllUsers();
     }
 }

@@ -24,5 +24,9 @@ namespace uccApiCore2.BAL
         {
             return _users.ValidLogin(obj);
         }
+        public Task<List<Users>> GetAllUsers()
+        {
+            return _users.GetAllUsers();
+        }
     }
 }
