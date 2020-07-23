@@ -16,5 +16,9 @@ namespace uccApiCore2.Entities
         public string email { get; set; }
         public string Name { get; set; }
         public string MobileNo { get; set; }
+        public int IsApproval { get; set; } = 0;
+        public int ApprovedBy { get; set; } = 0;
+        public string ApprovedDate { get; set; }
+        public string ApprovedByUserName { get; set; }
     }
 }

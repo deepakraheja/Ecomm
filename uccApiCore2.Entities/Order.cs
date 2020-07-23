@@ -9,15 +9,24 @@ namespace uccApiCore2.Entities
         public int OrderId { get; set; } = 0;
         public string OrderNumber { get; set; }
         public string OrderDate { get; set; }
-        public int PaymentId { get; set; } = 0;
-        public int Tax { get; set; } = 0;
-        public int Total { get; set; } = 0;
+        public int PaymentTypeId { get; set; } = 0;
+        public decimal SubTotal { get; set; }
+        public decimal Tax { get; set; } = 0;
+        public decimal ShippingCharge { get; set; }
+        public decimal TotalAmount { get; set; } = 0;
         public string Notes { get; set; }
+        public int StatusId { get; set; }
         public int UserID { get; set; } = 0;
         public int OrderDetailsID { get; set; } = 0;
         public int ProductSizeColorId { get; set; } = 0;
+        public int ProductSizeId { get; set; } = 0;
         public int Price { get; set; } = 0;
         public int Quantity { get; set; } = 0;
         public int Discount { get; set; } = 0;
+        public List<Order> OrderDetails;
+        public string[] ProductImg { get; set; }
+        public string ProductName { get; set; }
+        public int SetNo { get; set; }
+        public int ProductId { get; set; }
     }
 }
