@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace uccApiCore2.Entities
@@ -19,5 +20,8 @@ namespace uccApiCore2.Entities
         public string FrontImage { get; set; } = "";
         public int ProductId { get; set; } = 0;
         public string[] ProductImg { get; set; }
+
+        public string Color { get; set; }
+        public string Size { get; set; }
     }
 }

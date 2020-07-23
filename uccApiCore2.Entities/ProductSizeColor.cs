@@ -31,5 +31,10 @@ namespace uccApiCore2.Entities
         public bool IsEdit { get; set; } = false;
         public int[] ArrayColor { get; set; }
         public string[] ArraySize { get; set; }
+
+        public int SelectedQty { get; set; } = 1;
+
+        public Boolean IsSelected { get; set; } = false;
+
     }
 }

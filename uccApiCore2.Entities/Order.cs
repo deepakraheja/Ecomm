@@ -28,5 +28,7 @@ namespace uccApiCore2.Entities
         public string ProductName { get; set; }
         public int SetNo { get; set; }
         public int ProductId { get; set; }
+        public string Color { get; set; }
+        public string Size { get; set; }
     }
 }

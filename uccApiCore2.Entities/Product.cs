@@ -50,6 +50,7 @@ namespace uccApiCore2.Entities
         public List<ProductSizeColor> ProductSizeColor;
         public int SetType { get; set; } = 0;
         public int minimum { get; set; } = 0;
+        public int ProductSizeId { get; set; } = 0;
     }
 }
 
