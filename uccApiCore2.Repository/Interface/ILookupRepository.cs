@@ -9,5 +9,6 @@ namespace uccApiCore2.Repository.Interface
     public interface ILookupRepository
     {
         Task<List<LookupColor>> GetActiveColor();
+        Task<List<LookupSize>> GetActiveSize();
     }
 }

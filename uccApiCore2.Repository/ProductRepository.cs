@@ -199,6 +199,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@FabricTypeId", obj.FabricTypeId);
                 parameters.Add("@SetType", obj.SetType);
                 parameters.Add("@minimum", obj.minimum);
+                parameters.Add("@VideoURL", obj.VideoURL);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Product_ins", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }

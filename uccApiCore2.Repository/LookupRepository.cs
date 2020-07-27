@@ -24,5 +24,19 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<List<LookupSize>> GetActiveSize()
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                List<LookupSize> lst = (await SqlMapper.QueryAsync<LookupSize>(con, "p_LookupSize_Sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
