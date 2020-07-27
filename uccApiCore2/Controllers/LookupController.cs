@@ -25,5 +25,11 @@ namespace uccApiCore2.Controllers
         {
             return await _lookupBAL.GetActiveColor();
         }
+        [HttpPost]
+        [Route("GetActiveSize")]
+        public async Task<List<LookupSize>> GetActiveSize()
+        {
+            return await _lookupBAL.GetActiveSize();
+        }
     }
 }
