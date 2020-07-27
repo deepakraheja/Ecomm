@@ -9,5 +9,6 @@ namespace uccApiCore2.BAL.Interface
     public interface ILookupBAL
     {
         Task<List<LookupColor>> GetActiveColor();
+        Task<List<LookupSize>> GetActiveSize();
     }
 }

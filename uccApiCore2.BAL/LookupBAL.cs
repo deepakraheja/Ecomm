@@ -20,5 +20,9 @@ namespace uccApiCore2.BAL
         {
             return _lookupRepository.GetActiveColor();
         }
+        public Task<List<LookupSize>> GetActiveSize()
+        {
+            return _lookupRepository.GetActiveSize();
+        }
     }
 }
