@@ -17,5 +17,6 @@ namespace uccApiCore2.BAL.Interface
         Task<List<Category>> GetSubCategory(Category obj);
         Task<List<Category>> GetAllSubCategory(Category obj);
         Task<int> SaveSubCategory(Category obj);
+        Task<List<MainCategory>> SaveMainCategoryforJson(MainCategory obj);
     }
 }

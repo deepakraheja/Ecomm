@@ -35,6 +35,10 @@ namespace uccApiCore2.BAL
         {
             return _IProductRepository.GetWithoutSetProductByRowID(obj);
         }
+        public Task<List<Product>> GetWithSetProductByRowID(Product obj)
+        {
+            return _IProductRepository.GetWithSetProductByRowID(obj);
+        }
         public Task<List<ProductSizeColor>> GetProductSizeColorByRowID(ProductSizeColor obj)
         {
             return _IProductRepository.GetProductSizeColorByRowID(obj);
@@ -81,6 +85,14 @@ namespace uccApiCore2.BAL
         public string[] GetProductSizeByRowID(string RowID)
         {
             return _IProductRepository.GetProductSizeByRowID(RowID);
+        }
+        public Task<List<ProductSizeSet>> SelectSETListbyRowID(string RowID)
+        {
+            return _IProductRepository.SelectSETListbyRowID(RowID);
+        }
+        public Task<List<ProductSizeSet>> SelectProductSizeColorWITHSETbyRowID(Cart obj)
+        {
+            return _IProductRepository.SelectProductSizeColorWITHSETbyRowID(obj);
         }
     }
 }
