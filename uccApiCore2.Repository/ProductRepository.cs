@@ -90,6 +90,21 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+        public async Task<List<Product>> GetWithSetProductByRowID(Product obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@GUID", obj.RowID);
+                parameters.Add("@ProductSizeId", obj.ProductSizeId);
+                List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_WithSetProduct_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
         public async Task<List<ProductSizeColor>> GetProductSizeColorByRowID(ProductSizeColor obj)
         {
             try
@@ -113,6 +128,36 @@ namespace uccApiCore2.Repository
                 parameters.Add("@GUID", RowID);
                 List<ProductSizeColor> lst = (await SqlMapper.QueryAsync<ProductSizeColor>(con, "p_ProductSizeColor_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<List<ProductSizeSet>> SelectSETListbyRowID(string RowID)
+        {
+            try
+            {
+                List<ProductSizeSet> lstProductSizeSet = new List<ProductSizeSet>();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@GUID", RowID);
+                lstProductSizeSet = (await SqlMapper.QueryAsync<ProductSizeSet>(con, "p_selectSET_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                return lstProductSizeSet;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<List<ProductSizeSet>> SelectProductSizeColorWITHSETbyRowID(Cart obj)
+        {
+            try
+            {
+                List<ProductSizeSet> lstProductSizeSet = new List<ProductSizeSet>();
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@GUID", obj.RowID);
+                lstProductSizeSet = (await SqlMapper.QueryAsync<ProductSizeSet>(con, "p_ProductSizeColorWITHSET_selbyRowID", param: parameters, commandType: StoredProcedure)).ToList();
+                return lstProductSizeSet;
             }
             catch (Exception ex)
             {
@@ -295,5 +340,12 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+    }
+    public class SetList
+    {
+        public int SetNo { get; set; }
+        public int Qty { get; set; } = 1;
+        public Boolean color { get; set; } = true;
+        public string size { get; set; }
     }
 }

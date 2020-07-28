@@ -12,6 +12,20 @@ namespace uccApiCore2.Repository
     public class CategoryRepository : BaseRepository, ICategoryRepository
     {
 
+        public async Task<List<MainCategory>> SaveMainCategoryforJson(MainCategory obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Active", obj.Active);
+                List<MainCategory> lst = (await SqlMapper.QueryAsync<MainCategory>(con, "p_MainCategory_sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
         public async Task<List<Category>> GetMainCategory(Category obj)
         {
             try

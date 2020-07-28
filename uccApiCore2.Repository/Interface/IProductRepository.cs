@@ -19,6 +19,7 @@ namespace uccApiCore2.Repository.Interface
 
         Task<List<Product>> GetBannerProduct();
         Task<List<Product>> GetWithoutSetProductByRowID(Product obj);
+        Task<List<Product>> GetWithSetProductByRowID(Product obj);
         Task<List<ProductSizeColor>> GetProductSizeColorByRowID(ProductSizeColor obj);
 
         Task<List<ProductSizeColor>> GetProductSizeColorByRowID(string RowID);
@@ -26,5 +27,8 @@ namespace uccApiCore2.Repository.Interface
         string[] GetProductColorByRowID(string RowID);
 
         string[] GetProductSizeByRowID(string RowID);
+
+        Task<List<ProductSizeSet>> SelectSETListbyRowID(string RowID);
+        Task<List<ProductSizeSet>> SelectProductSizeColorWITHSETbyRowID(Cart obj);
     }
 }
