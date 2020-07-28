@@ -35,6 +35,8 @@ namespace uccApiCore2.Repository
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@CartId", obj.CartId);
                 parameters.Add("@UserId", obj.UserID);
+                parameters.Add("@SetNo", obj.SetNo);
+                parameters.Add("@ProductID", obj.ProductId);
                 List<Cart> lst = (await SqlMapper.QueryAsync<Cart>(con, "p_DelCartById", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
