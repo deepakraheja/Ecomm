@@ -23,5 +23,7 @@ namespace uccApiCore2.Entities
 
         public string Color { get; set; }
         public string Size { get; set; }
+        public int SetNo { get; set; } = 0;
+        public string RowID { get; set; }
     }
 }

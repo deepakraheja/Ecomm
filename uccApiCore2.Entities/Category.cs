@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace uccApiCore2.Entities
 {
@@ -16,5 +17,8 @@ namespace uccApiCore2.Entities
         public int SubCategoryID { get; set; } = 0;
         public int MainCategoryID { get; set; } = 0;
         public string MainCategoryName { get; set; } = "";
+        public string Title { get; set; }
+        public string Type { get; set; }
+        public List<SubCategory> Children { get; set; }
     }
 }

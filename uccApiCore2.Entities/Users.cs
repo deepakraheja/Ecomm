@@ -7,7 +7,7 @@ namespace uccApiCore2.Entities
     public class Users
     {
         public int UserID { get; set; } = 0;
-        public bool IsActive { get; set; } = false;
+        public bool IsActive { get; set; } = true;
         public string LoginId { get; set; }
         public string password { get; set; }
         public string CreatedDate { get; set; }

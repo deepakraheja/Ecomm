@@ -16,6 +16,8 @@ namespace uccApiCore2.Entities
         public int Modifiedby { get; set; }
         public string SideSubCategory { get; set; }
         public string SubCatCode { get; set; }
+        public string Title { get; set; }
+        public string Type { get; set; }
         
 
     }

@@ -23,6 +23,6 @@ namespace uccApiCore2.Entities
         public string CreatedDate { get; set; } = "";
         public int Modifiedby { get; set; } = 0;
         public string ModifiedDate { get; set; } = "";
-        public bool Active { get; set; } = false;
+        public bool Active { get; set; } = true;
     }
 }

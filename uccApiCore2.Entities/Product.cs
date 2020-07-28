@@ -52,6 +52,7 @@ namespace uccApiCore2.Entities
         public int minimum { get; set; } = 0;
         public int ProductSizeId { get; set; } = 0;
         public string VideoURL { get; set; }
+		public List<ProductSizeSet> ProductSizeSet { get; set; }
     }
 }
 
