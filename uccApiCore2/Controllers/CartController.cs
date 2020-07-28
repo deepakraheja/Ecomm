@@ -58,7 +58,7 @@ namespace uccApiCore2.Controllers
                     }
                     else
                     {
-                    res = await this._ICartBAL.AddToCart(item);
+                        res = await this._ICartBAL.AddToCart(item);
                     }
 
                 }
@@ -96,7 +96,10 @@ namespace uccApiCore2.Controllers
                 List<Cart> lst = this._ICartBAL.GetCartById(obj).Result;
                 foreach (var item in lst)
                 {
-                    item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productColorImage/" + item.ProductSizeColorId), webRootPath);
+                    if (item.SetNo > 0)
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productSetImage", webRootPath, item.SetNo);
+                    else
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
                 }
 
                 return await Task.Run(() => new List<Cart>(lst));
