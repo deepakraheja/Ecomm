@@ -41,6 +41,20 @@ namespace uccApiCore2.Controllers
             }
         }
         [HttpPost]
+        [Route("SaveMainCategoryforJson")]
+        public async Task<List<MainCategory>> SaveMainCategoryforJson([FromBody] MainCategory obj)
+        {
+            try
+            {
+                return await  this._Category.SaveMainCategoryforJson(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside CategoryController GetMainCategory action: {ex.Message}");
+                return null;
+            }
+        }
+        [HttpPost]
         [Route("GetMainCategory")]
         public async Task<List<Category>> GetMainCategory([FromBody] Category obj)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,13 @@ namespace uccApiCore2.Controllers
     public class CartController : BaseController<CartController>
     {
         ICartBAL _ICartBAL;
+        IProductBAL _IProductBAL;
         Utilities _utilities = new Utilities();
         public static string webRootPath;
-        public CartController(IHostingEnvironment hostingEnvironment, ICartBAL CartBAL)
+        public CartController(IHostingEnvironment hostingEnvironment, ICartBAL CartBAL, IProductBAL ProductBAL)
         {
             _ICartBAL = CartBAL;
+            _IProductBAL = ProductBAL;
             webRootPath = hostingEnvironment.WebRootPath;
         }
 
@@ -30,10 +33,33 @@ namespace uccApiCore2.Controllers
             try
             {
                 var res = -1;
+                List<ProductSizeSet> lst = new List<ProductSizeSet>();
+                if (obj[0].SetNo > 0)
+                {
+                    lst = _IProductBAL.SelectProductSizeColorWITHSETbyRowID(obj[0]).Result;
+                }
                 foreach (var item in obj)
                 {
+                    if (item.SetNo > 0)
+                    {
+                        List<ProductSizeSet> lstselect = lst.Where(x => x.SetNo == item.SetNo).ToList();
 
+                        if (lstselect.Count > 0)
+                        {
+                            foreach (var itemnew in lstselect)
+                            {
+                                Cart _obj = new Cart();
+                                _obj.ProductSizeId = itemnew.ProductSizeId;
+                                _obj.Quantity = item.Quantity;
+                                _obj.UserID = item.UserID;
+                                res = await this._ICartBAL.AddToCart(_obj);
+                            }
+                        }
+                    }
+                    else
+                    {
                     res = await this._ICartBAL.AddToCart(item);
+                    }
 
                 }
                 return res;

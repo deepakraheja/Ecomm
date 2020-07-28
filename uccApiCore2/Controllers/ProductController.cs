@@ -124,6 +124,22 @@ namespace uccApiCore2.Controllers
         }
         ///return await this._IProductBAL.GetProductBybyRowID(obj);
         [HttpPost]
+        [Route("GetWithSetProductByRowID")]
+        public async Task<List<Product>> GetWithSetProductByRowID([FromBody] Product obj)
+        {
+            try
+            {
+                List<Product> lst = this._IProductBAL.GetWithSetProductByRowID(obj).Result;
+                lst[0].ProductSizeSet = this._IProductBAL.SelectSETListbyRowID(obj.RowID).Result;
+                return await Task.Run(() => new List<Product>(lst));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController GetProductBybyRowID action: {ex.Message}");
+                return null;
+            }
+        }
+        [HttpPost]
         [Route("GetProductSizeColorByRowID")]
         public async Task<List<ProductSizeColor>> GetProductSizeColorByRowID([FromBody] ProductSizeColor obj)
         {
