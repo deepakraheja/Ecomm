@@ -1,23 +1,23 @@
 [
 
   {
-    "title": "Kurti",
+    "title": "Women Fashion",
     "type": "sub",
     "megaMenu": true,
-    "active": false,
+    "active": true,
     "children": [
       {
         "title": "Kurti",
         "type": "link",
-        "active": false,
+        "active": true,
         "children": [
           {
-            "path": "/shop/collection/left/sidebar",
+            "path": "/shop/collection/left/sidebar?category=FancyKurtis",
             "title": "Fancy Kurtis",
             "type": "link"
           },
           {
-            "path": "/shop/collection/left/sidebar",
+            "path": "/shop/collection/left/sidebar?category=CottonStraight",
             "title": "Cotton Straight",
             "type": "link"
           },
@@ -33,20 +33,303 @@
           }
 
         ]
+      },
+      {
+        "title": "Tops",
+        "type": "link",
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
+      },
+      {
+        "title": "Jeans",
+        "type": "link",
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
+      },
+      {
+        "title": "Jeggings",
+        "type": "link",
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
+      },
+      {
+        "title": "Lowers",
+        "type": "link",
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
       }
+      
     ]
+
+
   },
 
   {
-    "title": "Tops",
+    "title": "Men Fashion",
     "type": "sub",
     "megaMenu": true,
-    "active": false,
+    "active": true,
     "children": [
       {
         "title": "Tops",
         "type": "link",
-        "active": false,
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
+      },
+      {
+        "title": "Tops",
+        "type": "link",
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
+      },
+      {
+        "title": "Jeans",
+        "type": "link",
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
+      },
+      {
+        "title": "Jeggings",
+        "type": "link",
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
+      },
+      {
+        "title": "Lowers",
+        "type": "link",
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
+      },
+      {
+        "title": "Shirts",
+        "type": "link",
+        "active": true,
+        "children": [
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Tshirts",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Plus Size Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Funky and Different Tops",
+            "type": "link"
+          },
+          {
+            "path": "/shop/collection/left/sidebar",
+            "title": "Chiffon Georgette Tops",
+            "type": "link"
+          }
+
+        ]
+      },
+      {
+        "title": "Night Suits Hosiery",
+        "type": "link",
+        "active": true,
         "children": [
           {
             "path": "/shop/collection/left/sidebar",
