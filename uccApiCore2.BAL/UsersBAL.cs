@@ -28,5 +28,9 @@ namespace uccApiCore2.BAL
         {
             return _users.GetAllUsers();
         }
+        public Task<int> UpdateUser(Users obj)
+        {
+            return _users.UpdateUser(obj);
+        }
     }
 }
