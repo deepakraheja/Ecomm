@@ -73,9 +73,9 @@ namespace uccApiCore2.Controllers
                 foreach (var item in lst[0].OrderDetails)
                 {
                     if (item.SetNo > 0)
-                        item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productSetImage/" + item.SetNo), webRootPath);
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productSetImage", webRootPath, item.SetNo);
                     else
-                        item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productColorImage/" + item.ProductSizeColorId), webRootPath);
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
                 }
                 return await Task.Run(() => new List<Order>(lst));
             }
