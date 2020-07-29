@@ -59,5 +59,28 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<int> UpdateUser(Users obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@UserID", obj.UserID);
+                parameters.Add("@email", obj.email);
+                parameters.Add("@Name", obj.Name);
+                parameters.Add("@MobileNo", obj.MobileNo);
+
+                parameters.Add("@IsActive", obj.IsActive);
+                parameters.Add("@IsApproval", obj.IsApproval);
+                parameters.Add("@ApprovedBy", obj.ApprovedBy);
+                parameters.Add("@ApprovedDate", obj.ApprovedDate);
+                var res = await SqlMapper.ExecuteScalarAsync(con, "p_Users_upd", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
