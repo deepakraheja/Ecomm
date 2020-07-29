@@ -62,7 +62,20 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
-
+        [HttpPost]
+        [Route("UpdateUser")]
+        public async Task<int> UpdateUser([FromBody] Users obj)
+        {
+            try
+            {
+                return await this._usersBAL.UpdateUser(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController UpdateUser action: {ex.Message}");
+                return -1;
+            }
+        }
     }
 
 
