@@ -82,5 +82,22 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<int> UpdatePwd(Users obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@UserID", obj.UserID);
+                parameters.Add("@password", obj.password);
+                parameters.Add("@NewPassword", obj.NewPassword);
+                var res = await SqlMapper.ExecuteScalarAsync(con, "p_UpdatePwd", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }

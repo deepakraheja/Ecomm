@@ -12,5 +12,6 @@ namespace uccApiCore2.Repository.Interface
         Task<List<Users>> ValidLogin(Users obj);
         Task<List<Users>> GetAllUsers();
         Task<int> UpdateUser(Users obj);
+        Task<int> UpdatePwd(Users obj);
     }
 }
