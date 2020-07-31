@@ -76,6 +76,21 @@ namespace uccApiCore2.Controllers
                 return -1;
             }
         }
+
+        [HttpPost]
+        [Route("UpdatePwd")]
+        public async Task<int> UpdatePwd([FromBody] Users obj)
+        {
+            try
+            {
+                return await this._usersBAL.UpdatePwd(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController UpdatePwd action: {ex.Message}");
+                return -1;
+            }
+        }
     }
 
 
