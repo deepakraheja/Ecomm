@@ -20,5 +20,7 @@ namespace uccApiCore2.Entities
         public int ApprovedBy { get; set; } = 0;
         public string ApprovedDate { get; set; }
         public string ApprovedByUserName { get; set; }
+        public string NewPassword { get; set; }
+
     }
 }
