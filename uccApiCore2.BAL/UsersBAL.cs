@@ -32,5 +32,9 @@ namespace uccApiCore2.BAL
         {
             return _users.UpdateUser(obj);
         }
+        public Task<int> UpdatePwd(Users obj)
+        {
+            return _users.UpdatePwd(obj);
+        }
     }
 }
