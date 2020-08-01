@@ -30,5 +30,7 @@ namespace uccApiCore2.Entities
         public int ProductId { get; set; }
         public string Color { get; set; }
         public string Size { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     }
 }
