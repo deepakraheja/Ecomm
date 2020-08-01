@@ -104,5 +104,38 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<List<Order>> GetAllOrder(Order obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                if (obj.StatusId > 0)
+                    parameters.Add("@StatusId", obj.StatusId);
+                parameters.Add("@StartDate", Convert.ToDateTime(obj.StartDate));
+                parameters.Add("@EndDate", Convert.ToDateTime(obj.EndDate));
+                List<Order> lst = (await SqlMapper.QueryAsync<Order>(con, "p_GetAllOrder", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+        public async Task<List<Order>> GetAllOrderDetails(Order obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@OrderId", obj.OrderId);
+                List<Order> lst = (await SqlMapper.QueryAsync<Order>(con, "p_GetAllOrderDetails", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
