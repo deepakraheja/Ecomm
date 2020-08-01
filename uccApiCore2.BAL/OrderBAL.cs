@@ -37,5 +37,13 @@ namespace uccApiCore2.BAL
         {
             return _OrderRepository.GetOrderDetailsByUserId(obj);
         }
+        public Task<List<Order>> GetAllOrder(Order obj)
+        {
+            return _OrderRepository.GetAllOrder(obj);
+        }
+        public Task<List<Order>> GetAllOrderDetails(Order obj)
+        {
+            return _OrderRepository.GetAllOrderDetails(obj);
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace uccApiCore2.BAL.Interface
         Task<List<Order>> GetOrderDetailsByOrderId(Order obj);
         Task<List<Order>> GetOrderByUserId(Order obj);
         Task<List<Order>> GetOrderDetailsByUserId(Order obj);
+        Task<List<Order>> GetAllOrder(Order obj);
+        Task<List<Order>> GetAllOrderDetails(Order obj);
     }
 }
