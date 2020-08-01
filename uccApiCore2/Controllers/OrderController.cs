@@ -85,5 +85,33 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
+        [HttpPost]
+        [Route("GetAllOrder")]
+        public async Task<List<Order>> GetAllOrder([FromBody] Order obj)
+        {
+            try
+            {
+                List<Order> lst = this._IOrderBAL.GetAllOrder(obj).Result;
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    obj.OrderId = lst[i].OrderId;
+                    lst[i].OrderDetails = this._IOrderBAL.GetAllOrderDetails(obj).Result;
+                    foreach (var item in lst[i].OrderDetails)
+                    {
+                        if (item.SetNo > 0)
+                            item.ProductImg = _utilities.ProductImage(item.ProductId, "productSetImage", webRootPath, item.SetNo);
+                        else
+                            item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
+                    }
+                }
+
+                return await Task.Run(() => new List<Order>(lst));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside OrderController GetOrderByUserId action: {ex.Message}");
+                return null;
+            }
+        }
     }
 }
