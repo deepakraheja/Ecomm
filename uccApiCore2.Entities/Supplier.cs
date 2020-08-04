@@ -7,9 +7,9 @@ namespace uccApiCore2.Entities
     public class Supplier
     {
         public int SupplierID { get; set; } = 0;
-        public string Fname { get; set; }
-        public string MName { get; set; } = "";
-        public string LName { get; set; }
+        public string CompanyName { get; set; }
+        public string Name { get; set; } = "";
+        public string Designation { get; set; }
         public string Address1 { get; set; }
         public string City { get; set; }
         public string State { get; set; }
