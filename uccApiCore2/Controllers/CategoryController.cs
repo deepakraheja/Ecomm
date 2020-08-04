@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using uccApiCore2.BAL.Interface;
 using uccApiCore2.Controllers.Common;
 using uccApiCore2.Entities;
@@ -42,29 +43,33 @@ namespace uccApiCore2.Controllers
         }
         [HttpPost]
         [Route("SaveMainCategoryforJson")]
-        public void SaveMainCategoryforJson([FromBody] MainCategory obj)
+        public  List<MainCategoryJson> SaveMainCategoryforJson()
         {
             try
             {
-                List<MainCategory> lstmain = this._Category.SelecteMainCategoryforJson(obj).Result;
+                List<MainCategoryJson> lstmain = this._Category.SelecteMainCategoryforJson().Result;
 
                 for (int i = 0; i < lstmain.Count; i++)
                 {
                     List<CategoryJson> lstCategoryJson = this._Category.SelecteCategoryforJson(lstmain[i].MaincategoryId).Result;
+                    lstmain[i].children = lstCategoryJson;
 
                     for (int j = 0; j < lstCategoryJson.Count; j++)
                     {
 
-
+                        List<SubCategoryJson> lstSubCategoryJson = this._Category.SelecteSubCategoryforJson(lstCategoryJson[j].CategoryId).Result;
+                        lstCategoryJson[j].children = lstSubCategoryJson;
                     }
                 }
-
-                //return await  this._Category.SelecteMainCategoryforJson(obj);
+                var folderDetails = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\{"Json\\leftMenuItems.json"}");
+                string json = JsonConvert.SerializeObject(lstmain.ToArray());
+                System.IO.File.WriteAllText(folderDetails, json);
+                return  lstmain;
             }
             catch (Exception ex)
             {
                 Logger.LogError($"Something went wrong inside CategoryController GetMainCategory action: {ex.Message}");
-                //return null;
+                return null;
             }
         }
         [HttpPost]
@@ -103,6 +108,7 @@ namespace uccApiCore2.Controllers
         {
             try
             {
+                SaveMainCategoryforJson();
                 return await this._Category.SaveMainCategory(obj);
             }
             catch (Exception ex)
@@ -147,6 +153,7 @@ namespace uccApiCore2.Controllers
         {
             try
             {
+                SaveMainCategoryforJson();
                 return await this._Category.SaveCategory(obj);
             }
             catch (Exception ex)
@@ -192,6 +199,7 @@ namespace uccApiCore2.Controllers
         {
             try
             {
+                SaveMainCategoryforJson();
                 return await this._Category.SaveSubCategory(obj);
             }
             catch (Exception ex)
