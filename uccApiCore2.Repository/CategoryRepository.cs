@@ -12,12 +12,12 @@ namespace uccApiCore2.Repository
     public class CategoryRepository : BaseRepository, ICategoryRepository
     {
 
-        public async Task<List<MainCategory>> SaveMainCategoryforJson(MainCategory obj)
+        public async Task<List<MainCategory>> SelecteMainCategoryforJson(MainCategory obj)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Active", obj.Active);
+                parameters.Add("@Active", 1);
                 List<MainCategory> lst = (await SqlMapper.QueryAsync<MainCategory>(con, "p_MainCategory_sel", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
@@ -26,6 +26,40 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<List<CategoryJson>> SelecteCategoryforJson(int MaincategoryId)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Active", 1);
+                parameters.Add("@MaincategoryId", MaincategoryId);
+                List<CategoryJson> lst = (await SqlMapper.QueryAsync<CategoryJson>(con, "p_CategoryJson_sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+
+        public async Task<List<SubCategoryJson>> SelecteSubCategoryforJson(int CategoryId)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Active", 1);
+                parameters.Add("@CategoryId", CategoryId);
+                List<SubCategoryJson> lst = (await SqlMapper.QueryAsync<SubCategoryJson>(con, "p_SubCategoryJson_sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
         public async Task<List<Category>> GetMainCategory(Category obj)
         {
             try
