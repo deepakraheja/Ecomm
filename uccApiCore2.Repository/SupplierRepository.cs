@@ -45,9 +45,9 @@ namespace uccApiCore2.Repository
                 DynamicParameters parameters = new DynamicParameters();
                 if (obj.SupplierID > 0)
                     parameters.Add("@SupplierID", obj.SupplierID);
-                parameters.Add("@Fname", obj.Fname);
-                parameters.Add("@MName", obj.MName);
-                parameters.Add("@LName", obj.LName);
+                parameters.Add("@CompanyName", obj.CompanyName);
+                parameters.Add("@Name", obj.Name);
+                parameters.Add("@Designation", obj.Designation);
                 parameters.Add("@Address1", obj.Address1);
                 parameters.Add("@City", obj.City);
                 parameters.Add("@STATE", obj.State);
