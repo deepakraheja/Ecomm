@@ -12,5 +12,8 @@ namespace uccApiCore2.Entities
         public bool MegaMenu { get; set; } = true;
         public bool Active { get; set; } = true;
         public List<CategoryJson> Children { get; set; }
+        public string MainCategoryName { get; set; }
+        public string Description { get; set; }
+        public int CreatedBy { get; set; } = 0;
     }
 }
