@@ -4,13 +4,13 @@ using System.Text;
 
 namespace uccApiCore2.Entities
 {
-    public class MainCategory
+    public class CategoryJson
     {
-        public int MaincategoryId { get; set; }
+        public int CategoryId { get; set; }
         public string Title { get; set; }
         public string Type { get; set; }
-        public bool MegaMenu { get; set; } = true;
+        
         public bool Active { get; set; } = true;
-        public List<CategoryJson> Children { get; set; }
+        public List<SubCategoryJson> Children { get; set; }
     }
 }
