@@ -53,9 +53,19 @@ namespace uccApiCore2.BAL
         {
             return _CategoryRepository.SaveSubCategory(obj);
         }
-        public Task<List<MainCategory>> SaveMainCategoryforJson(MainCategory obj)
+        public Task<List<MainCategory>> SelecteMainCategoryforJson(MainCategory obj)
         {
-            return _CategoryRepository.SaveMainCategoryforJson(obj);
+            return _CategoryRepository.SelecteMainCategoryforJson(obj);
+        }
+
+        public Task<List<CategoryJson>> SelecteCategoryforJson(int MaincategoryId)
+        {
+            return _CategoryRepository.SelecteCategoryforJson(MaincategoryId);
+        }
+
+        public Task<List<SubCategoryJson>> SelecteSubCategoryforJson(int CategoryId)
+        {
+            return _CategoryRepository.SelecteSubCategoryforJson(CategoryId);
         }
     }
 }
