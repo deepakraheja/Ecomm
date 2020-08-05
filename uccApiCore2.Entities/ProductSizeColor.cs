@@ -15,6 +15,7 @@ namespace uccApiCore2.Entities
         public int SalePrice { get; set; } = 0;
         public bool AvailableSize { get; set; } = false;
         public bool AvailableColors { get; set; } = false;
+        public int SizeId { get; set; }
         public string Size { get; set; }
         public int SetNo { get; set; } = 0;
         public string Color { get; set; }
