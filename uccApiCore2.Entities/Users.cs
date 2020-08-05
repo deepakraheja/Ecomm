@@ -22,5 +22,7 @@ namespace uccApiCore2.Entities
         public string ApprovedByUserName { get; set; }
         public string NewPassword { get; set; }
 
+         public string Token { get; set; }
+
     }
 }
