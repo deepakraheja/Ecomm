@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -11,6 +12,7 @@ using uccApiCore2.Entities;
 
 namespace uccApiCore2.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class ProductController : BaseController<ProductController>
     {
@@ -31,6 +33,7 @@ namespace uccApiCore2.Controllers
         }
         [HttpPost]
         [Route("GetProductBySubcatecode")]
+        [AllowAnonymous]
         public async Task<List<Product>> GetProductBySubcatecode([FromBody] Product obj)
         {
             try

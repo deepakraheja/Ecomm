@@ -17,8 +17,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using uccApiCore2.BAL;
 using uccApiCore2.BAL.Interface;
+using uccApiCore2.JWT;
 using uccApiCore2.Repository;
 using uccApiCore2.Repository.Interface;
+using uccApiCore2.Services;
 
 namespace uccApiCore2
 {
@@ -34,6 +36,9 @@ namespace uccApiCore2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+		
+		 //Inject AppSettings
+            services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
                 builder
@@ -91,6 +96,36 @@ namespace uccApiCore2
 
             services.AddTransient<IEmailTemplateBAL, EmailTemplateBAL>();
             services.AddScoped<IEmailTemplateRepository, EmailTemplateRepository>();
+            services.AddScoped<UserService>();
+            services.AddHttpContextAccessor();
+            //*************************JWT Authentication Start here****************************
+
+
+            var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:Jwt_Secret"].ToString());
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+           .AddJwtBearer(x =>
+           {
+               x.RequireHttpsMetadata = false;
+               x.SaveToken = true;
+               x.TokenValidationParameters = new TokenValidationParameters
+               {
+                   ValidateIssuerSigningKey = true,
+                   IssuerSigningKey = new SymmetricSecurityKey(key),
+                   ValidateIssuer = false,
+                   ValidateAudience = false
+               };
+           });
+
+            services.AddScoped<IAuthorizeService, AuthorizeService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //*************************JWT Authentication End here****************************
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -100,6 +135,8 @@ namespace uccApiCore2
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseAuthentication();//JWT Authentication
+           
 
             app.UseStaticFiles(); // For the wwwroot folder
 

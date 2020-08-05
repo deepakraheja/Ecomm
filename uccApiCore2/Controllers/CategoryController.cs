@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ using uccApiCore2.Entities;
 
 namespace uccApiCore2.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class CategoryController : BaseController<CategoryController>
     {
@@ -26,6 +28,7 @@ namespace uccApiCore2.Controllers
 
         [HttpGet]
         [Route("GetCategoryJson")]
+        [AllowAnonymous]
         public string GetCategoryJson()
         {
             try

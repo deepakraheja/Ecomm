@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
@@ -10,12 +11,12 @@ using uccApiCore2.Entities;
 
 namespace uccApiCore2.Controllers
 {
+
+    [Authorize]
     [Route("api/[controller]")]
     public class TagController : BaseController<TagController>
     {
         ILookupTagBAL _lookupTag;
-
-
         public TagController(ILookupTagBAL lookupTag)
         {
             _lookupTag = lookupTag;

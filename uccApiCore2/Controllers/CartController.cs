@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -12,6 +13,8 @@ using uccApiCore2.Entities;
 
 namespace uccApiCore2.Controllers
 {
+
+    [Authorize]
     [Route("api/[controller]")]
     public class CartController : BaseController<CartController>
     {

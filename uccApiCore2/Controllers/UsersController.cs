@@ -1,26 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using uccApiCore2.BAL.Interface;
 using uccApiCore2.Controllers.Common;
 using uccApiCore2.Entities;
+using uccApiCore2.JWT;
 
 namespace uccApiCore2.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class UsersController : BaseController<UsersController>
     {
         IUsersBAL _usersBAL;
-        public UsersController(IUsersBAL usersBAL)
+        private readonly ApplicationSettings _appSettings;
+
+        public UsersController(IUsersBAL usersBAL, IOptions<ApplicationSettings> appSettings)
         {
             _usersBAL = usersBAL;
+            _appSettings = appSettings.Value;
         }
 
         [HttpPost]
         [Route("UserRegistration")]
+        [AllowAnonymous]
         public async Task<int> UserRegistration([FromBody] Users obj)
         {
             try
@@ -35,11 +43,24 @@ namespace uccApiCore2.Controllers
         }
         [HttpPost]
         [Route("ValidLogin")]
+        [AllowAnonymous]
         public async Task<List<Users>> ValidLogin([FromBody] Users obj)
         {
             try
             {
-                return await this._usersBAL.ValidLogin(obj);
+                List<Users> lstLogin = new List<Users>();
+                lstLogin = await this._usersBAL.ValidLogin(obj);
+
+                if (lstLogin.Count > 0)
+                {
+                    AuthorizeService auth = new AuthorizeService();
+                    string _token = auth.Authenticate(Convert.ToString(lstLogin[0].UserID), _appSettings);
+                    lstLogin[0].Token = _token;
+                   // return lstLogin;
+                }
+               
+                return lstLogin;
+
             }
             catch (Exception ex)
             {
