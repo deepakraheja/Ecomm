@@ -88,6 +88,9 @@ namespace uccApiCore2
 
             services.AddTransient<IOrderBAL, OrderBAL>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+
+            services.AddTransient<IEmailTemplateBAL, EmailTemplateBAL>();
+            services.AddScoped<IEmailTemplateRepository, EmailTemplateRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
