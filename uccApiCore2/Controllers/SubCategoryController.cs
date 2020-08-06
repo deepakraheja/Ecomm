@@ -27,6 +27,7 @@ namespace uccApiCore2.Controllers
    
         [HttpPost]
         [Route("GetSubcategoryByCatId")]
+        [AllowAnonymous]
         public async Task<List<SubCategory>> GetSubcategoryByCatId([FromBody]SubCategory obj)
         {
             try
@@ -42,6 +43,7 @@ namespace uccApiCore2.Controllers
 
         [HttpPost]
         [Route("GetSideSubcategory")]
+        [AllowAnonymous]
         public async Task<List<SubCategory>> GetSideSubcategory([FromBody]SubCategory obj)
         {
             try
