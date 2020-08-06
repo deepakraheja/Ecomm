@@ -96,6 +96,7 @@ namespace uccApiCore2
 
             services.AddTransient<IEmailTemplateBAL, EmailTemplateBAL>();
             services.AddScoped<IEmailTemplateRepository, EmailTemplateRepository>();
+
             services.AddScoped<UserService>();
             services.AddHttpContextAccessor();
             //*************************JWT Authentication Start here****************************
