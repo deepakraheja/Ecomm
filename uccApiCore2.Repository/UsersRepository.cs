@@ -99,5 +99,19 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+        public async Task<List<Users>> GetUserInfo(Users obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@UserID", obj.UserID);
+                List<Users> lst = (await SqlMapper.QueryAsync<Users>(con, "p_Users_sel_userId", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
