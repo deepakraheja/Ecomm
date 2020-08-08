@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using uccApiCore2.BAL;
 using uccApiCore2.BAL.Interface;
 using uccApiCore2.Controllers.Common;
 using uccApiCore2.Entities;
 using uccApiCore2.JWT;
+using static uccApiCore2.Controllers.Common.SendEmails;
 
 namespace uccApiCore2.Controllers
 {
@@ -18,12 +20,14 @@ namespace uccApiCore2.Controllers
     public class UsersController : BaseController<UsersController>
     {
         IUsersBAL _usersBAL;
+        IEmailTemplateBAL _IEmailTemplateBAL;
         private readonly ApplicationSettings _appSettings;
 
-        public UsersController(IUsersBAL usersBAL, IOptions<ApplicationSettings> appSettings)
+        public UsersController(IUsersBAL usersBAL, IOptions<ApplicationSettings> appSettings, IEmailTemplateBAL emailTemplateBAL)
         {
             _usersBAL = usersBAL;
             _appSettings = appSettings.Value;
+            _IEmailTemplateBAL = emailTemplateBAL;
         }
 
         [HttpPost]
@@ -33,7 +37,10 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                return await this._usersBAL.UserRegistration(obj);
+                int res= await this._usersBAL.UserRegistration(obj);
+                SendEmails sendEmails = new SendEmails(_usersBAL,_IEmailTemplateBAL);
+                sendEmails.setMailContent(res, EStatus.Registration.ToString());
+                return res;
             }
             catch (Exception ex)
             {

@@ -26,6 +26,72 @@ namespace uccApiCore2
 {
     public class Startup
     {
+        public static string UsesmtpSSL
+        {
+            get;
+            private set;
+        }
+        public static string EnableSsl
+        {
+            get;
+            private set;
+        }
+        public static string enableMail
+        {
+            get;
+            private set;
+        }
+        public static string mailServer
+        {
+            get;
+            private set;
+        }
+        public static string userId
+        {
+            get;
+            private set;
+        }
+        public static string password
+        {
+            get;
+            private set;
+        }
+
+        public static string authenticate
+        {
+            get;
+            private set;
+        }
+
+        public static string AdminEmailID
+        {
+            get;
+            private set;
+        }
+
+        public static string fromEmailID
+        {
+            get;
+            private set;
+        }
+
+        public static string DomainName
+        {
+            get;
+            private set;
+        }
+
+        public static string AllowSendMails
+        {
+            get;
+            private set;
+        }
+
+        public static string UserName
+        {
+            get;
+            private set;
+        }
         public Startup(IHostingEnvironment env)
         {
             Configuration = new ConfigurationBuilder().SetBasePath(env.ContentRootPath).AddJsonFile("appSettings.json").Build();
@@ -45,7 +111,7 @@ namespace uccApiCore2
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials()
-                .AllowAnyOrigin()
+                //.AllowAnyOrigin()
                 .WithOrigins("http://ecom.uccnoida.com", "http://adminecom.uccnoida.com", "http://localhost:4100", "http://localhost:4200", "http://localhost:4000", "http://localhost:4300", "http://localhost:5000", "http://localhost:5100", "http://localhost:5200", "http://localhost:4500");
             }));
             //services.AddCors(c =>
@@ -180,6 +246,18 @@ namespace uccApiCore2
                 routes.MapHub<NotifyHub>("/notify");
             });
             app.UseMvc();
+            UsesmtpSSL = Configuration["EmailSetting:UsesmtpSSL"];
+            EnableSsl = Configuration["EmailSetting:EnableSsl"];
+            enableMail = Configuration["EmailSetting:enableMail"];
+            mailServer = Configuration["EmailSetting:mailServer"];
+            userId = Configuration["EmailSetting:userId"];
+            password = Configuration["EmailSetting:password"];
+            authenticate = Configuration["EmailSetting:authenticate"];
+            AdminEmailID = Configuration["EmailSetting:AdminEmailID"];
+            fromEmailID = Configuration["EmailSetting:fromEmailID"];
+            DomainName = Configuration["EmailSetting:DomainName"];
+            AllowSendMails = Configuration["EmailSetting:AllowSendMails"];
+            UserName = Configuration["EmailSetting:UserName"];
         }
     }
 }
