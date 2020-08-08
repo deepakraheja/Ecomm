@@ -137,7 +137,7 @@ namespace uccApiCore2.Controllers.Common
             Utilities utilities = new Utilities();
             string strBody = GetMailBody(emailParameters);
             //****************Calling the Send Mail Function *******************************
-            MailContent objMailContent = new MailContent() { From = "sonukumar18@gmail.com", toEmailaddress = emailParameters.email, displayName = "Vikram Creations Private Limited", subject = emailParameters.Subject, emailBody = strBody, strAttachment = strAttachment, EventData = EventData };
+            MailContent objMailContent = new MailContent() { From = "esales@vikramcreations.com", toEmailaddress = emailParameters.email, displayName = "Vikram Creations Private Limited", subject = emailParameters.Subject, emailBody = strBody, strAttachment = strAttachment, EventData = EventData };
             SendEmailInBackgroundThread(objMailContent);
         }
 

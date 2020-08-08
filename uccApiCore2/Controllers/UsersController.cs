@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +31,97 @@ namespace uccApiCore2.Controllers
             _appSettings = appSettings.Value;
             _IEmailTemplateBAL = emailTemplateBAL;
         }
+
+        [HttpPost]
+        [Route("SendEmail")]
+        [AllowAnonymous]
+        public void SendEmail()
+        {
+            string strFrom = "esales@vikramcreations.com";
+
+            SmtpClient smtpClient = new SmtpClient();
+            MailMessage message = new MailMessage();
+
+            string userId = "esales@vikramcreations.com";// Convert.ToString(ConfigurationManager.AppSettings["MailUserId"]); //MAIL ID FOR AUTHENTICATION
+            string password = "Sales@123";// Convert.ToString(ConfigurationManager.AppSettings["MailPassword"]); ;//PASSWORD FOR AUTHENTICATION
+            bool EnableSsl = true;
+
+            bool flag = true;
+            string strSub = "Hello";
+            string strBody = "Hello, This is Email sending test using gmail.";
+
+            //  string addMessage = Convert.ToString(ConfigurationManager.AppSettings["Subject"]);
+            String host = "smtp.gmail.com";// ConfigurationManager.AppSettings["mailServer"];
+            MailAddress FromAddress = new MailAddress(strFrom);
+            try
+            {
+                smtpClient.EnableSsl = EnableSsl;//Convert.ToBoolean(EnableSsl);
+                smtpClient.Host = host;
+                message.From = FromAddress;
+                message.To.Add("deepakrahejain@gmail.com");
+                //message.CC.Add(strCc);
+                //message.Bcc.Add(strBcc);
+                message.Subject = strSub;
+                message.Body = strBody;
+                message.IsBodyHtml = true;
+                if (flag)
+                {
+                    NetworkCredential oCredential = new NetworkCredential(userId, password);
+                    smtpClient.UseDefaultCredentials = false;
+                    smtpClient.Credentials = oCredential;
+                }
+                else
+                {
+                    smtpClient.UseDefaultCredentials = true;
+
+                }
+                smtpClient.Send(message);
+
+            }
+            catch (Exception exx)
+            {
+                string str = exx.Message.ToString();
+
+            }
+
+
+
+            //try
+            //{
+            //    string smtpAddress = "smtp.gmail.com";
+            //    int portNumber = 587;
+            //    bool enableSSL = true;
+            //    string emailFromAddress = "esales@vikramcreations.com"; //Sender Email Address  
+            //    string password = "Sales@123"; //Sender Password  
+            //    string emailToAddress = "deepakrahejain@gmail.com"; //Receiver Email Address  
+            //    string subject = "Hello";
+            //    string body = "Hello, This is Email sending test using gmail.";
+
+            //    using (MailMessage mail = new MailMessage())
+            //    {
+            //        mail.From = new MailAddress(emailFromAddress);
+            //        mail.To.Add(emailToAddress);
+            //        mail.Subject = subject;
+            //        mail.Body = body;
+            //        mail.IsBodyHtml = true;
+            //        //mail.Attachments.Add(new Attachment("D:\\TestFile.txt"));//--Uncomment this to send any attachment  
+            //        using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
+            //        {
+            //            smtp.Credentials = new NetworkCredential(emailFromAddress, password);
+            //            smtp.EnableSsl = enableSSL;
+            //            smtp.Send(mail);
+
+            //        }
+
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Logger.LogError($"Something went wrong inside UsersController GetAllUsers action: {ex.Message}");
+
+            //}
+        }
+
 
         [HttpPost]
         [Route("UserRegistration")]
