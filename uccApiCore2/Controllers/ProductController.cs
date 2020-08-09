@@ -134,6 +134,13 @@ namespace uccApiCore2.Controllers
             {
                 List<Product> lst = this._IProductBAL.GetWithSetProductByRowID(obj).Result;
                 lst[0].ProductSizeSet = this._IProductBAL.SelectSETListbyRowID(obj.RowID).Result;
+
+
+                for (int i = 0; i < lst[0].ProductSizeSet.Count; i++) // added on 9 aug 2020 by deepak
+                {
+                    lst[0].ProductSizeSet[i].ProductImg = _utilities.ProductImage(lst[0].ProductID, "productSetImage", webRootPath, lst[0].ProductSizeSet[i].SetNo);
+                }
+
                 return await Task.Run(() => new List<Product>(lst));
             }
             catch (Exception ex)

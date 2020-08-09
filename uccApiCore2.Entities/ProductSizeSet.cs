@@ -14,6 +14,8 @@ namespace uccApiCore2.Entities
 
         public int ProductSizeId { get; set; } = 0;
 
+        public string[] ProductImg { get; set; }
+
 
     }
 }
