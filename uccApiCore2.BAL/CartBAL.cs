@@ -29,5 +29,9 @@ namespace uccApiCore2.BAL
         {
             return _ICartRepository.GetCartById(obj);
         }
+        public Task<List<Cart>> GetCartByUserId(Cart obj)
+        {
+            return _ICartRepository.GetCartByUserId(obj);
+        }
     }
 }
