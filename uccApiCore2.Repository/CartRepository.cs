@@ -60,5 +60,20 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<List<Cart>> GetCartByUserId(Cart obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@UserId", obj.UserID);
+                List<Cart> lst = (await SqlMapper.QueryAsync<Cart>(con, "p_Cart_selbyUserId", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }

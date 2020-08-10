@@ -11,5 +11,6 @@ namespace uccApiCore2.Repository.Interface
         Task<int> AddToCart(Cart obj);
         Task<List<Cart>> DelCartById(Cart obj);
         Task<List<Cart>> GetCartById(Cart obj);
+        Task<List<Cart>> GetCartByUserId(Cart obj);
     }
 }
