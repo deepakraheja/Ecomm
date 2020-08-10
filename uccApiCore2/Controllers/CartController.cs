@@ -75,6 +75,51 @@ namespace uccApiCore2.Controllers
         }
 
         [HttpPost]
+        [Route("UpdateToCart")]
+        public async Task<int> UpdateToCart([FromBody] List<Cart> obj)
+        {
+            try
+            {
+                var res = -1;
+                List<Cart> lst = new List<Cart>();
+                if (obj[0].SetNo > 0)
+                {
+                    lst = _ICartBAL.GetCartByUserId(obj[0]).Result;
+                }
+                foreach (var item in obj)
+                {
+                    if (item.SetNo > 0)
+                    {
+                        List<Cart> lstselect = lst.Where(x => x.SetNo == item.SetNo).ToList();
+
+                        if (lstselect.Count > 0)
+                        {
+                            foreach (var itemnew in lstselect)
+                            {
+                                Cart _obj = new Cart();
+                                _obj.ProductSizeId = itemnew.ProductSizeId;
+                                _obj.Quantity = item.Quantity;
+                                _obj.UserID = item.UserID;
+                                res = await this._ICartBAL.AddToCart(_obj);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        res = await this._ICartBAL.AddToCart(item);
+                    }
+
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside CartController AddToCart action: {ex.Message}");
+                return -1;
+            }
+        }
+
+        [HttpPost]
         [Route("DelCartById")]
         public async Task<List<Cart>> DelCartById([FromBody] Cart obj)
         {
