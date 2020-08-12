@@ -23,7 +23,7 @@ namespace uccApiCore2.Entities
 
         public string[] Prodsize { get; set; }
 
-        public int Discount { get; set; } = 0;
+        public decimal Discount { get; set; } = 0;
         public bool DiscountAvailable { get; set; } = false;
         public int CreatedBy { get; set; } = 0;
         public int Modifiedby { get; set; } = 0;
