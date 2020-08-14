@@ -24,6 +24,7 @@ namespace uccApiCore2.Entities
         public string XMLFilePath { get; set; }
         public string Subject { get; set; }
         public string Token { get; set; }
+        public string AdditionalDiscount { get; set; }
 
     }
 }
