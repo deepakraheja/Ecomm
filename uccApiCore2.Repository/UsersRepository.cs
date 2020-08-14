@@ -74,6 +74,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@IsApproval", obj.IsApproval);
                 parameters.Add("@ApprovedBy", obj.ApprovedBy);
                 parameters.Add("@ApprovedDate", obj.ApprovedDate);
+                parameters.Add("@AdditionalDiscount", obj.AdditionalDiscount);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Users_upd", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
