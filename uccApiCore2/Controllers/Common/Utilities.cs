@@ -34,7 +34,7 @@ namespace uccApiCore2.Controllers.Common
                     {
                         string filename = ProductId.ToString() + '-' + DateTime.Now.ToString("MMddyyyyhhmmss") + "-" + (i + 1) + ".jpg";
                         string fileNameWitPath = FolderPath + filename;
-                        if (FileSource[i].Contains("data:image/jpeg;base64,") || FileSource[i].Contains("data:image/jpg;base64,") || FileSource[i].Contains("data:image/png;base64,") || Type == "bannerImage" || Type == "frontImage")
+                        if (FileSource[i].Contains("data:image/jpeg;base64,") || FileSource[i].Contains("data:image/jpg;base64,") || FileSource[i].Contains("data:image/png;base64,"))
                         {
                             using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
                             {
