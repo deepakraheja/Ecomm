@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using uccApiCore2.BAL.Interface;
 using uccApiCore2.Controllers.Common;
 using uccApiCore2.Entities;
+using uccApiCore2.Repository;
 
 namespace uccApiCore2.Controllers
 {
@@ -171,11 +172,12 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                List<Product> lst = this._IProductBAL.GetProductById(obj).Result;
-                lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
-                lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "frontImage", webRootPath);
-                //lst[0].ProductImg = _utilities.ProductImagePath(obj.ProductID, "productImages", webRootPath);
-                return await Task.Run(() => new List<Product>(lst));
+                //List<Product> lst = this._IProductBAL.GetProductById(obj).Result;
+                ////lst[0].BannerImg = _utilities.ProductImagePath(obj.ProductID, "bannerImage", webRootPath);
+                ////lst[0].SmallImg = _utilities.ProductImagePath(obj.ProductID, "frontImage", webRootPath);
+                ////lst[0].ProductImg = _utilities.ProductImagePath(obj.ProductID, "productImages", webRootPath);
+                //return await Task.Run(() => new List<Product>(lst));
+                return await this._IProductBAL.GetProductById(obj);
             }
             catch (Exception ex)
             {
@@ -283,9 +285,11 @@ namespace uccApiCore2.Controllers
                 foreach (var item in lst)
                 {
                     if (item.SetNo > 0)
-                        item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productSetImage/" + item.SetNo), webRootPath);
+                        //item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productSetImage/" + item.SetNo), webRootPath);
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productSetImage", webRootPath, item.SetNo);
                     else
-                        item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productColorImage/" + item.ProductSizeColorId), webRootPath);
+                        //item.ProductImg = _utilities.ProductImagePath(item.ProductId, ("productColorImage/" + item.ProductSizeColorId), webRootPath);
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
                 }
 
                 return await Task.Run(() => new List<ProductSizeColor>(lst));
@@ -311,6 +315,33 @@ namespace uccApiCore2.Controllers
                         _utilities.DeleteProductImagePath(obj.ProductId, ("productColorImage/" + obj.ProductSizeColorId), webRootPath);
                 }
                 return res;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController DeleteProductSizeColor action: {ex.Message}");
+                return -1;
+            }
+        }
+
+        [HttpPost]
+        [Route("DeleteProductImage")]
+        public async Task<int> DeleteProductImage([FromBody] Product obj)
+        {
+            try
+            {
+                _utilities.DeleteProductImage(obj.ImagePath, webRootPath);
+                if (obj.ProductID > 0)
+                {
+                    ProductRepository obj1 = new ProductRepository();
+                    Product product = new Product
+                    {
+                        ImagePath = "",
+                        ProductID = obj.ProductID,
+                        Type = "frontImage"
+                    };
+                    obj1.SaveProductImages(product);
+                }
+                return await Task.Run(() => 1);
             }
             catch (Exception ex)
             {

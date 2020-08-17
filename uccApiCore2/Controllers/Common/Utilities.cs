@@ -26,44 +26,47 @@ namespace uccApiCore2.Controllers.Common
                     if (!folderExists)
                         Directory.CreateDirectory(FolderPath);
                     DirectoryInfo directory = new DirectoryInfo(FolderPath);
-                    foreach (FileInfo file in directory.GetFiles())
-                    {
-                        file.Delete();
-                    }
+                    //foreach (FileInfo file in directory.GetFiles())
+                    //{
+                    //    file.Delete();
+                    //}
                     for (int i = 0; i < FileSource.Length; i++)
                     {
                         string filename = ProductId.ToString() + '-' + DateTime.Now.ToString("MMddyyyyhhmmss") + "-" + (i + 1) + ".jpg";
                         string fileNameWitPath = FolderPath + filename;
-                        using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
+                        if (FileSource[i].Contains("data:image/jpeg;base64,") || FileSource[i].Contains("data:image/jpg;base64,") || FileSource[i].Contains("data:image/png;base64,") || Type == "bannerImage" || Type == "frontImage")
                         {
-                            using (BinaryWriter bw = new BinaryWriter(fs))
+                            using (FileStream fs = new FileStream(fileNameWitPath, FileMode.Create))
                             {
-                                if (FileSource[i].Contains("data:image/jpeg;base64,"))
+                                using (BinaryWriter bw = new BinaryWriter(fs))
                                 {
-                                    byte[] data = Convert.FromBase64String(FileSource[i].Replace("data:image/jpeg;base64,", ""));
-                                    bw.Write(data);
-                                    bw.Close();
-                                }
-                                if (FileSource[i].Contains("data:image/jpg;base64,"))
-                                {
-                                    byte[] data = Convert.FromBase64String(FileSource[i].Replace("data:image/jpg;base64,", ""));
-                                    bw.Write(data);
-                                    bw.Close();
-                                }
-                                if (FileSource[i].Contains("data:image/png;base64,"))
-                                {
-                                    byte[] data = Convert.FromBase64String(FileSource[i].Replace("data:image/png;base64,", ""));
-                                    bw.Write(data);
-                                    bw.Close();
-                                }
-                                if (Type == "bannerImage" || Type == "frontImage")
-                                {
-                                    ProductRepository obj = new ProductRepository();
-                                    Product product = new Product();
-                                    product.ImagePath = filename;
-                                    product.ProductID = ProductId;
-                                    product.Type = Type;
-                                    obj.SaveProductImages(product);
+                                    if (FileSource[i].Contains("data:image/jpeg;base64,"))
+                                    {
+                                        byte[] data = Convert.FromBase64String(FileSource[i].Replace("data:image/jpeg;base64,", ""));
+                                        bw.Write(data);
+                                        bw.Close();
+                                    }
+                                    if (FileSource[i].Contains("data:image/jpg;base64,"))
+                                    {
+                                        byte[] data = Convert.FromBase64String(FileSource[i].Replace("data:image/jpg;base64,", ""));
+                                        bw.Write(data);
+                                        bw.Close();
+                                    }
+                                    if (FileSource[i].Contains("data:image/png;base64,"))
+                                    {
+                                        byte[] data = Convert.FromBase64String(FileSource[i].Replace("data:image/png;base64,", ""));
+                                        bw.Write(data);
+                                        bw.Close();
+                                    }
+                                    if (Type == "bannerImage" || Type == "frontImage")
+                                    {
+                                        ProductRepository obj = new ProductRepository();
+                                        Product product = new Product();
+                                        product.ImagePath = filename;
+                                        product.ProductID = ProductId;
+                                        product.Type = Type;
+                                        obj.SaveProductImages(product);
+                                    }
                                 }
                             }
                         }
@@ -83,8 +86,9 @@ namespace uccApiCore2.Controllers.Common
                 base64ImageRepresentation = new string[AllFiles.Length];
                 for (int i = 0; i < AllFiles.Length; i++)
                 {
-                    byte[] imageArray = System.IO.File.ReadAllBytes(AllFiles[i]);
-                    base64ImageRepresentation[i] = "data:image/jpeg;base64," + Convert.ToBase64String(imageArray);
+                    //byte[] imageArray = System.IO.File.ReadAllBytes(AllFiles[i]);
+                    //base64ImageRepresentation[i] = "data:image/jpeg;base64," + Convert.ToBase64String(imageArray);
+                    base64ImageRepresentation[i] = AllFiles[i].Split('\\').LastOrDefault();
                 }
             }
             return base64ImageRepresentation;
@@ -120,6 +124,16 @@ namespace uccApiCore2.Controllers.Common
                     File.Delete(AllFiles[i]);
                 }
                 Directory.Delete(folderPath);
+            }
+        }
+
+        public void DeleteProductImage(string ImagePath, string WebRootPath)
+        {
+            string filePath;
+            filePath = WebRootPath + ImagePath;
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
             }
         }
     }
