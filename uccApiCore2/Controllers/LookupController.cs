@@ -34,5 +34,11 @@ namespace uccApiCore2.Controllers
         {
             return await _lookupBAL.GetActiveSize();
         }
+        [HttpPost]
+        [Route("GetOrderStatus")]
+        public async Task<List<LookupOrderStatus>> GetOrderStatus()
+        {
+            return await _lookupBAL.GetOrderStatus();
+        }
     }
 }

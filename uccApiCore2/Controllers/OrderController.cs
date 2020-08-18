@@ -116,5 +116,19 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
+        [HttpPost]
+        [Route("UpdateOrderDetailStatus")]
+        public async Task<int> UpdateOrderDetailStatus([FromBody] OrderStatusHistory obj)
+        {
+            try
+            {
+                return await this._IOrderBAL.UpdateOrderDetailStatus(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside OrderController UpdateOrderDetailStatus action: {ex.Message}");
+                return -1;
+            }
+        }
     }
 }
