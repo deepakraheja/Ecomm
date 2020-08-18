@@ -195,8 +195,8 @@ namespace uccApiCore2.Controllers
                 int NewProductId = this._IProductBAL.SaveProduct(obj).Result;
                 if (obj.ProductID > 0)
                 {
-                    if (obj.BannerImg != null)
-                        _utilities.SaveImage(obj.ProductID, obj.BannerImg, "bannerImage", webRootPath);
+                    //if (obj.BannerImg != null)
+                    //    _utilities.SaveImage(obj.ProductID, obj.BannerImg, "bannerImage", webRootPath);
                     if (obj.SmallImg != null)
                         _utilities.SaveImage(obj.ProductID, obj.SmallImg, "frontImage", webRootPath);
                     //_utilities.SaveImage(obj.ProductID, obj.ProductImg, "productImages", webRootPath);
