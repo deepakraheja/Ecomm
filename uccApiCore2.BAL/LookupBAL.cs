@@ -24,5 +24,9 @@ namespace uccApiCore2.BAL
         {
             return _lookupRepository.GetActiveSize();
         }
+        public Task<List<LookupOrderStatus>> GetOrderStatus()
+        {
+            return _lookupRepository.GetOrderStatus();
+        }
     }
 }

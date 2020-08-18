@@ -45,5 +45,9 @@ namespace uccApiCore2.BAL
         {
             return _OrderRepository.GetAllOrderDetails(obj);
         }
+        public Task<int> UpdateOrderDetailStatus(OrderStatusHistory obj)
+        {
+            return _OrderRepository.UpdateOrderDetailStatus(obj);
+        }
     }
 }
