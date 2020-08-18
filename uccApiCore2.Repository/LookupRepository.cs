@@ -38,5 +38,18 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+        public async Task<List<LookupOrderStatus>> GetOrderStatus()
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                List<LookupOrderStatus> lst = (await SqlMapper.QueryAsync<LookupOrderStatus>(con, "p_LookupOrderStatus_Sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }

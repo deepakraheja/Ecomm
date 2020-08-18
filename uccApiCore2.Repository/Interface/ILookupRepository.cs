@@ -10,5 +10,6 @@ namespace uccApiCore2.Repository.Interface
     {
         Task<List<LookupColor>> GetActiveColor();
         Task<List<LookupSize>> GetActiveSize();
+        Task<List<LookupOrderStatus>> GetOrderStatus();
     }
 }

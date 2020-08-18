@@ -137,5 +137,26 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+        public async Task<int> UpdateOrderDetailStatus(OrderStatusHistory obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@OrderStatusHistoryId", obj.OrderStatusHistoryId);
+                parameters.Add("@OrderDetailsID", obj.OrderDetailsID);
+                parameters.Add("@OrderStatusId", obj.OrderStatusId);
+                parameters.Add("@CreatedDate", obj.CreatedDate);
+                parameters.Add("@CreatedBy", obj.CreatedBy);
+                parameters.Add("@OrderId", obj.OrderId);
+                parameters.Add("@SetNo", obj.SetNo);
+                parameters.Add("@ProductId", obj.ProductId);
+                var res = await SqlMapper.ExecuteAsync(con, "p_OrderStatusHistory_ins", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
