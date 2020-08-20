@@ -130,5 +130,20 @@ namespace uccApiCore2.Controllers
                 return -1;
             }
         }
+
+        [HttpPost]
+        [Route("GetDashboardSummary")]
+        public async Task<List<Order>> GetDashboardSummary()
+        {
+            try
+            {
+                return await this._IOrderBAL.GetDashboardSummary();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside OrderController GetDashboardAllOrder action: {ex.Message}");
+                return null;
+            }
+        }
     }
 }
