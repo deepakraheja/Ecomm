@@ -158,5 +158,18 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+        public async Task<List<Order>> GetDashboardSummary()
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                List<Order> lst = (await SqlMapper.QueryAsync<Order>(con, "p_GetDashboardSummary", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }

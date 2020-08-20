@@ -16,5 +16,6 @@ namespace uccApiCore2.Repository.Interface
         Task<List<Order>> GetAllOrder(Order obj);
         Task<List<Order>> GetAllOrderDetails(Order obj);
         Task<int> UpdateOrderDetailStatus(OrderStatusHistory obj);
+        Task<List<Order>> GetDashboardSummary();
     }
 }
