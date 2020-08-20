@@ -32,5 +32,6 @@ namespace uccApiCore2.Entities
         public string Size { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
+        public int TotalCustomers { get; set; } = 0;
     }
 }
