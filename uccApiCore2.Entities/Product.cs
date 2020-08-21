@@ -56,6 +56,8 @@ namespace uccApiCore2.Entities
 
         public int Piece { get; set; }
 
+        public  int AveragePrice { get; set; }
+
 
     }
 }
