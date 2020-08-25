@@ -282,6 +282,30 @@ namespace uccApiCore2.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("VerifyMobileOtp")]
+        [AllowAnonymous]
+        public async Task<int> VerifyMobileOtp([FromBody] OtpLog obj)
+        {
+            try
+            {
+                int res = await this._usersBAL.Verifymobileotp(obj);
+                if (res > 0)
+                {                   
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController Verifymobileotp action: {ex.Message}");
+                return -1;
+            }
+        }
+
 
         [HttpPost]
         [Route("CheckMobileAllReadyRegisteredOrNot")]
@@ -329,7 +353,8 @@ namespace uccApiCore2.Controllers
 
                     else
                     {
-                        return -1;
+                        //return -1;
+                        return 0;
                     }
 
 

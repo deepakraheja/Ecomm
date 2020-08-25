@@ -48,15 +48,18 @@ namespace uccApiCore2.BAL
         {
             return _users.ResetPassword(obj);
         }
-		
-		  public Task<List<Users>> CheckMobileAlreadyRegisteredOrNot(Users obj)
+        public Task<List<Users>> CheckMobileAlreadyRegisteredOrNot(Users obj)
         {
             return _users.CheckMobileAlreadyRegisteredOrNot(obj);
         }
-
         public Task<int> InsertOtp(OtpLog obj)
         {
             return _users.InsertOtp(obj);
         }
+        public Task<int> Verifymobileotp(OtpLog obj)
+        {
+            return _users.Verifymobileotp(obj);
+        }
+
     }
 }

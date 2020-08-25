@@ -111,14 +111,19 @@ namespace uccApiCore2.Controllers.Common
                             else
                                 item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
                         }
+                        objUser.UserID = lst[0].UserID;
+                        objuserInfo = GetUserInfo(objUser, sendOnType);
                         Users emailParameters = new Users()
                         {
                             Name = objuserInfo[0].Name,
                             email = objuserInfo[0].email,
-                            password = objuserInfo[0].password,
+                            MobileNo = objuserInfo[0].MobileNo,
                             Subject = "New Order Completion.",
                             XMLFilePath = "3",
-                            OrderDetails = ""
+                            OrderDetails = "",
+                            OrderID = lst[0].OrderNumber,
+                            OrderDate = lst[0].OrderDate,
+                            DeliveryAddress = lst[0].Address + ", " + lst[0].City + "<br/>" + lst[0].State + "<br/>" + lst[0].Country + ", " + lst[0].ZipCode
                         };
                         SendEmail(emailParameters);
                     }
@@ -161,14 +166,19 @@ namespace uccApiCore2.Controllers.Common
                             else
                                 item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
                         }
+                        objUser.UserID = lst[0].UserID;
+                        objuserInfo = GetUserInfo(objUser, sendOnType);
                         Users emailParameters = new Users()
                         {
                             Name = objuserInfo[0].Name,
                             email = objuserInfo[0].email,
-                            password = objuserInfo[0].password,
+                            MobileNo = objuserInfo[0].MobileNo,
                             Subject = "Dispatched Confirmation.",
                             XMLFilePath = "6",
-                            OrderDetails = ""
+                            OrderDetails = "",
+                            OrderID = lst[0].OrderNumber,
+                            OrderDate = lst[0].OrderDate,
+                            DeliveryAddress = lst[0].Address + ", " + lst[0].City + "<br/>" + lst[0].State + "<br/>" + lst[0].Country + ", " + lst[0].ZipCode
                         };
                         SendEmail(emailParameters);
                     }
@@ -186,14 +196,19 @@ namespace uccApiCore2.Controllers.Common
                             else
                                 item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
                         }
+                        objUser.UserID = lst[0].UserID;
+                        objuserInfo = GetUserInfo(objUser, sendOnType);
                         Users emailParameters = new Users()
                         {
                             Name = objuserInfo[0].Name,
                             email = objuserInfo[0].email,
-                            password = objuserInfo[0].password,
+                            MobileNo = objuserInfo[0].MobileNo,
                             Subject = "Delivered Confirmation.",
                             XMLFilePath = "7",
-                            OrderDetails = ""
+                            OrderDetails = "",
+                            OrderID = lst[0].OrderNumber,
+                            OrderDate = lst[0].OrderDate,
+                            DeliveryAddress = lst[0].Address + ", " + lst[0].City + "<br/>" + lst[0].State + "<br/>" + lst[0].Country + ", " + lst[0].ZipCode
                         };
                         SendEmail(emailParameters);
                     }
