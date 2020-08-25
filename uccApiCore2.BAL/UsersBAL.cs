@@ -40,5 +40,13 @@ namespace uccApiCore2.BAL
         {
             return _users.GetUserInfo(obj);
         }
+        public Task<List<Users>> ValidEmail(Users obj)
+        {
+            return _users.ValidEmail(obj);
+        }
+        public Task<int> ResetPassword(Users obj)
+        {
+            return _users.ResetPassword(obj);
+        }
     }
 }

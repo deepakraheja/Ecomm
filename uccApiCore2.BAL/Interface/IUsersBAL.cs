@@ -14,5 +14,7 @@ namespace uccApiCore2.BAL.Interface
         Task<int> UpdateUser(Users obj);
         Task<int> UpdatePwd(Users obj);
         Task<List<Users>> GetUserInfo(Users obj);
+        Task<List<Users>> ValidEmail(Users obj);
+        Task<int> ResetPassword(Users obj);
     }
 }
