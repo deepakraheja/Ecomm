@@ -114,5 +114,39 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+
+        public async Task<List<Users>> CheckMobileAlreadyRegisteredOrNot(Users obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@MobileNo", obj.MobileNo);
+                List<Users> lst = (await SqlMapper.QueryAsync<Users>(con, "p_Users_sel_MobileNo", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+
+        public async Task<int> InsertOtp(OtpLog obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@MobileNo", obj.MobileNo);
+                parameters.Add("@OTP", obj.OTP);
+                parameters.Add("@SessionId", obj.SessionId);
+                var res = await SqlMapper.ExecuteScalarAsync(con, "p_OtpLog_ins", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }

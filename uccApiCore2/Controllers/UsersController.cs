@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -8,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using uccApiCore2.BAL;
 using uccApiCore2.BAL.Interface;
 using uccApiCore2.Controllers.Common;
@@ -130,8 +134,8 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                int res= await this._usersBAL.UserRegistration(obj);
-                SendEmails sendEmails = new SendEmails(_usersBAL,_IEmailTemplateBAL);
+                int res = await this._usersBAL.UserRegistration(obj);
+                SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL);
                 sendEmails.setMailContent(res, EStatus.Registration.ToString());
                 return res;
             }
@@ -156,9 +160,9 @@ namespace uccApiCore2.Controllers
                     AuthorizeService auth = new AuthorizeService();
                     string _token = auth.Authenticate(Convert.ToString(lstLogin[0].UserID), _appSettings);
                     lstLogin[0].Token = _token;
-                   // return lstLogin;
+                    // return lstLogin;
                 }
-               
+
                 return lstLogin;
 
             }
@@ -212,6 +216,69 @@ namespace uccApiCore2.Controllers
                 return -1;
             }
         }
+
+        [HttpPost]
+        [Route("CheckMobileAllReadyRegisteredOrNot")]
+        [AllowAnonymous]
+        public async Task<int> CheckMobileAllReadyRegisteredOrNot([FromBody] Users obj)
+        {
+            try
+            {
+                List<Users> lstuser = new List<Users>();
+                lstuser = this._usersBAL.CheckMobileAlreadyRegisteredOrNot(obj).Result;
+                string urlParameters = "";
+
+                if (lstuser.Count == 0)
+                {
+
+                    Random _random = new Random();
+                    int otp = _random.Next(100000, 999999);
+                    string api_key = "c47c40de-e3cf-11ea-9fa5-0200cd936042";
+
+                    string URL = "https://2factor.in/API/V1/" + api_key + "/SMS/+91" + obj.MobileNo.ToString() + "/" + otp.ToString();
+
+                    HttpClient client = new HttpClient();
+                    client.BaseAddress = new Uri(URL);
+
+                    // Add an Accept header for JSON format.
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    // List data response.
+                    HttpResponseMessage response = client.GetAsync(urlParameters).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonData = await response.Content.ReadAsStringAsync();
+                        dynamic data = JObject.Parse(jsonData);
+                        string OTPsessionid = ((Newtonsoft.Json.Linq.JValue)((Newtonsoft.Json.Linq.JProperty)((Newtonsoft.Json.Linq.JContainer)data).Last).Value).Value.ToString();
+
+                        OtpLog _objOtpLog = new OtpLog();
+                        _objOtpLog.MobileNo = obj.MobileNo.ToString();
+                        _objOtpLog.OTP = otp.ToString();
+                        _objOtpLog.SessionId = OTPsessionid;
+
+                        int res = await Task.Run(() => this._usersBAL.InsertOtp(_objOtpLog));
+
+                        return 0;
+                    }
+
+                    else
+                    {
+                        return -1;
+                    }
+
+                    
+                }
+
+                return await Task.Run(() => lstuser.Count);
+
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController checkMobileAllReadyRegisteredOrNot action: {ex.Message}");
+                return -1;
+            }
+        }
+
     }
 
 

@@ -14,5 +14,9 @@ namespace uccApiCore2.Repository.Interface
         Task<int> UpdateUser(Users obj);
         Task<int> UpdatePwd(Users obj);
         Task<List<Users>> GetUserInfo(Users obj);
+
+        Task<List<Users>> CheckMobileAlreadyRegisteredOrNot(Users obj);
+
+        Task<int> InsertOtp(OtpLog obj);
     }
 }
