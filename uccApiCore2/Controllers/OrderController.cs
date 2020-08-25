@@ -37,7 +37,7 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                int orderId= await this._IOrderBAL.SaveOrder(obj);
+                int orderId = await this._IOrderBAL.SaveOrder(obj);
                 SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
                 SendEmails.webRootPath = webRootPath;
                 Users objUser = new Users();
@@ -134,7 +134,22 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                return await this._IOrderBAL.UpdateOrderDetailStatus(obj);
+                //return await this._IOrderBAL.UpdateOrderDetailStatus(obj);
+
+                int res = await this._IOrderBAL.UpdateOrderDetailStatus(obj);
+                SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
+                SendEmails.webRootPath = webRootPath;
+                Users objUser = new Users();
+                objUser.OrderID = obj.OrderId.ToString();
+                objUser.UserID = obj.CreatedBy;
+                if (obj.OrderStatusId == 1)
+                    sendEmails.setMailContent(objUser, EStatus.NewOrderCompletion.ToString());
+                if (obj.OrderStatusId == 3)
+                    sendEmails.setMailContent(objUser, EStatus.DispatchedConfirmation.ToString());
+                if (obj.OrderStatusId == 4)
+                    sendEmails.setMailContent(objUser, EStatus.DeliveredConfirmation.ToString());
+                return res;
+
             }
             catch (Exception ex)
             {
