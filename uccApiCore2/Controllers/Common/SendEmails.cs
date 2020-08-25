@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace uccApiCore2.Controllers.Common
             All = 0,
             Registration = 1,
             PasswordReset = 2,
+            NewOrderCompletion = 3,
+            RegistrationApproval = 4,
+            PasswordResetConfirmation = 5,
+            DispatchedConfirmation = 6,
+            DeliveredConfirmation = 7
         }
         //public static readonly logger = "";//LogManager.GetLogger(typeof(SendEmails));
         private static IConfiguration configuration;
@@ -32,10 +38,14 @@ namespace uccApiCore2.Controllers.Common
         public int PlayerId { get; set; }
         IUsersBAL _usersBAL;
         IEmailTemplateBAL _IEmailTemplateBAL;
-        public SendEmails(IUsersBAL usersBAL, IEmailTemplateBAL emailTemplateBAL)
+        IOrderBAL _IOrderBAL;
+        Utilities _utilities = new Utilities();
+        public static string webRootPath;
+        public SendEmails(IUsersBAL usersBAL, IEmailTemplateBAL emailTemplateBAL, IOrderBAL OrderBAL)
         {
             _usersBAL = usersBAL;
             _IEmailTemplateBAL = emailTemplateBAL;
+            _IOrderBAL = OrderBAL;
         }
 
         static string UsesmtpSSL = Startup.UsesmtpSSL;
@@ -49,11 +59,12 @@ namespace uccApiCore2.Controllers.Common
         static string DomainName = Startup.DomainName;
         static string AllowSendMails = Startup.AllowSendMails;
         static string UserName = Startup.UserName;
+        static string WebSiteURL = Startup.WebSiteURL;
 
-        public void setMailContent(int UserID, string Type, string subject = null, string emailBody = null)
+        public void setMailContent(Users objUser, string Type, string subject = null, string emailBody = null)
         {
-            Users objUser = new Users();
-            objUser.UserID = UserID;
+            //Users objUser = new Users();
+            //objUser.UserID = UserID;
             var sendOnType = (EStatus)Enum.Parse(typeof(EStatus), Type);
 
             List<Users> objuserInfo = GetUserInfo(objUser, sendOnType);
@@ -79,9 +90,110 @@ namespace uccApiCore2.Controllers.Common
                         Users emailParameters = new Users()
                         {
                             Name = objuserInfo[0].Name,
-                            password = objuserInfo[0].password,
+                            email=objuserInfo[0].email,
+                            Link = WebSiteURL + "pages/ResetPassword/" + objuserInfo[0].UserID,
                             Subject = "Password reset successfully.",
                             XMLFilePath = "2",
+                        };
+                        SendEmail(emailParameters);
+                    }
+                    break;
+                case EStatus.NewOrderCompletion:
+                    {
+                        Order obj = new Order();
+                        obj.OrderId = Convert.ToInt32(objUser.OrderID);
+                        List<Order> lst = this._IOrderBAL.GetOrderByOrderId(obj).Result;
+                        lst[0].OrderDetails = this._IOrderBAL.GetOrderDetailsByOrderId(obj).Result;
+                        foreach (var item in lst[0].OrderDetails)
+                        {
+                            if (item.SetNo > 0)
+                                item.ProductImg = _utilities.ProductImage(item.ProductId, "productSetImage", webRootPath, item.SetNo);
+                            else
+                                item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
+                        }
+                        Users emailParameters = new Users()
+                        {
+                            Name = objuserInfo[0].Name,
+                            email = objuserInfo[0].email,
+                            password = objuserInfo[0].password,
+                            Subject = "New Order Completion.",
+                            XMLFilePath = "3",
+                            OrderDetails = ""
+                        };
+                        SendEmail(emailParameters);
+                    }
+                    break;
+                case EStatus.RegistrationApproval:
+                    {
+                        Users emailParameters = new Users()
+                        {
+                            Name = objuserInfo[0].Name,
+                            email = objuserInfo[0].email,
+                            LoginURL= WebSiteURL,
+                            Subject = "Registration Approval.",
+                            XMLFilePath = "4",
+                        };
+                        SendEmail(emailParameters);
+                    }
+                    break;
+                case EStatus.PasswordResetConfirmation:
+                    {
+                        Users emailParameters = new Users()
+                        {
+                            Name = objuserInfo[0].Name,
+                            email = objuserInfo[0].email,
+                            Subject = "Password reset confirmation.",
+                            XMLFilePath = "5",
+                        };
+                        SendEmail(emailParameters);
+                    }
+                    break;
+                case EStatus.DispatchedConfirmation:
+                    {
+                        Order obj = new Order();
+                        obj.OrderId = Convert.ToInt32(objUser.OrderID);
+                        List<Order> lst = this._IOrderBAL.GetOrderByOrderId(obj).Result;
+                        lst[0].OrderDetails = this._IOrderBAL.GetOrderDetailsByOrderId(obj).Result;
+                        foreach (var item in lst[0].OrderDetails)
+                        {
+                            if (item.SetNo > 0)
+                                item.ProductImg = _utilities.ProductImage(item.ProductId, "productSetImage", webRootPath, item.SetNo);
+                            else
+                                item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
+                        }
+                        Users emailParameters = new Users()
+                        {
+                            Name = objuserInfo[0].Name,
+                            email = objuserInfo[0].email,
+                            password = objuserInfo[0].password,
+                            Subject = "Dispatched Confirmation.",
+                            XMLFilePath = "6",
+                            OrderDetails = ""
+                        };
+                        SendEmail(emailParameters);
+                    }
+                    break;
+                case EStatus.DeliveredConfirmation:
+                    {
+                        Order obj = new Order();
+                        obj.OrderId = Convert.ToInt32(objUser.OrderID);
+                        List<Order> lst = this._IOrderBAL.GetOrderByOrderId(obj).Result;
+                        lst[0].OrderDetails = this._IOrderBAL.GetOrderDetailsByOrderId(obj).Result;
+                        foreach (var item in lst[0].OrderDetails)
+                        {
+                            if (item.SetNo > 0)
+                                item.ProductImg = _utilities.ProductImage(item.ProductId, "productSetImage", webRootPath, item.SetNo);
+                            else
+                                item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
+                        }
+                        Users emailParameters = new Users()
+                        {
+                            Name = objuserInfo[0].Name,
+                            email = objuserInfo[0].email,
+                            password = objuserInfo[0].password,
+                            Subject = "Delivered Confirmation.",
+                            XMLFilePath = "7",
+                            OrderDetails = ""
                         };
                         SendEmail(emailParameters);
                     }
@@ -102,6 +214,14 @@ namespace uccApiCore2.Controllers.Common
                 template = template.Replace("[Name]", objEP.Name ?? "");
                 template = template.Replace("[Email]", objEP.email ?? "");
                 template = template.Replace("[Password]", objEP.password ?? "");
+                template = template.Replace("[Mobile]", objEP.MobileNo ?? "");
+
+                template = template.Replace("[OrderID]", objEP.OrderID ?? "");
+                template = template.Replace("[OrderDate]", objEP.OrderDate ?? "");
+                template = template.Replace("[OrderDetails]", objEP.OrderDetails ?? "");
+                template = template.Replace("[DeliveryAddress]", objEP.DeliveryAddress ?? "");
+                template = template.Replace("[Link]", objEP.Link ?? "");
+                template = template.Replace("[LoginURL]", objEP.LoginURL ?? "");
                 return template;
             }
             catch (Exception)
@@ -134,7 +254,7 @@ namespace uccApiCore2.Controllers.Common
         {
             //string xmlData = emailParameters.GetXML();
             // string strBody = !String.IsNullOrEmpty(emailParameters.EmailBody) ? emailParameters.EmailBody : MailerUtility.GetMailBody(HttpContext.Current.Server.MapPath("~") + "\\xslt\\" + emailParameters.XMLFilePath, xmlData);
-            Utilities utilities = new Utilities();
+            //Utilities utilities = new Utilities();
             string strBody = GetMailBody(emailParameters);
             //****************Calling the Send Mail Function *******************************
             MailContent objMailContent = new MailContent() { From = "esales@vikramcreations.com", toEmailaddress = emailParameters.email, displayName = "Vikram Creations Private Limited", subject = emailParameters.Subject, emailBody = strBody, strAttachment = strAttachment, EventData = EventData };

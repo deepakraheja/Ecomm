@@ -24,12 +24,13 @@ namespace uccApiCore2.Controllers
         IUsersBAL _usersBAL;
         IEmailTemplateBAL _IEmailTemplateBAL;
         private readonly ApplicationSettings _appSettings;
-
-        public UsersController(IUsersBAL usersBAL, IOptions<ApplicationSettings> appSettings, IEmailTemplateBAL emailTemplateBAL)
+        IOrderBAL _IOrderBAL;
+        public UsersController(IUsersBAL usersBAL, IOptions<ApplicationSettings> appSettings, IEmailTemplateBAL emailTemplateBAL, IOrderBAL OrderBAL)
         {
             _usersBAL = usersBAL;
             _appSettings = appSettings.Value;
             _IEmailTemplateBAL = emailTemplateBAL;
+            _IOrderBAL = OrderBAL;
         }
 
         [HttpPost]
@@ -130,9 +131,11 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                int res= await this._usersBAL.UserRegistration(obj);
-                SendEmails sendEmails = new SendEmails(_usersBAL,_IEmailTemplateBAL);
-                sendEmails.setMailContent(res, EStatus.Registration.ToString());
+                int res = await this._usersBAL.UserRegistration(obj);
+                SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
+                Users objUsers = new Users();
+                objUsers.UserID = res;
+                sendEmails.setMailContent(objUsers, EStatus.Registration.ToString());
                 return res;
             }
             catch (Exception ex)
@@ -156,9 +159,9 @@ namespace uccApiCore2.Controllers
                     AuthorizeService auth = new AuthorizeService();
                     string _token = auth.Authenticate(Convert.ToString(lstLogin[0].UserID), _appSettings);
                     lstLogin[0].Token = _token;
-                   // return lstLogin;
+                    // return lstLogin;
                 }
-               
+
                 return lstLogin;
 
             }
@@ -189,7 +192,15 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                return await this._usersBAL.UpdateUser(obj);
+                var res = await this._usersBAL.UpdateUser(obj);
+                if (obj.IsApproval == 1)
+                {
+                    SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
+                    Users objUsers = new Users();
+                    objUsers.UserID = obj.UserID;
+                    sendEmails.setMailContent(objUsers, EStatus.RegistrationApproval.ToString());
+                }
+                return Convert.ToInt32(res);
             }
             catch (Exception ex)
             {
@@ -209,6 +220,60 @@ namespace uccApiCore2.Controllers
             catch (Exception ex)
             {
                 Logger.LogError($"Something went wrong inside UsersController UpdatePwd action: {ex.Message}");
+                return -1;
+            }
+        }
+        [HttpPost]
+        [Route("ValidEmail")]
+        [AllowAnonymous]
+        public async Task<int> ValidEmail([FromBody] Users obj)
+        {
+            try
+            {
+                List<Users> lstUser = await this._usersBAL.ValidEmail(obj);
+                if (lstUser.Count > 0)
+                {
+                    SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
+                    Users objUsers = new Users();
+                    objUsers.UserID = lstUser[0].UserID;
+                    sendEmails.setMailContent(objUsers, EStatus.PasswordReset.ToString());
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController ValidEmail action: {ex.Message}");
+                return -1;
+            }
+        }
+        [HttpPost]
+        [Route("ResetPassword")]
+        [AllowAnonymous]
+        public async Task<int> ResetPassword([FromBody] Users obj)
+        {
+            try
+            {
+                int res = await this._usersBAL.ResetPassword(obj);
+                if (res > 0)
+                {
+                    SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
+                    Users objUsers = new Users();
+                    objUsers.UserID = obj.UserID;
+                    sendEmails.setMailContent(objUsers, EStatus.PasswordResetConfirmation.ToString());
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController ResetPassword action: {ex.Message}");
                 return -1;
             }
         }
