@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using uccApiCore2.BAL.Interface;
 using uccApiCore2.Controllers.Common;
 using uccApiCore2.Entities;
+using static uccApiCore2.Controllers.Common.SendEmails;
 
 namespace uccApiCore2.Controllers
 {
@@ -20,10 +21,14 @@ namespace uccApiCore2.Controllers
         IOrderBAL _IOrderBAL;
         Utilities _utilities = new Utilities();
         public static string webRootPath;
-        public OrderController(IHostingEnvironment hostingEnvironment, IOrderBAL OrderBAL)
+        IEmailTemplateBAL _IEmailTemplateBAL;
+        IUsersBAL _usersBAL;
+        public OrderController(IHostingEnvironment hostingEnvironment, IOrderBAL OrderBAL, IEmailTemplateBAL emailTemplateBAL, IUsersBAL usersBAL)
         {
             _IOrderBAL = OrderBAL;
             webRootPath = hostingEnvironment.WebRootPath;
+            _IEmailTemplateBAL = emailTemplateBAL;
+            _usersBAL = usersBAL;
         }
 
         [HttpPost]
@@ -32,7 +37,14 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                return await this._IOrderBAL.SaveOrder(obj);
+                int orderId= await this._IOrderBAL.SaveOrder(obj);
+                SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
+                SendEmails.webRootPath = webRootPath;
+                Users objUser = new Users();
+                objUser.OrderID = orderId.ToString();
+                objUser.UserID = obj.UserID;
+                sendEmails.setMailContent(objUser, EStatus.NewOrderCompletion.ToString());
+                return orderId;
             }
             catch (Exception ex)
             {

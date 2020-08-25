@@ -92,6 +92,11 @@ namespace uccApiCore2
             get;
             private set;
         }
+        public static string WebSiteURL
+        {
+            get;
+            private set;
+        }
         public Startup(IHostingEnvironment env)
         {
             Configuration = new ConfigurationBuilder().SetBasePath(env.ContentRootPath).AddJsonFile("appSettings.json").Build();
@@ -102,8 +107,8 @@ namespace uccApiCore2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-		
-		 //Inject AppSettings
+
+            //Inject AppSettings
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
@@ -203,7 +208,7 @@ namespace uccApiCore2
                 app.UseDeveloperExceptionPage();
             }
             app.UseAuthentication();//JWT Authentication
-           
+
 
             app.UseStaticFiles(); // For the wwwroot folder
 
@@ -258,6 +263,7 @@ namespace uccApiCore2
             DomainName = Configuration["EmailSetting:DomainName"];
             AllowSendMails = Configuration["EmailSetting:AllowSendMails"];
             UserName = Configuration["EmailSetting:UserName"];
+            WebSiteURL = Configuration["EmailSetting:WebSiteURL"];
         }
     }
 }
