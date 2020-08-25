@@ -25,7 +25,7 @@ namespace uccApiCore2.Entities
         public string Subject { get; set; }
         public string Token { get; set; }
         public string AdditionalDiscount { get; set; }
-        public string OrderID { get; set; }
+        public string OrderID { get; set; } 
         public string OrderDate { get; set; }
         public string OrderDetails { get; set; }
         public string DeliveryAddress { get; set; }

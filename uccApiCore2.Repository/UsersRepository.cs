@@ -175,7 +175,7 @@ namespace uccApiCore2.Repository
             {
                 throw (ex);
             }
-        }
+        } 
          
         public async Task<int> Verifymobileotp(OtpLog obj)
         {

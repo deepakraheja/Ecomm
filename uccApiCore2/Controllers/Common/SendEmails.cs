@@ -12,7 +12,7 @@ using uccApiCore2.Entities;
 using uccApiCore2.Repository.Interface;
 
 namespace uccApiCore2.Controllers.Common
-{
+{ 
     public class SendEmails
     {
         public enum EStatus

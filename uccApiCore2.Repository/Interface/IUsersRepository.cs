@@ -8,7 +8,7 @@ namespace uccApiCore2.Repository.Interface
 {
     public interface IUsersRepository
     { 
-        Task<int> UserRegistration(Users obj);
+        Task<int> UserRegistration(Users obj); 
         Task<List<Users>> ValidLogin(Users obj);
         Task<List<Users>> GetAllUsers();
         Task<int> UpdateUser(Users obj);

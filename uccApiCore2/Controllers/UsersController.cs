@@ -292,7 +292,7 @@ namespace uccApiCore2.Controllers
                 int res = await this._usersBAL.Verifymobileotp(obj);
                 if (res > 0)
                 {                   
-                    return 1;
+                    return 1; 
                 }
                 else
                 {

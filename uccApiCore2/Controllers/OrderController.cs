@@ -13,7 +13,7 @@ using static uccApiCore2.Controllers.Common.SendEmails;
 
 namespace uccApiCore2.Controllers
 {
-
+     
     [Authorize]
     [Route("api/[controller]")]
     public class OrderController : BaseController<OrderController>
