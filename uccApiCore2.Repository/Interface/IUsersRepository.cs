@@ -7,8 +7,8 @@ using uccApiCore2.Entities;
 namespace uccApiCore2.Repository.Interface
 {
     public interface IUsersRepository
-    { 
-        Task<int> UserRegistration(Users obj); 
+    {
+        Task<int> UserRegistration(Users obj);
         Task<List<Users>> ValidLogin(Users obj);
         Task<List<Users>> GetAllUsers();
         Task<int> UpdateUser(Users obj);
@@ -16,7 +16,8 @@ namespace uccApiCore2.Repository.Interface
         Task<List<Users>> GetUserInfo(Users obj);
         Task<List<Users>> ValidEmail(Users obj);
         Task<int> ResetPassword(Users obj);
-		Task<List<Users>> CheckMobileAlreadyRegisteredOrNot(Users obj);
+        Task<List<Users>> CheckMobileAlreadyRegisteredOrNot(Users obj);
         Task<int> InsertOtp(OtpLog obj);
-        Task<int> Verifymobileotp(OtpLog obj); 
+        Task<int> Verifymobileotp(OtpLog obj);
+    }
 }

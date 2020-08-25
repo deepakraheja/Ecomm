@@ -37,7 +37,7 @@ namespace uccApiCore2.Controllers
         {
             try
             {
-                int orderId= await this._IOrderBAL.SaveOrder(obj);
+                int orderId = await this._IOrderBAL.SaveOrder(obj);
                 SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
                 SendEmails.webRootPath = webRootPath;
                 Users objUser = new Users();
@@ -134,6 +134,8 @@ namespace uccApiCore2.Controllers
         {
             try
             {
+                //return await this._IOrderBAL.UpdateOrderDetailStatus(obj);
+
                 int res = await this._IOrderBAL.UpdateOrderDetailStatus(obj);
                 SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
                 SendEmails.webRootPath = webRootPath;
@@ -147,6 +149,7 @@ namespace uccApiCore2.Controllers
                 if (obj.OrderStatusId == 4)
                     sendEmails.setMailContent(objUser, EStatus.DeliveredConfirmation.ToString());
                 return res;
+
             }
             catch (Exception ex)
             {

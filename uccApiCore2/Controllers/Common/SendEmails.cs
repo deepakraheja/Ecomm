@@ -90,7 +90,7 @@ namespace uccApiCore2.Controllers.Common
                         Users emailParameters = new Users()
                         {
                             Name = objuserInfo[0].Name,
-                            email=objuserInfo[0].email,
+                            email = objuserInfo[0].email,
                             Link = WebSiteURL + "pages/ResetPassword/" + objuserInfo[0].UserID,
                             Subject = "Password reset successfully.",
                             XMLFilePath = "2",
@@ -134,7 +134,7 @@ namespace uccApiCore2.Controllers.Common
                         {
                             Name = objuserInfo[0].Name,
                             email = objuserInfo[0].email,
-                            LoginURL= WebSiteURL,
+                            LoginURL = WebSiteURL,
                             Subject = "Registration Approval.",
                             XMLFilePath = "4",
                         };
