@@ -176,5 +176,22 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<int> Verifymobileotp(OtpLog obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@MobileNo", obj.MobileNo);
+                parameters.Add("@OTP", obj.OTP);
+                
+                var res = await SqlMapper.ExecuteScalarAsync(con, "p_CheckOtp_mobile", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
