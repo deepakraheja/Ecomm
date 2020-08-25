@@ -114,5 +114,34 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+        public async Task<List<Users>> ValidEmail(Users obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@LoginId", obj.email);
+                List<Users> lst = (await SqlMapper.QueryAsync<Users>(con, "p_ValidEmail", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<int> ResetPassword(Users obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@UserID", obj.UserID);
+                parameters.Add("@password", obj.password);
+                var res = await SqlMapper.ExecuteAsync(con, "p_ResetPassword", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
