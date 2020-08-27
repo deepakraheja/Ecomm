@@ -227,6 +227,7 @@ namespace uccApiCore2.Controllers.Common
 
                                         "td, th {" +
                                         "border: 1px solid #dddddd;" +
+                                        "border: 1px solid #dddddd;" +
                                         "text - align: left;" +
                                         "padding: 8px;" +
                                         "}" +
@@ -263,13 +264,13 @@ namespace uccApiCore2.Controllers.Common
         {
             if (lst[0].OrderDetails[index].SetNo > 0)
             {
-                //return "<img style='width: 100px;' src= 'http://ecomapi.uccnoida.com/ProductImage/'" + lst[0].OrderDetails[index].ProductId + "'/productSetImage/'" + lst[0].OrderDetails[index].SetNo + "'/'" + lst[0].OrderDetails[index].ProductImg[0] + "'>";
-                return "<img style='width: 100px;' src='http://ecomapi.uccnoida.com/ProductImage/13/productSetImage/2/13-07222020054952-1.jpg'/>'";
+                return "<img style='width: 100px;' src= 'http://ecomapi.uccnoida.com/ProductImage/" + lst[0].OrderDetails[index].ProductId + "/productSetImage/" + lst[0].OrderDetails[index].SetNo + "/" + lst[0].OrderDetails[index].ProductImg[0] + ">";
+                //return "<img style='width: 100px;' src='http://ecomapi.uccnoida.com/ProductImage/13/productSetImage/2/13-07222020054952-1.jpg'/>'";
             }
             if (lst[0].OrderDetails[index].SetNo == 0)
             {
-                //return "<img style='width: 100px;' src= 'http://ecomapi.uccnoida.com/ProductImage/'" + lst[0].OrderDetails[index].ProductId + "'/productColorImage/'" + lst[0].OrderDetails[index].ProductSizeColorId + "'/'" + lst[0].OrderDetails[index].ProductImg[0] + "'>";
-                return "<img style='width: 100px;' src='http://ecomapi.uccnoida.com/ProductImage/13/productSetImage/2/13-07222020054952-1.jpg'/>'";
+                return "<img style='width: 100px;' src= http://ecomapi.uccnoida.com/ProductImage/" + lst[0].OrderDetails[index].ProductId + "/productColorImage/" + lst[0].OrderDetails[index].ProductSizeColorId + "/" + lst[0].OrderDetails[index].ProductImg[0] + ">";
+                //return "<img style='width: 100px;' src='http://ecomapi.uccnoida.com/ProductImage/13/productSetImage/2/13-07222020054952-1.jpg'/>'";
             }
             return "";
         }
