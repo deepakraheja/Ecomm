@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using uccApiCore2.BAL;
 using uccApiCore2.BAL.Interface;
@@ -12,7 +13,7 @@ using uccApiCore2.Entities;
 using uccApiCore2.Repository.Interface;
 
 namespace uccApiCore2.Controllers.Common
-{ 
+{
     public class SendEmails
     {
         public enum EStatus
@@ -120,7 +121,7 @@ namespace uccApiCore2.Controllers.Common
                             MobileNo = objuserInfo[0].MobileNo,
                             Subject = "New Order Completion.",
                             XMLFilePath = "3",
-                            OrderDetails = "",
+                            OrderDetails = GenerateOrderDetails(lst),
                             OrderID = lst[0].OrderNumber,
                             OrderDate = lst[0].OrderDate,
                             DeliveryAddress = lst[0].Address + ", " + lst[0].City + "<br/>" + lst[0].State + "<br/>" + lst[0].Country + ", " + lst[0].ZipCode
@@ -175,7 +176,7 @@ namespace uccApiCore2.Controllers.Common
                             MobileNo = objuserInfo[0].MobileNo,
                             Subject = "Dispatched Confirmation.",
                             XMLFilePath = "6",
-                            OrderDetails = "",
+                            OrderDetails = GenerateOrderDetails(lst),
                             OrderID = lst[0].OrderNumber,
                             OrderDate = lst[0].OrderDate,
                             DeliveryAddress = lst[0].Address + ", " + lst[0].City + "<br/>" + lst[0].State + "<br/>" + lst[0].Country + ", " + lst[0].ZipCode
@@ -205,7 +206,7 @@ namespace uccApiCore2.Controllers.Common
                             MobileNo = objuserInfo[0].MobileNo,
                             Subject = "Delivered Confirmation.",
                             XMLFilePath = "7",
-                            OrderDetails = "",
+                            OrderDetails = GenerateOrderDetails(lst),
                             OrderID = lst[0].OrderNumber,
                             OrderDate = lst[0].OrderDate,
                             DeliveryAddress = lst[0].Address + ", " + lst[0].City + "<br/>" + lst[0].State + "<br/>" + lst[0].Country + ", " + lst[0].ZipCode
@@ -215,7 +216,63 @@ namespace uccApiCore2.Controllers.Common
                     break;
             }
         }
+        public string GenerateOrderDetails(List<Order> lst)
+        {
+            string StyleStr = "<style>" +
+                                "table {" +
+                                            "font - family: arial, sans - serif;" +
+                                            "border - collapse: collapse;" +
+                                        "width: 100 %;" +
+                                        "}" +
 
+                                        "td, th {" +
+                                        "border: 1px solid #dddddd;" +
+                                        "text - align: left;" +
+                                        "padding: 8px;" +
+                                        "}" +
+
+                                        "tr: nth - child(even) {" +
+                                                "background - color: #dddddd;" +
+                                        "}" +
+                                "</style>";
+            string orderdetailsHeaderStr = "<table>" +
+                                          "<tr>" +
+                                            "<th>Product Image</th>" +
+                                            "<th>Product Name</th>" +
+                                            "<th>Qty</th>" +
+                                            "<th>price</th>" +
+                                          "</tr>";
+
+
+            string orderdetailsStr = "";
+            for (int i = 0; i < lst[0].OrderDetails.Count; i++)
+            {
+                orderdetailsStr += "<tr>" +
+                                            "<td>" +
+                                            GetProductImage(lst, i)
+                                            + "</td>" +
+                                            "<td>" + lst[0].OrderDetails[i].ProductName + "</td>" +
+                                            "<td>" + lst[0].OrderDetails[i].Quantity + "</td>" +
+                                            "<td>" + lst[0].OrderDetails[i].Price + "</td>" +
+                                          "</tr>";
+            }
+            return StyleStr + orderdetailsHeaderStr + orderdetailsStr + "</table>";
+        }
+
+        public string GetProductImage(List<Order> lst, int index)
+        {
+            if (lst[0].OrderDetails[index].SetNo > 0)
+            {
+                //return "<img style='width: 100px;' src= 'http://ecomapi.uccnoida.com/ProductImage/'" + lst[0].OrderDetails[index].ProductId + "'/productSetImage/'" + lst[0].OrderDetails[index].SetNo + "'/'" + lst[0].OrderDetails[index].ProductImg[0] + "'>";
+                return "<img style='width: 100px;' src='http://ecomapi.uccnoida.com/ProductImage/13/productSetImage/2/13-07222020054952-1.jpg'/>'";
+            }
+            if (lst[0].OrderDetails[index].SetNo == 0)
+            {
+                //return "<img style='width: 100px;' src= 'http://ecomapi.uccnoida.com/ProductImage/'" + lst[0].OrderDetails[index].ProductId + "'/productColorImage/'" + lst[0].OrderDetails[index].ProductSizeColorId + "'/'" + lst[0].OrderDetails[index].ProductImg[0] + "'>";
+                return "<img style='width: 100px;' src='http://ecomapi.uccnoida.com/ProductImage/13/productSetImage/2/13-07222020054952-1.jpg'/>'";
+            }
+            return "";
+        }
         public string GetMailBody(Users objEP)
         {
             try
