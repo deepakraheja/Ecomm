@@ -158,5 +158,30 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
+
+        [HttpPost]
+        [Route("GetCartProcessedById")]
+        public async Task<List<Cart>> GetCartProcessedById([FromBody] Cart obj)
+        {
+            try
+            {
+                //return await this._ICartBAL.GetCartById(obj);
+                List<Cart> lst = this._ICartBAL.GetCartProcessedById(obj).Result;
+                foreach (var item in lst)
+                {
+                    if (item.SetNo > 0)
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productSetImage", webRootPath, item.SetNo);
+                    else
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
+                }
+
+                return await Task.Run(() => new List<Cart>(lst));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside CartController GetCartProcessedById action: {ex.Message}");
+                return null;
+            }
+        }
     }
 }

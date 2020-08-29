@@ -78,6 +78,30 @@ namespace uccApiCore2.Controllers
         }
 
         [HttpPost]
+        [Route("GetSuccessOrderByOrderId")]
+        public async Task<List<Order>> GetSuccessOrderByOrderId([FromBody] Order obj)
+        {
+            try
+            {
+                List<Order> lst = this._IOrderBAL.GetOrderByOrderId(obj).Result;
+                lst[0].OrderDetails = this._IOrderBAL.GetSuccessOrderDetailsByOrderId(obj).Result;
+                foreach (var item in lst[0].OrderDetails)
+                {
+                    if (item.SetNo > 0)
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productSetImage", webRootPath, item.SetNo);
+                    else
+                        item.ProductImg = _utilities.ProductImage(item.ProductId, "productColorImage", webRootPath, item.ProductSizeColorId);
+                }
+                return await Task.Run(() => new List<Order>(lst));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside OrderController GetOrderByOrderId action: {ex.Message}");
+                return null;
+            }
+        }
+
+        [HttpPost]
         [Route("GetOrderByUserId")]
         public async Task<List<Order>> GetOrderByUserId([FromBody] Order obj)
         {

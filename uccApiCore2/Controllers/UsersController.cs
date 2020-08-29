@@ -131,7 +131,7 @@ namespace uccApiCore2.Controllers
         [HttpPost]
         [Route("UserRegistration")]
         [AllowAnonymous]
-        public async Task<string> UserRegistration([FromBody] Users obj)
+        public async Task<int> UserRegistration([FromBody] Users obj)
         {
             try
             {
@@ -140,12 +140,12 @@ namespace uccApiCore2.Controllers
                 Users objUsers = new Users();
                 objUsers.UserID = res;
                 sendEmails.setMailContent(objUsers, EStatus.Registration.ToString());
-                return "completed";
+                return res;
             }
             catch (Exception ex)
             {
                 Logger.LogError($"Something went wrong inside UsersController UserRegistration action: {ex.Message}");
-                return ex.Message.ToString();
+                return -1;
             }
         }
         [HttpPost]
