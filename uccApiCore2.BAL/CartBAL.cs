@@ -33,5 +33,9 @@ namespace uccApiCore2.BAL
         {
             return _ICartRepository.GetCartByUserId(obj);
         }
+        public Task<List<Cart>> GetCartProcessedById(Cart obj)
+        {
+            return _ICartRepository.GetCartProcessedById(obj);
+        }
     }
 }

@@ -53,5 +53,9 @@ namespace uccApiCore2.BAL
         {
             return _OrderRepository.GetDashboardSummary();
         }
+        public Task<List<Order>> GetSuccessOrderDetailsByOrderId(Order obj)
+        {
+            return _OrderRepository.GetSuccessOrderDetailsByOrderId(obj);
+        }
     }
 }

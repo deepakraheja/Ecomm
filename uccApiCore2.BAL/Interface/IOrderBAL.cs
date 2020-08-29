@@ -17,5 +17,6 @@ namespace uccApiCore2.BAL.Interface
         Task<List<Order>> GetAllOrderDetails(Order obj);
         Task<int> UpdateOrderDetailStatus(OrderStatusHistory obj);
         Task<List<Order>> GetDashboardSummary();
+        Task<List<Order>> GetSuccessOrderDetailsByOrderId(Order obj);
     }
 }
