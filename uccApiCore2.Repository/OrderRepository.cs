@@ -171,5 +171,19 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+        public async Task<List<Order>> GetSuccessOrderDetailsByOrderId(Order obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@OrderId", obj.OrderId);
+                List<Order> lst = (await SqlMapper.QueryAsync<Order>(con, "p_GetSuccessOrderDetailsByOrderId", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
