@@ -25,5 +25,10 @@ namespace uccApiCore2.Entities
         public string Size { get; set; }
         public int SetNo { get; set; } = 0;
         public string RowID { get; set; }
+        public int GSTRate { get; set; }
+        public double GSTAmount
+        {
+            get { return Convert.ToDouble(((SalePrice * Quantity) * GSTRate / 100).ToString("0.00")); }
+        }
     }
 }

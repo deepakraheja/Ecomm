@@ -33,5 +33,7 @@ namespace uccApiCore2.Entities
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public int TotalCustomers { get; set; } = 0;
+        public int GSTRate { get; set; }
+        public double GSTAmount { get; set; }
     }
 }
