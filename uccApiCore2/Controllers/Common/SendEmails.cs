@@ -104,7 +104,7 @@ namespace uccApiCore2.Controllers.Common
                         Order obj = new Order();
                         obj.OrderId = Convert.ToInt32(objUser.OrderID);
                         List<Order> lst = this._IOrderBAL.GetOrderByOrderId(obj).Result;
-                        lst[0].OrderDetails = this._IOrderBAL.GetOrderDetailsByOrderId(obj).Result;
+                        lst[0].OrderDetails = this._IOrderBAL.GetSuccessOrderDetailsByOrderId(obj).Result;
                         foreach (var item in lst[0].OrderDetails)
                         {
                             if (item.SetNo > 0)
@@ -121,7 +121,7 @@ namespace uccApiCore2.Controllers.Common
                             MobileNo = objuserInfo[0].MobileNo,
                             Subject = "New Order Completion.",
                             XMLFilePath = "3",
-                            OrderDetails = GenerateOrderDetails(lst),
+                            OrderDetails = GenerateNewOrderDetails(lst),
                             OrderID = lst[0].OrderNumber,
                             OrderDate = lst[0].OrderDate,
                             DeliveryAddress = lst[0].Address + ", " + lst[0].City + "<br/>" + lst[0].State + "<br/>" + lst[0].Country + ", " + lst[0].ZipCode
@@ -216,6 +216,90 @@ namespace uccApiCore2.Controllers.Common
                     break;
             }
         }
+        public string GenerateNewOrderDetails(List<Order> lst)
+        {
+            string StyleStr = "<style>" +
+                                "table {" +
+                                            "font - family: arial, sans - serif;" +
+                                            "border - collapse: collapse;" +
+                                        "width: 100 %;" +
+                                        "}" +
+
+                                        "td, th {" +
+                                        "border: 1px solid #dddddd;" +
+                                        "border: 1px solid #dddddd;" +
+                                        "text - align: left;" +
+                                        "padding: 8px;" +
+                                        "}" +
+
+                                        "tr: nth - child(even) {" +
+                                                "background - color: #dddddd;" +
+                                        "}" +
+                                "</style>";
+            string orderdetailsHeaderStr = "<table>" +
+                                          "<tr>" +
+                                            "<th>Product Image</th>" +
+                                            "<th>Product Name</th>" +
+                                            "<th>price</th>" +
+                                            "<th>Qty</th>" +
+                                            "<th>GST Rate(%)</th>" +
+                                            "<th>GST Amount</th>" +
+                                            "<th>Total</th>" +
+                                          "</tr>";
+
+            string orderdetailsStr = "";
+            double TotalGSTAmount = 0, Total = 0;
+
+            for (int i = 0; i < lst[0].OrderDetails.Count; i++)
+            {
+                orderdetailsStr += "<tr>" +
+                                            "<td>" +
+                                            GetProductImage(lst, i)
+                                            + "</td>" +
+                                            "<td>" + lst[0].OrderDetails[i].ProductName + "</td>" +
+                                            "<td>" + lst[0].OrderDetails[i].Price + "</td>" +
+                                            "<td>" + lst[0].OrderDetails[i].Quantity + "</td>" +
+                                            "<td>" + lst[0].OrderDetails[i].GSTRate + "</td>" +
+                                            "<td>" + lst[0].OrderDetails[i].GSTAmount + "</td>" +
+                                            "<td>" + (lst[0].OrderDetails[i].Price * lst[0].OrderDetails[i].Quantity) + lst[0].OrderDetails[i].GSTAmount + "</td>" +
+                                          "</tr>";
+                TotalGSTAmount += lst[0].OrderDetails[i].GSTAmount;
+                Total += (lst[0].OrderDetails[i].Price * lst[0].OrderDetails[i].Quantity) + lst[0].OrderDetails[i].GSTAmount;
+            }
+            string SubTotal = "<tr>" +
+                                    "<td colspan='5'>" +
+                                        "<b>Subtotal</b>" +
+                                    "</td>" +
+                                    "<td>" +
+                                        "<b>" + TotalGSTAmount + "</b>" +
+                                    "</td>" +
+                                    "<td>" +
+                                        "<span style='float: right; font-size: 16px; line-height: 20px; color: var(--theme-deafult); font-weight: 400;'>" +
+                                        Total + "</span>" +
+                                    "</td>" +
+                                "</tr>" +
+
+                                "<tr>" +
+                                    "<td colspan='5'>" +
+                                        "<b> Shipping</b>" +
+                                    "</td>" +
+                                    "<td colspan='2'>" +
+                                        "<span style='float: right; font-size: 16px; line-height: 20px; color: var(--theme-deafult); font-weight: 400;'>" +
+                                             "<b>Free Shipping</b></span>" +
+                                    "</td>" +
+                                "</tr>" +
+                                "<tr class='total'>" +
+                                    "<td colspan='6'>" +
+                                        "<b>Total</b>" +
+                                    "</td>" +
+                                    "<td>" +
+                                        "<span style='float: right; font-size: 16px; line-height: 20px; color: var(--theme-deafult); font-weight: 400;'>" +
+                                            Total + "</span>" +
+                                    "</td>" +
+                                "</tr>";
+
+            return StyleStr + orderdetailsHeaderStr + orderdetailsStr + SubTotal + "</table>";
+        }
         public string GenerateOrderDetails(List<Order> lst)
         {
             string StyleStr = "<style>" +
@@ -243,7 +327,6 @@ namespace uccApiCore2.Controllers.Common
                                             "<th>Qty</th>" +
                                             "<th>price</th>" +
                                           "</tr>";
-
 
             string orderdetailsStr = "";
             for (int i = 0; i < lst[0].OrderDetails.Count; i++)
