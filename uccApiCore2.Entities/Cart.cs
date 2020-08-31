@@ -31,5 +31,6 @@ namespace uccApiCore2.Entities
             get { return Convert.ToDouble(((SalePrice * Quantity) * GSTRate / 100).ToString("0.00")); }
         }
         public int TotalPieces { get; set; }
+        public int SetType { get; set; } = 0;
     }
 }
