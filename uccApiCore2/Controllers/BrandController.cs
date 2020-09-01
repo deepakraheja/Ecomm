@@ -42,6 +42,7 @@ namespace uccApiCore2.Controllers
 
         [HttpPost]
         [Route("GetAllBrand")]
+        [AllowAnonymous]
         public async Task<List<Brand>> GetAllBrand([FromBody] Brand obj)
         {
             try
