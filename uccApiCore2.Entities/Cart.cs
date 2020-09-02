@@ -15,7 +15,8 @@ namespace uccApiCore2.Entities
         public string ProductName { get; set; } = "";
         public int Price { get; set; } = 0;
         public int SalePrice { get; set; } = 0;
-        public int Discount { get; set; } = 0;
+        public decimal Discount { get; set; } = 0;
+        public decimal PerDiscount { get; set; } = 0;
         public int Qty { get; set; } = 0;
         public string FrontImage { get; set; } = "";
         public int ProductId { get; set; } = 0;
