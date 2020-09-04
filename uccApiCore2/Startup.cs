@@ -117,7 +117,7 @@ namespace uccApiCore2
                 .AllowAnyHeader()
                 .AllowCredentials()
                 //.AllowAnyOrigin()
-                .WithOrigins("http://ecom.uccnoida.com", "http://adminecom.uccnoida.com", "http://localhost:4100", "http://localhost:4200", "http://localhost:4000", "http://localhost:4300", "http://localhost:5000", "http://localhost:5100", "http://localhost:5200", "http://localhost:4500");
+                .WithOrigins("http://ecom.uccnoida.com", "http://adminecom.uccnoida.com", "http://localhost:4100", "http://localhost:4200", "http://localhost:4000", "http://localhost:4300", "http://localhost:5000", "http://localhost:5100", "http://localhost:5200", "http://localhost:4500", "http://localhost:4800");
             }));
             //services.AddCors(c =>
             //{
@@ -167,6 +167,9 @@ namespace uccApiCore2
 
             services.AddTransient<IEmailTemplateBAL, EmailTemplateBAL>();
             services.AddScoped<IEmailTemplateRepository, EmailTemplateRepository>();
+
+            services.AddTransient<IAgentBAL, AgentBAL>();
+            services.AddScoped<IAgentRepository, AgentRepository>();
 
             services.AddScoped<UserService>();
             services.AddHttpContextAccessor();

@@ -425,47 +425,182 @@ namespace uccApiCore2.Controllers.Common
             SendAttachment(objMailContent, UserName);
         }
 
+
         public static void SendAttachment(Object objMail, string UserName)
         {
             MailContent objMC = (MailContent)objMail;
+            if (objMC.toEmailaddress.StartsWith("admin"))
+            {
+                // objMC.toEmailaddress = "solomenn@mailinator.com";
+            }
+
+            SmtpClient smtpClient = new SmtpClient();
+            MailMessage mailMessage = new MailMessage();
+
+            // mailMessage.Headers.Add("Disposition-Notification-To", "ykumar@protatechindia.com");
+
+            bool flag = false;
+            bool UseSMTPSSL = false;
+            if (!string.IsNullOrEmpty(authenticate))
+            {
+                flag = Convert.ToBoolean(authenticate);
+            }
+            if (!string.IsNullOrEmpty(UsesmtpSSL))
+            {
+                UseSMTPSSL = Convert.ToBoolean(UsesmtpSSL);
+            }
+
+            string host = mailServer;
+
+            string address = fromEmailID;
+
+
+            ////if (UserName != null)
+            //if (objMC.BranchId > 0)
+            //{
+
+            //    Branch obj = new Branch();
+            //    string email = obj.GetEmailId(objMC.BranchId);
+            //    if (email != "")
+            //    {
+            //        address = email;
+            //    }
+            //}
+
+            if (!String.IsNullOrEmpty(objMC.From))
+            {
+                address = objMC.From;
+            }
+
+            MailAddress from = new MailAddress(address, objMC.displayName);
+
+            if (objMC.CopyTo.Count > 0)
+            {
+                foreach (string copyTo in objMC.CopyTo)
+                {
+                    if (!string.IsNullOrEmpty(copyTo))
+                    {
+                        mailMessage.CC.Add(new MailAddress(copyTo));
+                    }
+                }
+            }
+
+
             try
             {
 
-                SmtpClient smtpClient = new SmtpClient();
-                MailMessage message = new MailMessage();
-                bool EnableSsl = true;
-                bool flag = true;
-                string strSub = objMC.subject;
-                string strBody = objMC.emailBody;
-                MailAddress FromAddress = new MailAddress(fromEmailID.ToString(), objMC.displayName);
+                smtpClient.EnableSsl = false;
+                smtpClient.Host = host;
+                mailMessage.From = from;
+                smtpClient.Port = 25;
+                mailMessage.To.Add(objMC.toEmailaddress);
+                mailMessage.Subject = objMC.subject;
+                mailMessage.IsBodyHtml = true;
 
-                smtpClient.EnableSsl = EnableSsl;//Convert.ToBoolean(EnableSsl);
-                smtpClient.Host = mailServer.ToString();
-                message.From = FromAddress;
-                message.To.Add(objMC.toEmailaddress);
-                //message.CC.Add(strCc);
-                //message.Bcc.Add(strBcc);
-                message.Subject = strSub;
-                message.Body = strBody;
-                message.IsBodyHtml = true;
+                if (objMC.EventData != null)
+                {
+                    mailMessage.AlternateViews.Add(objMC.EventData);
+
+                    System.Net.Mime.ContentType typeHTML = new System.Net.Mime.ContentType("text/html");
+                    AlternateView viewHTML = AlternateView.CreateAlternateViewFromString(objMC.emailBody, typeHTML);
+                    viewHTML.TransferEncoding = System.Net.Mime.TransferEncoding.SevenBit;
+                    mailMessage.AlternateViews.Add(viewHTML);
+                }
+                else
+                {
+                    mailMessage.Body = objMC.emailBody;
+                }
+                if (objMC.strAttachment != null)
+                {
+                    foreach (Attachment a in objMC.strAttachment)
+                    {
+
+                        mailMessage.Attachments.Add(a);
+
+                    }
+                }
                 if (flag)
                 {
-                    NetworkCredential oCredential = new NetworkCredential(userId.ToString(), password.ToString());
+                    NetworkCredential credentials = new NetworkCredential(userId, password);
                     smtpClient.UseDefaultCredentials = false;
-                    smtpClient.Credentials = oCredential;
+                    smtpClient.Credentials = credentials;
                 }
                 else
                 {
                     smtpClient.UseDefaultCredentials = true;
+                }
+
+                string sendMail = AllowSendMails;
+
+
+                if (string.IsNullOrEmpty(sendMail) || (sendMail.ToUpper() != "NO"))
+                {
+                    if (!string.IsNullOrEmpty(objMC.emailBody))
+                    {
+                        smtpClient.Send(mailMessage);
+                        smtpClient.Dispose();
+                    }
 
                 }
-                smtpClient.Send(message);
+
+
+                // update Mail log status of IsDelivered
+                //MailBoxManager.UpdateDeliveryStatus(MailerLogID, true, "Successfully Send.");
+
             }
             catch (Exception ex)
             {
+                //ErrorLogger.Log(ex.Message);
+                //ErrorLogger.Log(ex.StackTrace);
+                //update Mail log status of IsDelivered = False and Logtext = ex.mesage
+                //logger.ErrorFormat(ex.Message);
                 throw ex;
             }
         }
+
+
+
+        //public static void SendAttachment(Object objMail, string UserName)
+        //{
+        //    MailContent objMC = (MailContent)objMail;
+        //    try
+        //    {
+
+        //        SmtpClient smtpClient = new SmtpClient();
+        //        MailMessage message = new MailMessage();
+        //        bool EnableSsl = true;
+        //        bool flag = true;
+        //        string strSub = objMC.subject;
+        //        string strBody = objMC.emailBody;
+        //        MailAddress FromAddress = new MailAddress(fromEmailID.ToString(), objMC.displayName);
+
+        //        smtpClient.EnableSsl = EnableSsl;//Convert.ToBoolean(EnableSsl);
+        //        smtpClient.Host = mailServer.ToString();
+        //        message.From = FromAddress;
+        //        message.To.Add(objMC.toEmailaddress);
+        //        //message.CC.Add(strCc);
+        //        //message.Bcc.Add(strBcc);
+        //        message.Subject = strSub;
+        //        message.Body = strBody;
+        //        message.IsBodyHtml = true;
+        //        if (flag)
+        //        {
+        //            NetworkCredential oCredential = new NetworkCredential(userId.ToString(), password.ToString());
+        //            smtpClient.UseDefaultCredentials = false;
+        //            smtpClient.Credentials = oCredential;
+        //        }
+        //        else
+        //        {
+        //            smtpClient.UseDefaultCredentials = true;
+
+        //        }
+        //        smtpClient.Send(message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
     }
 
