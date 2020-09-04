@@ -424,7 +424,7 @@ namespace uccApiCore2.Controllers.Common
             //bgThread.Start(objMailContent);
             SendAttachment(objMailContent, UserName);
         }
-
+ 
 
         public static void SendAttachment(Object objMail, string UserName)
         {

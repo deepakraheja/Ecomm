@@ -175,7 +175,7 @@ namespace uccApiCore2
             services.AddHttpContextAccessor();
             //*************************JWT Authentication Start here****************************
 
-
+             
             var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:Jwt_Secret"].ToString());
 
             services.AddAuthentication(x =>
