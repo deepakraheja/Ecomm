@@ -9,7 +9,7 @@ using static System.Data.CommandType;
 
 namespace uccApiCore2.Repository
 {
-    public class FabricRepository: BaseRepository, IFabricRepository
+    public class FabricRepository : BaseRepository, IFabricRepository
     {
         public async Task<List<Fabric>> GetFabric(Fabric obj)
         {
@@ -78,7 +78,9 @@ namespace uccApiCore2.Repository
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@FabricId", obj.FabricId);
+                //parameters.Add("@FabricId", obj.FabricId);
+                if (obj.Active)
+                    parameters.Add("@Active", obj.Active);
                 List<LookupFabricType> lst = (await SqlMapper.QueryAsync<LookupFabricType>(con, "p_FabricType_sel", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
