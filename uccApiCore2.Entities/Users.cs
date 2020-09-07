@@ -31,6 +31,8 @@ namespace uccApiCore2.Entities
         public string DeliveryAddress { get; set; }
         public string Link { get; set; }
         public string LoginURL { get; set; }
+        public bool IsChecked { get; set; }
+        public int AgentId { get; set; } = 0;
 
     }
 }
