@@ -70,5 +70,21 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<int> SaveAgentCustomer(Agents obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@AgentId", obj.AgentId);
+                parameters.Add("@UserIds", obj.UserIds);
+                var res = await SqlMapper.ExecuteScalarAsync(con, "p_AgentCustomer_ins", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
