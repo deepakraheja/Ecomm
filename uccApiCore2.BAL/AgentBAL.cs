@@ -32,5 +32,9 @@ namespace uccApiCore2.BAL
         {
             return _IAgentRepository.SaveAgentCustomer(obj);
         }
+        public Task<List<Agents>> ValidAgentLogin(Agents obj)
+        {
+            return _IAgentRepository.ValidAgentLogin(obj);
+        }
     }
 }
