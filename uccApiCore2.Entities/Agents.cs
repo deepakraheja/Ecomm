@@ -21,5 +21,6 @@ namespace uccApiCore2.Entities
         public string ModifiedUserName { get; set; }
         public bool IsActive { get; set; } = false;
         public string UserIds { get; set; }
+        public string Token { get; set; }
     }
 }
