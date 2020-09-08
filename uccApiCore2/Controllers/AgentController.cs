@@ -64,6 +64,19 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
-
+        [HttpPost]
+        [Route("SaveAgentCustomer")]
+        public async Task<int> SaveAgentCustomer([FromBody] Agents obj)
+        {
+            try
+            {
+                return await this._Agent.SaveAgentCustomer(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside AgentController SaveAgentCustomer action: {ex.Message}");
+                return -1;
+            }
+        }
     }
 }

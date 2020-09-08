@@ -11,5 +11,6 @@ namespace uccApiCore2.Repository.Interface
         Task<int> AgentRegistration(Agents obj);
         Task<int> UpdateAgent(Agents obj);
         Task<List<Agents>> GetAgentInfo(Agents obj);
+        Task<int> SaveAgentCustomer(Agents obj);
     }
 }

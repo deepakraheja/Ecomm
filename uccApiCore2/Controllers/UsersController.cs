@@ -291,8 +291,8 @@ namespace uccApiCore2.Controllers
             {
                 int res = await this._usersBAL.Verifymobileotp(obj);
                 if (res > 0)
-                {                   
-                    return 1; 
+                {
+                    return 1;
                 }
                 else
                 {
@@ -369,9 +369,19 @@ namespace uccApiCore2.Controllers
                 return -1;
             }
         }
-
-    
-}
-
-
+        [HttpPost]
+        [Route("GetAgentCustomer")]
+        public async Task<List<Users>> GetAgentCustomer([FromBody] Users obj)
+        {
+            try
+            {
+                return await this._usersBAL.GetAgentCustomer(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController GetAgentCustomer action: {ex.Message}");
+                return null;
+            }
+        }
+    }
 }

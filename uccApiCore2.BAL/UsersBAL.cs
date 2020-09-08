@@ -60,6 +60,9 @@ namespace uccApiCore2.BAL
         {
             return _users.Verifymobileotp(obj);
         }
-
+        public Task<List<Users>> GetAgentCustomer(Users obj)
+        {
+            return _users.GetAgentCustomer(obj);
+        }
     }
 }

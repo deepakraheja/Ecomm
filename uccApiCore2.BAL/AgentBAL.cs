@@ -28,5 +28,9 @@ namespace uccApiCore2.BAL
         {
             return _IAgentRepository.GetAgentInfo(obj);
         }
+        public Task<int> SaveAgentCustomer(Agents obj)
+        {
+            return _IAgentRepository.SaveAgentCustomer(obj);
+        }
     }
 }
