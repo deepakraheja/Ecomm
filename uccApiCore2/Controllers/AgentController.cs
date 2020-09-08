@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using uccApiCore2.BAL.Interface;
 using uccApiCore2.Controllers.Common;
 using uccApiCore2.Entities;
+using uccApiCore2.JWT;
 
 namespace uccApiCore2.Controllers
 {
@@ -16,10 +18,12 @@ namespace uccApiCore2.Controllers
     public class AgentController : BaseController<AgentController>
     {
         IAgentBAL _Agent;
+        private readonly ApplicationSettings _appSettings;
 
-        public AgentController(IAgentBAL Agent)
+        public AgentController(IAgentBAL Agent, IOptions<ApplicationSettings> appSettings)
         {
             _Agent = Agent;
+            _appSettings = appSettings.Value;
         }
         [HttpPost]
         [Route("AgentRegistration")]
@@ -76,6 +80,29 @@ namespace uccApiCore2.Controllers
             {
                 Logger.LogError($"Something went wrong inside AgentController SaveAgentCustomer action: {ex.Message}");
                 return -1;
+            }
+        }
+        [HttpPost]
+        [Route("ValidAgentLogin")]
+        [AllowAnonymous]
+        public async Task<List<Agents>> ValidAgentLogin([FromBody] Agents obj)
+        {
+            try
+            {
+                List<Agents> lstLogin = new List<Agents>();
+                lstLogin = await this._Agent.ValidAgentLogin(obj);
+                if (lstLogin.Count > 0)
+                {
+                    AuthorizeService auth = new AuthorizeService();
+                    string _token = auth.Authenticate(Convert.ToString(lstLogin[0].AgentId), _appSettings);
+                    lstLogin[0].Token = _token;
+                }
+                return lstLogin;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside AgentController ValidAgentLogin action: {ex.Message}");
+                return null;
             }
         }
     }
