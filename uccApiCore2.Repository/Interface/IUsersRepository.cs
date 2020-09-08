@@ -20,5 +20,6 @@ namespace uccApiCore2.Repository.Interface
         Task<int> InsertOtp(OtpLog obj);
         Task<int> Verifymobileotp(OtpLog obj);
         Task<List<Users>> GetAgentCustomer(Users obj);
+        Task<List<Users>> GetAgentCustomerByAgentId(Users obj);
     }
 }
