@@ -12,5 +12,6 @@ namespace uccApiCore2.Repository.Interface
         Task<int> UpdateAgent(Agents obj);
         Task<List<Agents>> GetAgentInfo(Agents obj);
         Task<int> SaveAgentCustomer(Agents obj);
+        Task<List<Agents>> ValidAgentLogin(Agents obj);
     }
 }

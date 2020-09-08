@@ -86,5 +86,21 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<List<Agents>> ValidAgentLogin(Agents obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@LoginId", obj.LoginId);
+                parameters.Add("@Password", obj.Password);
+                List<Agents> lst = (await SqlMapper.QueryAsync<Agents>(con, "p_ValidAgentLogin", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }
