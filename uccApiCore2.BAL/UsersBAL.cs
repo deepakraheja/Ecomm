@@ -64,5 +64,9 @@ namespace uccApiCore2.BAL
         {
             return _users.GetAgentCustomer(obj);
         }
+        public Task<List<Users>> GetAgentCustomerByAgentId(Users obj)
+        {
+            return _users.GetAgentCustomerByAgentId(obj);
+        }
     }
 }

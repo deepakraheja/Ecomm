@@ -208,5 +208,20 @@ namespace uccApiCore2.Repository
                 throw (ex);
             }
         }
+
+        public async Task<List<Users>> GetAgentCustomerByAgentId(Users obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@AgentId", obj.AgentId);
+                List<Users> lst = (await SqlMapper.QueryAsync<Users>(con, "p_GetAgentCustomer_sel", param: parameters, commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
     }
 }

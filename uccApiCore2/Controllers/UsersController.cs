@@ -383,5 +383,19 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
+        [HttpPost]
+        [Route("GetAgentCustomerByAgentId")]
+        public async Task<List<Users>> GetAgentCustomerByAgentId([FromBody] Users obj)
+        {
+            try
+            {
+                return await this._usersBAL.GetAgentCustomerByAgentId(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController GetAgentCustomerByAgentId action: {ex.Message}");
+                return null;
+            }
+        }
     }
 }
