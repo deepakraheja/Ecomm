@@ -33,6 +33,17 @@ namespace uccApiCore2.Entities
         public string LoginURL { get; set; }
         public bool IsChecked { get; set; }
         public int AgentId { get; set; } = 0;
+        public string BusinessType { get; set; }
+        public string Industry { get; set; }
+        public string BusinessLicenseType { get; set; }
+        public string GSTNo { get; set; }
+        public string PANNo { get; set; }
+        public string BusinessName { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string PinCode { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
 
     }
 }
