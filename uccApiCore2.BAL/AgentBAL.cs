@@ -24,7 +24,7 @@ namespace uccApiCore2.BAL
         {
             return _IAgentRepository.UpdateAgent(obj);
         }
-        public Task<List<Agents>> GetAgentInfo(Agents obj)
+        public Task<List<Users>> GetAgentInfo(Users obj)
         {
             return _IAgentRepository.GetAgentInfo(obj);
         }
@@ -32,7 +32,7 @@ namespace uccApiCore2.BAL
         {
             return _IAgentRepository.SaveAgentCustomer(obj);
         }
-        public Task<List<Agents>> ValidAgentLogin(Agents obj)
+        public Task<List<Users>> ValidAgentLogin(Users obj)
         {
             return _IAgentRepository.ValidAgentLogin(obj);
         }

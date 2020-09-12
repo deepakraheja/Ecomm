@@ -75,6 +75,19 @@ namespace uccApiCore2.Repository
                 parameters.Add("@ApprovedBy", obj.ApprovedBy);
                 parameters.Add("@ApprovedDate", obj.ApprovedDate);
                 parameters.Add("@AdditionalDiscount", obj.AdditionalDiscount);
+
+                parameters.Add("@BusinessType", obj.BusinessType);
+                parameters.Add("@Industry", obj.Industry);
+                parameters.Add("@BusinessLicenseType", obj.BusinessLicenseType);
+                parameters.Add("@GSTNo", obj.GSTNo);
+                parameters.Add("@PANNo", obj.PANNo);
+                parameters.Add("@BusinessName", obj.BusinessName);
+                parameters.Add("@Address1", obj.Address1);
+                parameters.Add("@Address2", obj.Address2);
+                parameters.Add("@PinCode", obj.PinCode);
+                parameters.Add("@City", obj.City);
+                parameters.Add("@State", obj.State);
+                parameters.Add("@IsAgent", obj.IsAgent);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Users_upd", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
