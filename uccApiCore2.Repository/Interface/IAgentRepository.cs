@@ -10,8 +10,8 @@ namespace uccApiCore2.Repository.Interface
     {
         Task<int> AgentRegistration(Agents obj);
         Task<int> UpdateAgent(Agents obj);
-        Task<List<Agents>> GetAgentInfo(Agents obj);
+        Task<List<Users>> GetAgentInfo(Users obj);
         Task<int> SaveAgentCustomer(Agents obj);
-        Task<List<Agents>> ValidAgentLogin(Agents obj);
+        Task<List<Users>> ValidAgentLogin(Users obj);
     }
 }

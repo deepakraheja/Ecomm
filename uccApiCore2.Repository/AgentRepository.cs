@@ -55,14 +55,14 @@ namespace uccApiCore2.Repository
             }
         }
 
-        public async Task<List<Agents>> GetAgentInfo(Agents obj)
+        public async Task<List<Users>> GetAgentInfo(Users obj)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
-                if (obj.AgentId > 0)
-                    parameters.Add("@AgentId", obj.AgentId);
-                List<Agents> lst = (await SqlMapper.QueryAsync<Agents>(con, "p_Agent_sel", param: parameters, commandType: StoredProcedure)).ToList();
+                //if (obj.AgentId > 0)
+                //    parameters.Add("@AgentId", obj.AgentId);
+                List<Users> lst = (await SqlMapper.QueryAsync<Users>(con, "p_Agent_sel", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
             catch (Exception ex)
@@ -87,14 +87,14 @@ namespace uccApiCore2.Repository
             }
         }
 
-        public async Task<List<Agents>> ValidAgentLogin(Agents obj)
+        public async Task<List<Users>> ValidAgentLogin(Users obj)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@LoginId", obj.LoginId);
-                parameters.Add("@Password", obj.Password);
-                List<Agents> lst = (await SqlMapper.QueryAsync<Agents>(con, "p_ValidAgentLogin", param: parameters, commandType: StoredProcedure)).ToList();
+                parameters.Add("@Password", obj.password);
+                List<Users> lst = (await SqlMapper.QueryAsync<Users>(con, "p_ValidAgentLogin", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
             catch (Exception ex)

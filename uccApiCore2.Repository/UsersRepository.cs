@@ -87,6 +87,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@PinCode", obj.PinCode);
                 parameters.Add("@City", obj.City);
                 parameters.Add("@State", obj.State);
+                parameters.Add("@IsAgent", obj.IsAgent);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Users_upd", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
