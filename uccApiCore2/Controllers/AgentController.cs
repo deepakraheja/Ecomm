@@ -56,7 +56,7 @@ namespace uccApiCore2.Controllers
 
         [HttpPost]
         [Route("GetAgentInfo")]
-        public async Task<List<Agents>> GetAgentInfo([FromBody] Agents obj)
+        public async Task<List<Users>> GetAgentInfo([FromBody] Users obj)
         {
             try
             {
@@ -85,16 +85,16 @@ namespace uccApiCore2.Controllers
         [HttpPost]
         [Route("ValidAgentLogin")]
         [AllowAnonymous]
-        public async Task<List<Agents>> ValidAgentLogin([FromBody] Agents obj)
+        public async Task<List<Users>> ValidAgentLogin([FromBody] Users obj)
         {
             try
             {
-                List<Agents> lstLogin = new List<Agents>();
+                List<Users> lstLogin = new List<Users>();
                 lstLogin = await this._Agent.ValidAgentLogin(obj);
                 if (lstLogin.Count > 0)
                 {
                     AuthorizeService auth = new AuthorizeService();
-                    string _token = auth.Authenticate(Convert.ToString(lstLogin[0].AgentId), _appSettings);
+                    string _token = auth.Authenticate(Convert.ToString(lstLogin[0].UserID), _appSettings);
                     lstLogin[0].Token = _token;
                 }
                 return lstLogin;
