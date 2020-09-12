@@ -12,6 +12,15 @@ using uccApiCore2.BAL.Interface;
 using uccApiCore2.Entities;
 using uccApiCore2.Repository.Interface;
 
+
+using System.Diagnostics;
+
+//using sib_api_v3_sdk.Api;
+//using sib_api_v3_sdk.Client;
+//using sib_api_v3_sdk.Model;
+
+using mailinblue;
+
 namespace uccApiCore2.Controllers.Common
 {
     public class SendEmails
@@ -422,22 +431,124 @@ namespace uccApiCore2.Controllers.Common
             //Thread bgThread = new Thread(new ParameterizedThreadStart(SendAttachment));
             //bgThread.IsBackground = true;
             //bgThread.Start(objMailContent);
-            SendAttachment(objMailContent, UserName);
-        }
- 
 
+
+            SendAttachment(objMailContent, UserName);
+
+            //SendMailBySendBlue(objMailContent);
+        }
+
+        //public static void SendMailBySendBlue(MailContent objMailContent)
+        //{
+        //    // Configure API key authorization: api-key
+        //    //Configuration.Default.ApiKey.Add("api-key", "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");
+        //    // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+        //    // Configuration.Default.ApiKeyPrefix.Add("api-key", "Bearer");
+        //    // Configure API key authorization: partner-key
+        //    //Configuration.Default.ApiKey.Add("partner-key", "YOUR_API_KEY");
+        //    // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+        //    // Configuration.Default.ApiKeyPrefix.Add("partner-key", "Bearer");
+
+        //    //var apiInstance = new AccountApi();
+        //    System.Net.Mime.ContentType typeHTML = new System.Net.Mime.ContentType("text/html");
+        //    AlternateView viewHTML = AlternateView.CreateAlternateViewFromString(objMailContent.emailBody, typeHTML);
+        //    viewHTML.TransferEncoding = System.Net.Mime.TransferEncoding.SevenBit;
+        //    //mailMessage.AlternateViews.Add(viewHTML);
+
+        //    try
+        //    {
+        //        API sendinBlue = new mailinblue.API("sHnhr4w0fTbga7c3"); //add your api key here 
+
+        //        Dictionary<string, Object> data = new Dictionary<string, Object>();
+        //        //Dictionary<string, string> to = new Dictionary<string, string>();
+        //        //to.Add(objMailContent.toEmailaddress, "");
+
+        //        //to.Add("deepak12345@mailinator.com", "to whom!");
+        //        List<string> from_name = new List<string>();
+        //        from_name.Add("esales@vikramcreations.com");
+
+        //        //from_name.Add("from email!");
+        //        //List<string> attachment = new List<string>();
+        //        //attachment.Add("https://domain.com/path-to-file/filename1.pdf");
+        //        //attachment.Add("https://domain.com/path-to-file/filename2.jpg");
+
+        //        data.Add("to", objMailContent.toEmailaddress);
+        //        data.Add("from", objMailContent.From);
+        //        data.Add("subject", objMailContent.subject);
+        //        data.Add("html", objMailContent.emailBody);
+        //        //data.Add("attachment", attachment);
+
+        //        Object sendEmail = sendinBlue.send_email(data);
+        //        string InnerHtml = sendEmail.ToString();
+
+        //        // Get your account information, plan and credits details
+        //        //GetAccount result = apiInstance.GetAccount();
+
+        //        //Debug.WriteLine(result);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Debug.Print("Exception when calling AccountApi.GetAccount: " + e.Message);
+        //    }
+
+        //}
         public static void SendAttachment(Object objMail, string UserName)
         {
-            MailContent objMC = (MailContent)objMail;
+            MailContent objMailContent = (MailContent)objMail;
+            System.Net.Mime.ContentType typeHTML = new System.Net.Mime.ContentType("text/html");
+            AlternateView viewHTML = AlternateView.CreateAlternateViewFromString(objMailContent.emailBody, typeHTML);
+            viewHTML.TransferEncoding = System.Net.Mime.TransferEncoding.SevenBit;
+            //mailMessage.AlternateViews.Add(viewHTML);
+
+            try
+            {
+                API sendinBlue = new mailinblue.API("sHnhr4w0fTbga7c3"); //add your api key here 
+
+                Dictionary<string, Object> data = new Dictionary<string, Object>();
+                Dictionary<string, string> to = new Dictionary<string, string>();
+                to.Add(objMailContent.toEmailaddress, "to whom!");
+
+                //to.Add("deepak12345@mailinator.com", "to whom!");
+                List<string> from_name = new List<string>();
+                from_name.Add("esales@vikramcreations.com");
+
+                //from_name.Add("from email!");
+                //List<string> attachment = new List<string>();
+                //attachment.Add("https://domain.com/path-to-file/filename1.pdf");
+                //attachment.Add("https://domain.com/path-to-file/filename2.jpg");
+
+                data.Add("to", to);
+                data.Add("from", from_name);
+                data.Add("subject", objMailContent.subject);
+                data.Add("html", objMailContent.emailBody);
+                //data.Add("attachment", attachment);
+
+                Object sendEmail = sendinBlue.send_email(data);
+                string InnerHtml = sendEmail.ToString();
+
+                // Get your account information, plan and credits details
+                //GetAccount result = apiInstance.GetAccount();
+
+                //Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AccountApi.GetAccount: " + e.Message);
+            }
+
+
+            //commented on 12sep2020
+
+            /* MailContent objMC = (MailContent)objMail;
             if (objMC.toEmailaddress.StartsWith("admin"))
             {
-                // objMC.toEmailaddress = "solomenn@mailinator.com";
+
             }
 
             SmtpClient smtpClient = new SmtpClient();
             MailMessage mailMessage = new MailMessage();
 
-            // mailMessage.Headers.Add("Disposition-Notification-To", "ykumar@protatechindia.com");
+
 
             bool flag = false;
             bool UseSMTPSSL = false;
@@ -555,7 +666,7 @@ namespace uccApiCore2.Controllers.Common
                 //update Mail log status of IsDelivered = False and Logtext = ex.mesage
                 //logger.ErrorFormat(ex.Message);
                 throw ex;
-            }
+            }*/
         }
 
 

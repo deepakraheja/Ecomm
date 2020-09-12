@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.3" />
     <PackageReference Include="NLog.Config" Version="4.7.0" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.1" />
+    <PackageReference Include="sib_api_v3_sdk" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\mailinblue\mailinblue.csproj" />
     <ProjectReference Include="..\uccApiCore2.BAL\uccApiCore2.BAL.csproj" />
     <ProjectReference Include="..\uccApiCore2.Entities\uccApiCore2.Entities.csproj" />
   </ItemGroup>
