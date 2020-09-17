@@ -349,5 +349,19 @@ namespace uccApiCore2.Controllers
                 return -1;
             }
         }
+        [HttpPost]
+        [Route("GetProductCartQuantity")]
+        public async Task<List<Product>> GetProductCartQuantity([FromBody] Product obj)
+        {
+            try
+            {
+                return await this._IProductBAL.GetProductCartQuantity(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside ProductController GetProductCartQuantity action: {ex.Message}");
+                return null;
+            }
+        }
     }
 }
