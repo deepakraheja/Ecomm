@@ -31,5 +31,6 @@ namespace uccApiCore2.BAL.Interface
         string[] GetProductSizeByRowID(string RowID);
         Task<List<ProductSizeSet>> SelectSETListbyRowID(string RowID);
         Task<List<ProductSizeSet>> SelectProductSizeColorWITHSETbyRowID(Cart obj);
+        Task<List<Product>> GetProductCartQuantity(Product obj);
     }
 }

@@ -94,5 +94,9 @@ namespace uccApiCore2.BAL
         {
             return _IProductRepository.SelectProductSizeColorWITHSETbyRowID(obj);
         }
+        public Task<List<Product>> GetProductCartQuantity(Product obj)
+        {
+            return _IProductRepository.GetProductCartQuantity(obj);
+        }
     }
 }
