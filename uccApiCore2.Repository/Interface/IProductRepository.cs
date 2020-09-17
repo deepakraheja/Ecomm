@@ -30,5 +30,6 @@ namespace uccApiCore2.Repository.Interface
 
         Task<List<ProductSizeSet>> SelectSETListbyRowID(string RowID);
         Task<List<ProductSizeSet>> SelectProductSizeColorWITHSETbyRowID(Cart obj);
+        Task<List<Product>> GetProductCartQuantity(Product obj);
     }
 }

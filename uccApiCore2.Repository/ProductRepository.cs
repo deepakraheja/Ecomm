@@ -302,7 +302,7 @@ namespace uccApiCore2.Repository
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@ProductId", obj.ProductId);    
+                parameters.Add("@ProductId", obj.ProductId);
                 parameters.Add("@ProductSizeColorId", obj.ProductSizeColorId);
                 parameters.Add("@ProductSizeId", obj.ProductSizeId);
                 parameters.Add("@SetNo", obj.SetNo);
@@ -335,6 +335,20 @@ namespace uccApiCore2.Repository
             try
             {
                 List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_GetBannerProduct", commandType: StoredProcedure)).ToList();
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+        public async Task<List<Product>> GetProductCartQuantity(Product obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@GUID", obj.RowID);
+                List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_GetProductCartQuantity", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
             catch (Exception ex)
