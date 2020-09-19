@@ -397,5 +397,19 @@ namespace uccApiCore2.Controllers
                 return null;
             }
         }
+        [HttpPost]
+        [Route("AgentCustomerStatusChange")]
+        public async Task<int> AgentCustomerStatusChange([FromBody] Users obj)
+        {
+            try
+            {
+                return await this._usersBAL.AgentCustomerStatusChange(obj);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Something went wrong inside UsersController AgentCustomerStatusChange action: {ex.Message}");
+                return -1;
+            }
+        }
     }
 }
