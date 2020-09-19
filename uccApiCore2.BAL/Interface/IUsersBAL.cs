@@ -21,5 +21,6 @@ namespace uccApiCore2.BAL.Interface
        Task<int> Verifymobileotp(OtpLog obj);
         Task<List<Users>> GetAgentCustomer(Users obj);
         Task<List<Users>> GetAgentCustomerByAgentId(Users obj);
+        Task<int> AgentCustomerStatusChange(Users obj);
     }
 }
