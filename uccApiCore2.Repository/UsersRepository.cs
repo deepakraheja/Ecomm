@@ -88,6 +88,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@City", obj.City);
                 parameters.Add("@State", obj.State);
                 parameters.Add("@IsAgent", obj.IsAgent);
+                parameters.Add("@StatusId", obj.StatusId);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Users_upd", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
@@ -230,6 +231,23 @@ namespace uccApiCore2.Repository
                 parameters.Add("@AgentId", obj.AgentId);
                 List<Users> lst = (await SqlMapper.QueryAsync<Users>(con, "p_GetAgentCustomer_sel", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+        public async Task<int> AgentCustomerStatusChange(Users obj)
+        {
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@UserID", obj.UserID);
+                parameters.Add("@AdditionalDiscount", obj.AdditionalDiscount);
+                parameters.Add("@StatusId", obj.StatusId);
+                var res = await SqlMapper.ExecuteAsync(con, "p_AgentCustomerStatusChange", param: parameters, commandType: StoredProcedure);
+                return Convert.ToInt32(res);
             }
             catch (Exception ex)
             {
