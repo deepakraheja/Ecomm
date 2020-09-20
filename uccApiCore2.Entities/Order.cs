@@ -35,5 +35,6 @@ namespace uccApiCore2.Entities
         public int TotalCustomers { get; set; } = 0;
         public int GSTRate { get; set; }
         public double GSTAmount { get; set; }
+        public bool IsSelected { get; set; } = false;
     }
 }
