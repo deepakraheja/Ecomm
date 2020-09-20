@@ -16,7 +16,7 @@ namespace uccApiCore2.Entities
 
         public string[] ProductImg { get; set; }
 
-        public int Piece { get; set; }
+        public int Piece { get; set; } 
 
         public double AveragePrice
         {
