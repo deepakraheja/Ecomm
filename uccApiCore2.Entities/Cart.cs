@@ -13,8 +13,8 @@ namespace uccApiCore2.Entities
         public int ProductSizeId { get; set; } = 0;
         public int Quantity { get; set; } = 0;
         public string ProductName { get; set; } = "";
-        public int Price { get; set; } = 0;
-        public int SalePrice { get; set; } = 0;
+        public decimal Price { get; set; } = 0;
+        public decimal SalePrice { get; set; } = 0;
         public decimal Discount { get; set; } = 0;
         public decimal PerDiscount { get; set; } = 0;
         public int Qty { get; set; } = 0;

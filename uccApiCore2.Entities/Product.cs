@@ -58,6 +58,9 @@ namespace uccApiCore2.Entities
 
         public  int AveragePrice { get; set; }
 
+        public int UserId { get; set; }
+
+       
 
     }
 }

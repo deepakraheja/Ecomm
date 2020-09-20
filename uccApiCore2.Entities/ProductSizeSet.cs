@@ -24,12 +24,18 @@ namespace uccApiCore2.Entities
 
         }
 
-        public int Price { get; set; } = 0;
-        public int SalePrice { get; set; } = 0;
+        public double Price { get; set; } = 0;
+        public double SalePrice { get; set; } = 0;
 
-        public Double Discount
+        public string Discount
         {
-            get { return Convert.ToDouble((((Price - SalePrice) * 100) / Price).ToString("0.00")); }
+            get
+            {
+                double percentage;
+                percentage = (double)((Price - SalePrice) * 100 / Price);
+
+                return Math.Round(percentage, 2).ToString();
+            }
 
         }
     }

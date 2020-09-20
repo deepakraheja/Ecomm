@@ -348,6 +348,7 @@ namespace uccApiCore2.Repository
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@GUID", obj.RowID);
+                parameters.Add("@UserID", obj.UserId);
                 List<Product> lst = (await SqlMapper.QueryAsync<Product>(con, "p_GetProductCartQuantity", param: parameters, commandType: StoredProcedure)).ToList();
                 return lst;
             }
