@@ -171,6 +171,9 @@ namespace uccApiCore2
             services.AddTransient<IAgentBAL, AgentBAL>();
             services.AddScoped<IAgentRepository, AgentRepository>();
 
+            services.AddTransient<ITransportBAL, TransportBAL>();
+            services.AddScoped<ITransportRepository, TransportRepository>();
+
             services.AddScoped<UserService>();
             services.AddHttpContextAccessor();
             //*************************JWT Authentication Start here****************************
