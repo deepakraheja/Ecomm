@@ -150,6 +150,12 @@ namespace uccApiCore2.Repository
                 parameters.Add("@OrderId", obj.OrderId);
                 parameters.Add("@SetNo", obj.SetNo);
                 parameters.Add("@ProductId", obj.ProductId);
+                if (obj.OrderStatusId == 3)
+                {
+                    parameters.Add("@TransportID", obj.TransportID);
+                    parameters.Add("@DispatchDate", obj.DispatchDate);
+                    parameters.Add("@Bilty", obj.Bilty);
+                }
                 var res = await SqlMapper.ExecuteAsync(con, "p_OrderStatusHistory_ins", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
