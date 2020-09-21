@@ -45,7 +45,7 @@ namespace uccApiCore2.Entities
         public string City { get; set; }
         public string State { get; set; }
         public bool IsAgent { get; set; } = false;
-        public int StatusId { get; set; }
+        public int StatusId { get; set; } = 0;
         public string BusinessPhone { get; set; }
 
     }
