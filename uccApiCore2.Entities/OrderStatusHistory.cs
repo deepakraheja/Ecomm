@@ -14,5 +14,8 @@ namespace uccApiCore2.Entities
         public int OrderId { get; set; } = 0;
         public int ProductId { get; set; } = 0;
         public int SetNo { get; set; } = 0;
+        public int TransportID { get; set; } = 0;
+        public string DispatchDate { get; set; }
+        public string Bilty { get; set; }
     }
 }
