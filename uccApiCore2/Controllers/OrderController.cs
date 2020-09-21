@@ -154,23 +154,27 @@ namespace uccApiCore2.Controllers
         }
         [HttpPost]
         [Route("UpdateOrderDetailStatus")]
-        public async Task<int> UpdateOrderDetailStatus([FromBody] OrderStatusHistory obj)
+        public async Task<int> UpdateOrderDetailStatus([FromBody] OrderStatusHistory[] obj)
         {
             try
             {
                 //return await this._IOrderBAL.UpdateOrderDetailStatus(obj);
-
-                int res = await this._IOrderBAL.UpdateOrderDetailStatus(obj);
+                int res = 0;
+                foreach (var item in obj)
+                {
+                    res = await this._IOrderBAL.UpdateOrderDetailStatus(item);
+                }
+                
                 SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
                 SendEmails.webRootPath = webRootPath;
                 Users objUser = new Users();
-                objUser.OrderID = obj.OrderId.ToString();
-                objUser.UserID = obj.CreatedBy;
-                if (obj.OrderStatusId == 1)
+                objUser.OrderID = obj[0].OrderId.ToString();
+                objUser.UserID = obj[0].CreatedBy;
+                if (obj[0].OrderStatusId == 1)
                     sendEmails.setMailContent(objUser, EStatus.NewOrderCompletion.ToString());
-                if (obj.OrderStatusId == 3)
+                if (obj[0].OrderStatusId == 3)
                     sendEmails.setMailContent(objUser, EStatus.DispatchedConfirmation.ToString());
-                if (obj.OrderStatusId == 4)
+                if (obj[0].OrderStatusId == 4)
                     sendEmails.setMailContent(objUser, EStatus.DeliveredConfirmation.ToString());
                 return res;
 
