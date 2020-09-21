@@ -70,8 +70,8 @@ namespace uccApiCore2.Repository
                 parameters.Add("@Name", obj.Name);
                 parameters.Add("@MobileNo", obj.MobileNo);
 
-                parameters.Add("@IsActive", obj.IsActive);
-                parameters.Add("@IsApproval", obj.IsApproval);
+                //parameters.Add("@IsActive", obj.IsActive);
+                //parameters.Add("@IsApproval", obj.IsApproval);
                 parameters.Add("@ApprovedBy", obj.ApprovedBy);
                 parameters.Add("@ApprovedDate", obj.ApprovedDate);
                 parameters.Add("@AdditionalDiscount", obj.AdditionalDiscount);
