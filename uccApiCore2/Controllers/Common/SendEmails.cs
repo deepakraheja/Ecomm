@@ -531,9 +531,9 @@ namespace uccApiCore2.Controllers.Common
 
                 //Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Debug.Print("Exception when calling AccountApi.GetAccount: " + e.Message);
+                throw (ex);
             }
 
 

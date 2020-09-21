@@ -136,14 +136,19 @@ namespace uccApiCore2.Controllers
             try
             {
                 int res = await this._usersBAL.UserRegistration(obj);
-                SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
-                Users objUsers = new Users();
-                objUsers.UserID = res;
-                sendEmails.setMailContent(objUsers, EStatus.Registration.ToString());
+                if (res > 1)
+                {
+                    SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
+                    Users objUsers = new Users();
+                    objUsers.UserID = res;
+                    sendEmails.setMailContent(objUsers, EStatus.Registration.ToString());
+                }
                 return res;
             }
             catch (Exception ex)
             {
+                ErrorLogger.Log(ex.Message);
+                ErrorLogger.Log(ex.StackTrace);
                 Logger.LogError($"Something went wrong inside UsersController UserRegistration action: {ex.Message}");
                 return -1;
             }

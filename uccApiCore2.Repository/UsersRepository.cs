@@ -21,6 +21,22 @@ namespace uccApiCore2.Repository
                 parameters.Add("@email", obj.email);
                 parameters.Add("@Name", obj.Name);
                 parameters.Add("@MobileNo", obj.MobileNo);
+
+                parameters.Add("@BusinessPhone", obj.BusinessPhone);
+                parameters.Add("@BusinessType", obj.BusinessType);
+                parameters.Add("@Industry", obj.Industry);
+                parameters.Add("@BusinessLicenseType", obj.BusinessLicenseType);
+                
+                parameters.Add("@GSTNo", obj.GSTNo);
+                parameters.Add("@PANNo", obj.PANNo);
+                parameters.Add("@BusinessName", obj.BusinessName);
+                parameters.Add("@Address1", obj.Address1);
+                parameters.Add("@Address2", obj.Address2);
+
+                parameters.Add("@PinCode", obj.PinCode);
+                parameters.Add("@City", obj.City);
+                parameters.Add("@State", obj.State);
+
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Users_ins", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
