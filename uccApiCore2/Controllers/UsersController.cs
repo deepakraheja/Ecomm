@@ -202,7 +202,7 @@ namespace uccApiCore2.Controllers
             try
             {
                 var res = await this._usersBAL.UpdateUser(obj);
-                if (obj.IsApproval == 1)
+                if (obj.StatusId == 2)
                 {
                     SendEmails sendEmails = new SendEmails(_usersBAL, _IEmailTemplateBAL, _IOrderBAL);
                     Users objUsers = new Users();
