@@ -47,6 +47,8 @@ namespace uccApiCore2.Entities
         public bool IsAgent { get; set; } = false;
         public int StatusId { get; set; } = 0;
         public string BusinessPhone { get; set; }
+        public bool IsVIPMember { get; set; } = false;
+        public bool IsAgentCustomer { get; set; } = false;
 
     }
 }
