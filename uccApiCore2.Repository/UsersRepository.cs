@@ -105,6 +105,7 @@ namespace uccApiCore2.Repository
                 parameters.Add("@State", obj.State);
                 parameters.Add("@IsAgent", obj.IsAgent);
                 parameters.Add("@StatusId", obj.StatusId);
+                parameters.Add("@IsVIPMember", obj.IsVIPMember);
                 var res = await SqlMapper.ExecuteScalarAsync(con, "p_Users_upd", param: parameters, commandType: StoredProcedure);
                 return Convert.ToInt32(res);
             }
