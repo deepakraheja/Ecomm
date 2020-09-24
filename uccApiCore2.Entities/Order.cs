@@ -37,5 +37,6 @@ namespace uccApiCore2.Entities
         public double GSTAmount { get; set; }
         public bool IsSelected { get; set; } = false;
         public string SelectedOrderDetailsIds { get; set; }
+        public string StatusName { get; set; }
     }
 }
