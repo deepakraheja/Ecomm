@@ -37,17 +37,21 @@ namespace Reporting
             //}
 
             //Applicant objApp = new Applicant();
-            DataSet dsApplicant = new DataSet();
+            //DataSet dsApplicant = new DataSet();
 
 
             SQL objSql = new SQL();
             objSql.AddParameter("@OrderId", DbType.Int32, ParameterDirection.Input, 0, Convert.ToInt32(OrderId));
-            dsApplicant = objSql.ExecuteDataSet("p_GetOrderByOrderId");
+            DataSet dsApplicant = objSql.ExecuteDataSet("p_GetOrderByOrderId");
+
+            SQL objSql1 = new SQL();
+            objSql1.AddParameter("@OrderId", DbType.Int32, ParameterDirection.Input, 0, Convert.ToInt32(OrderId));
+            DataSet dsApplicant1 = objSql1.ExecuteDataSet("p_GetSuccessOrderDetailsByOrderId");
 
 
             // Create Report DataSource
             ReportDataSource rds = new ReportDataSource("DataSet1", dsApplicant.Tables[0]);
-
+            ReportDataSource rds1 = new ReportDataSource("DataSet2", dsApplicant1.Tables[0]);
             // Variables
             Warning[] warnings;
             string[] streamIds;
@@ -68,6 +72,7 @@ namespace Reporting
                 viewer.LocalReport.Refresh();
                 //viewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
                 viewer.LocalReport.DataSources.Add(rds); // Add datasource here
+                viewer.LocalReport.DataSources.Add(rds1); // Add datasource here
                 bytes = viewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
 
                 //Byte[] bytes = viewer.LocalReport.Render("PDF");
