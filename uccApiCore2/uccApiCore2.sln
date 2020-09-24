@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "uccApiCore2.BAL", "..\uccAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mailinblue", "..\mailinblue\mailinblue.csproj", "{6E918CDB-2EDD-481A-A1E2-82ABA20F71EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reporting", "..\Reporting\Reporting.csproj", "{88FE7F20-C801-4529-9DDF-46614F33C453}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6E918CDB-2EDD-481A-A1E2-82ABA20F71EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E918CDB-2EDD-481A-A1E2-82ABA20F71EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E918CDB-2EDD-481A-A1E2-82ABA20F71EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FE7F20-C801-4529-9DDF-46614F33C453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FE7F20-C801-4529-9DDF-46614F33C453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FE7F20-C801-4529-9DDF-46614F33C453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FE7F20-C801-4529-9DDF-46614F33C453}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
