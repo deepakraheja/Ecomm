@@ -18,40 +18,67 @@ namespace Reporting
     /// </summary>
     public class ReportHandler : IHttpHandler
     {
-
+        int SubReportOrderId = 0;
         public void ProcessRequest(HttpContext context)
         {
             //context.Response.ContentType = "text/plain";
             //context.Response.Write("Hello World");
             string OrderId = context.Request.QueryString["OrderId"];
+            string ReportType = context.Request.QueryString["ReportType"];
+            string StatusId = context.Request.QueryString["StatusId"];
+            string StartDate = context.Request.QueryString["StartDate"];
+            string EndDate = context.Request.QueryString["EndDate"];
 
-            string RName = "OrderInvoice";
-            //switch (TaskId)
-            //{
-            //    case "55":
-            //        {
-            //            RName = "barcode";
-            //            //RName = "HRPMRForm";
-            //            break;
-            //        }
-            //}
+            string RName = "";
+            switch (ReportType)
+            {
+                case "1":
+                    {
+                        RName = "OrderInvoice";
+                        break;
+                    }
+                case "2":
+                    {
+                        RName = "OrdersReport";
+                        break;
+                    }
+            }
 
             //Applicant objApp = new Applicant();
-            //DataSet dsApplicant = new DataSet();
+            DataSet ds = new DataSet();
+            DataSet ds1 = new DataSet();
+            //SubReportOrderId = Convert.ToInt32(OrderId);
 
+            if (RName == "OrderInvoice")
+            {
+                SQL objSql = new SQL();
+                objSql.AddParameter("@OrderId", DbType.Int32, ParameterDirection.Input, 0, Convert.ToInt32(OrderId));
+                ds = objSql.ExecuteDataSet("p_GetOrderByOrderId");
 
-            SQL objSql = new SQL();
-            objSql.AddParameter("@OrderId", DbType.Int32, ParameterDirection.Input, 0, Convert.ToInt32(OrderId));
-            DataSet dsApplicant = objSql.ExecuteDataSet("p_GetOrderByOrderId");
+                SQL objSql1 = new SQL();
+                objSql1.AddParameter("@OrderId", DbType.Int32, ParameterDirection.Input, 0, Convert.ToInt32(OrderId));
+                ds1 = objSql1.ExecuteDataSet("p_GetSuccessOrderDetailsByOrderId");
+            }
 
-            SQL objSql1 = new SQL();
-            objSql1.AddParameter("@OrderId", DbType.Int32, ParameterDirection.Input, 0, Convert.ToInt32(OrderId));
-            DataSet dsApplicant1 = objSql1.ExecuteDataSet("p_GetSuccessOrderDetailsByOrderId");
+            if (RName == "OrdersReport")
+            {
+                SQL objSql = new SQL();
+                if (!string.IsNullOrEmpty(StatusId))
+                    if (StatusId != "0")
+                        objSql.AddParameter("@StatusId", DbType.Int32, ParameterDirection.Input, 0, Convert.ToInt32(StatusId));
+                objSql.AddParameter("@StartDate", DbType.DateTime, ParameterDirection.Input, 0, Convert.ToDateTime(StartDate));
+                objSql.AddParameter("@EndDate", DbType.DateTime, ParameterDirection.Input, 0, Convert.ToDateTime(EndDate));
+                ds = objSql.ExecuteDataSet("p_GetAllOrder");
 
+            }
 
             // Create Report DataSource
-            ReportDataSource rds = new ReportDataSource("DataSet1", dsApplicant.Tables[0]);
-            ReportDataSource rds1 = new ReportDataSource("DataSet2", dsApplicant1.Tables[0]);
+            ReportDataSource rds = new ReportDataSource("DataSet1", ds.Tables[0]);
+            ReportDataSource rds1 = new ReportDataSource();
+            if (RName == "OrderInvoice")
+            {
+                rds1 = new ReportDataSource("DataSet2", ds1.Tables[0]);
+            }
             // Variables
             Warning[] warnings;
             string[] streamIds;
@@ -70,14 +97,17 @@ namespace Reporting
                 viewer.ProcessingMode = ProcessingMode.Local;
                 viewer.LocalReport.ReportPath = context.Server.MapPath("") + @"\Report\" + RName + ".rdlc";
                 viewer.LocalReport.Refresh();
-                //viewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
+                viewer.LocalReport.SubreportProcessing += new SubreportProcessingEventHandler(SetSubDataSource);
                 viewer.LocalReport.DataSources.Add(rds); // Add datasource here
-                viewer.LocalReport.DataSources.Add(rds1); // Add datasource here
+                if (RName == "OrderInvoice")
+                {
+                    viewer.LocalReport.DataSources.Add(rds1); // Add datasource here
+                }
                 bytes = viewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
 
                 //Byte[] bytes = viewer.LocalReport.Render("PDF");
 
-                if (dsApplicant.Tables[0].Rows.Count > 0)
+                if (ds.Tables[0].Rows.Count > 0)
                     fileName = RName + "_" + DateTime.Now.ToString("MM-dd-yyyy-hh-mm-ss");
 
 
@@ -87,6 +117,7 @@ namespace Reporting
                 if (!Directory.Exists(path))
                 {
                     DirectoryInfo di = Directory.CreateDirectory(path);
+
                 }
                 using (FileStream stream = new FileStream((path + "/" + fileName + ".pdf"), FileMode.Create))
                 {
@@ -102,6 +133,20 @@ namespace Reporting
                 context.Response.End();
             }
         }
+
+        private void SetSubDataSource(object sender, SubreportProcessingEventArgs e)
+        {
+            e.DataSources.Clear();
+
+            if (e.ReportPath == "OrderDetailsSubReport")
+            {
+                DataTable dtbl = new DataTable("DataTable1");
+                SQL objSql1 = new SQL();
+                dtbl = objSql1.ExecuteDataSet("p_GetSuccessOrderDetailsByOrderId_rpt").Tables[0];
+                e.DataSources.Add(new ReportDataSource("DataSet1", dtbl));
+            }
+        }
+
         public bool IsReusable
         {
             get

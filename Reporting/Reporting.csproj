@@ -246,7 +246,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Report\OrderDetailsSubReport.rdlc" />
     <EmbeddedResource Include="Report\OrderInvoice.rdlc" />
+    <EmbeddedResource Include="Report\OrdersReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
