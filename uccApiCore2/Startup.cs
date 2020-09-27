@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -17,6 +19,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using uccApiCore2.BAL;
 using uccApiCore2.BAL.Interface;
+using uccApiCore2.Controllers.Common;
 using uccApiCore2.JWT;
 using uccApiCore2.Repository;
 using uccApiCore2.Repository.Interface;
@@ -107,6 +110,11 @@ namespace uccApiCore2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var context = new CustomAssemblyLoadContext();
+            context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
+
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+            //services.AddControllers();
 
             //Inject AppSettings
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
@@ -176,9 +184,12 @@ namespace uccApiCore2
 
             services.AddScoped<UserService>();
             services.AddHttpContextAccessor();
+
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+
             //*************************JWT Authentication Start here****************************
 
-             
+
             var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:Jwt_Secret"].ToString());
 
             services.AddAuthentication(x =>
